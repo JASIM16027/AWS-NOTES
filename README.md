@@ -143,6 +143,71 @@ This image explains the differences between **On-Premises**, **Infrastructure as
 - **SaaS** is the easiest but least flexible.  
 
 
+---
+
+
+
+## **AWS Cloud Pricing **  
+
+![image](https://github.com/user-attachments/assets/bb4f5c7a-92d2-48ab-a53c-f6f721faec69)
+
+
+This slide provides an overview of **AWS (Amazon Web Services) pricing**, which follows a **pay-as-you-go** model. This means you only pay for the resources you use, without upfront costs.
+
+---
+
+### **1. AWS Pricing Fundamentals**  
+AWS pricing is based on three main factors:  
+
+#### **1. Compute (Processing Power)**  
+- You **pay for compute time**, which means you are charged based on the time your virtual servers (EC2 instances), containers, or serverless functions are running.  
+- **Example Services:**  
+  - **Amazon EC2** – Virtual machines (charged per second/minute).  
+  - **AWS Lambda** – Serverless compute (charged per execution).  
+  - **Amazon ECS/EKS** – Containerized workloads.  
+
+💡 **Analogy:** Think of it like paying for a taxi ride—you are charged for the duration you use the service.  
+
+---
+
+#### **2. Storage (Data Stored in AWS)**  
+- You are charged for the amount of data stored in AWS storage services.  
+- **Example Services:**  
+  - **Amazon S3** – Object storage (pay per GB stored).  
+  - **Amazon EBS** – Block storage for EC2 instances.  
+  - **Amazon Glacier** – Low-cost long-term backup storage.  
+
+💡 **Analogy:** Think of it like renting a storage unit—the larger the space you use, the more you pay.  
+
+---
+
+#### **3. Data Transfer (Inbound is Free, Outbound is Charged)**  
+- **Data transfer INTO AWS (uploads) is free.**  
+- **Data transfer OUT OF AWS (downloads) is charged.**  
+- Costs vary based on the destination and AWS region.  
+
+💡 **Analogy:** Similar to a hotel minibar—bringing in food is free, but taking food out (or consuming minibar items) costs extra.  
+
+---
+
+### **2. Why AWS Pricing is Cost-Effective**  
+Compared to traditional IT infrastructure, AWS eliminates:  
+✔ **Upfront hardware costs** – No need to buy expensive servers.  
+✔ **Maintenance costs** – AWS manages the infrastructure.  
+✔ **Overprovisioning** – Scale up or down as needed.  
+
+---
+
+### **Conclusion:**  
+AWS follows a **pay-as-you-go** model where you are billed based on:  
+- **Compute:** Charged for processing power used.  
+- **Storage:** Charged for data stored.  
+- **Data Transfer:** Charged for data leaving AWS.  
+
+💡 **Overall Benefit:** AWS helps businesses reduce costs and scale efficiently without investing in physical infrastructure.  
+
+
+
 
 
 
