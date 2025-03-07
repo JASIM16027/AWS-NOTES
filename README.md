@@ -76,7 +76,72 @@
 - **Netflix** uses cloud servers to stream videos to millions of users without owning all the hardware.  
 - **Google Drive** lets you store and share files online.  
 - **Zoom** provides online meetings without needing special hardware.  
-- **E-commerce Websites** like Amazon run on the cloud to handle millions of customers at once.  
+- **E-commerce Websites** like Amazon run on the cloud to handle millions of customers at once.
+
+
+
+
+
+---
+
+
+## Who Manage What?
+
+
+![image](https://github.com/user-attachments/assets/e7630b02-eded-448b-b6ef-189b2fb65542)
+
+
+This image explains the differences between **On-Premises**, **Infrastructure as a Service (IaaS)**, **Platform as a Service (PaaS)**, and **Software as a Service (SaaS)** in terms of management responsibilities.
+
+### **Key Understanding**:
+- The **blue boxes** represent components that **you manage**.
+- The **orange boxes** represent components that are **managed by others (cloud providers)**.
+
+---
+
+### **1. On-Premises (Traditional IT)**
+- **Fully managed by you**.
+- You control everything, including hardware, software, networking, and security.
+- Requires purchasing and maintaining physical servers, storage, and networking infrastructure.
+- **Example:** Running a data center in your own office.
+
+---
+
+### **2. Infrastructure as a Service (IaaS)**
+- The cloud provider **manages the physical infrastructure** (Networking, Storage, Servers, and Virtualization).
+- You manage the **operating system, middleware, runtime, data, and applications**.
+- Offers flexibility as you can install any software and configure it as needed.
+- **Example:** Amazon EC2, Google Compute Engine, Microsoft Azure Virtual Machines.
+
+---
+
+### **3. Platform as a Service (PaaS)**
+- The cloud provider **manages everything except your applications and data**.
+- Developers only focus on coding and deploying applications without worrying about managing servers or operating systems.
+- **Example:** AWS Elastic Beanstalk, Google App Engine, Microsoft Azure App Services.
+
+---
+
+### **4. Software as a Service (SaaS)**
+- The cloud provider **manages everything**, and you only use the application.
+- No need for installation, maintenance, or management of any underlying infrastructure.
+- **Example:** Gmail, Microsoft 365, Google Drive, Dropbox, Zoom.
+
+---
+
+### **Comparison Summary**  
+| Model | Who Manages What? | Example |
+|--------|----------------|---------|
+| **On-Premises** | You manage everything | Your own data center |
+| **IaaS** | Cloud provider manages hardware; you manage OS, apps, and data | AWS EC2, Google Compute Engine |
+| **PaaS** | Cloud provider manages most things; you manage apps and data | Google App Engine, AWS Elastic Beanstalk |
+| **SaaS** | Cloud provider manages everything; you just use the software | Gmail, Google Drive, Zoom |
+
+#### **Key Takeaway**  
+- **IaaS** gives more control but requires management effort.  
+- **PaaS** simplifies development but limits customization.  
+- **SaaS** is the easiest but least flexible.  
+
 
 
 
