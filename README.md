@@ -409,4 +409,66 @@ You **must not** use AWS services or the AWS website for:
 
 
 
+### **Identity and Access Management (IAM)**
+
+AWS **Identity and Access Management (IAM)** is a **global** service that allows administrators to control access to AWS resources securely. The image provides key details about IAM **users** and **groups** within an organization.
+
+---
+
+### **Key Concepts:**
+1. **IAM (Identity and Access Management) = Global Service**
+   - IAM is not limited to a specific AWS region; it applies across all AWS services and accounts globally.
+
+2. **Root Account**
+   - The AWS **root account** is the first account created when signing up for AWS.
+   - It has **full control** over all AWS services and should **not** be used for daily operations.
+   - Sharing the root account **is not recommended** due to security risks.
+
+3. **Users**
+   - **IAM Users** represent individuals within an organization who require access to AWS services.
+   - Each user gets a unique identity and **can be assigned permissions** based on their role.
+
+4. **Groups**
+   - **Groups are collections of IAM users** with similar permissions.
+   - Groups help manage permissions efficiently rather than assigning them to users individually.
+   - **Important Rule:** Groups **cannot** contain other groups, only individual users.
+
+5. **Users & Group Membership**
+   - A user **is not required** to belong to a group.
+   - A user **can be part of multiple groups** at the same time.
+
+---
+
+![image](https://github.com/user-attachments/assets/d762fe27-4c49-47c3-9a76-fa69fbb1f1a6)
+
+
+### **Understanding the Image**
+The image displays different **IAM groups** and their **associated users**:
+
+#### **Group: Developers (Blue Box)**
+- **Users:** Alice, Bob, Charles
+- **Purpose:** Likely given access to AWS services needed for software development (e.g., EC2, Lambda, S3).
+- **Charles is also part of another group (Audit Team).**
+
+#### **Group: Audit Team (Green Box)**
+- **Users:** Charles, David
+- **Purpose:** Likely focused on security auditing and compliance.
+- **Charles and David are also part of other groups.**
+
+#### **Group: Operations (Orange Box)**
+- **Users:** David, Edward
+- **Purpose:** Likely responsible for infrastructure management and system maintenance.
+- **David is also part of the Audit Team.**
+
+#### **User Outside Groups**
+- **Fred** is not part of any group, meaning his permissions must be assigned directly.
+
+---
+
+### **Best Practices for IAM Users & Groups**
+- **Use Groups for Role-Based Access Control:** Assign permissions to groups instead of individual users.
+- **Follow the Principle of Least Privilege:** Users should only have the minimum permissions required for their tasks.
+- **Avoid Using the Root Account:** Create admin users instead of using the root account.
+- **Regularly Review IAM Permissions:** Ensure that users and groups have appropriate permissions and remove unused access.
+
 
