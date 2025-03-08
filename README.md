@@ -380,5 +380,33 @@ To apply the AWS Shared Responsibility Model effectively, customers must conside
 
 
 
+## AWS Acceptable Use Policy (Last Updated: July 1, 2021)
+
+### **General Rules**
+- By using AWS services or visiting the AWS website, you agree to follow this policy.
+- AWS may update this policy at any time.
+
+### **Prohibited Uses**
+You **must not** use AWS services or the AWS website for:
+1. **Illegal or fraudulent activities**
+2. **Violating others' rights**
+3. **Encouraging harm**, including violence or terrorism
+4. **Child exploitation or abuse**
+5. **Compromising security**, such as hacking or disrupting networks
+6. **Sending spam**, including mass unsolicited emails or advertisements
+
+### **Investigation & Enforcement**
+- AWS may **investigate** any suspected violations.
+- AWS can **remove or block access** to content that breaks this policy.
+- You must **cooperate** if AWS asks you to fix a violation.
+
+### **Policy Compliance Considerations**
+- AWS may assess how well you follow this policy, including:
+  - Your **ability** to comply
+  - Your **efforts** to prevent or remove prohibited content
+
+
+
+
 
 
