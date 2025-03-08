@@ -297,6 +297,87 @@ Region-scoped services operate within a **specific AWS region**. This means that
 
 
 
+---
+
+## AWS Shared Responsibility Model
+
+
+![image](https://github.com/user-attachments/assets/85e32133-5df8-4d51-bacc-65521702b540)
+
+
+### Security and Compliance: A Shared Responsibility
+Security and Compliance is a shared responsibility between AWS and the customer. This shared model helps relieve the customer’s operational burden, as AWS:
+- Operates, manages, and controls components from the host operating system and virtualization layer down to the physical security of the facilities.
+- Provides infrastructure security, while customers assume responsibility for managing their guest operating system, application software, and firewall configurations.
+
+Customers should carefully consider their chosen AWS services, as their responsibilities vary depending on:
+- Services used.
+- Integration into their IT environment.
+- Applicable laws and regulations.
+
+This differentiation is commonly referred to as **Security “of” the Cloud** versus **Security “in” the Cloud**.
+
+### AWS Responsibility: "Security of the Cloud"
+AWS is responsible for protecting the infrastructure that runs AWS Cloud services, which includes:
+- Hardware
+- Software
+- Networking
+- Facilities
+
+### Customer Responsibility: "Security in the Cloud"
+Customer responsibility depends on the AWS services selected. 
+- **For IaaS services (e.g., Amazon EC2):** Customers must manage:
+  - Guest operating system updates and security patches.
+  - Application software or utilities installed.
+  - AWS-provided firewall (security group) configuration.
+- **For abstracted services (e.g., Amazon S3, DynamoDB):** AWS manages infrastructure, OS, and platforms, while customers must:
+  - Manage and encrypt their data.
+  - Classify assets.
+  - Use IAM tools to set appropriate permissions.
+
+### IT Control Shared Responsibility Model
+AWS and customers share the management, operation, and verification of IT controls.
+
+#### Control Categories:
+1. **Inherited Controls:** Fully managed by AWS, such as:
+   - Physical and environmental controls.
+
+2. **Shared Controls:** Responsibilities are split between AWS and customers:
+   - **Patch Management:**
+     - AWS patches the infrastructure.
+     - Customers patch their guest OS and applications.
+   - **Configuration Management:**
+     - AWS maintains infrastructure configuration.
+     - Customers configure their OS, databases, and applications.
+   - **Awareness & Training:**
+     - AWS trains AWS employees.
+     - Customers train their employees.
+
+3. **Customer-Specific Controls:** Fully managed by customers, including:
+   - Service and Communications Protection or Zone Security.
+   - Routing or zoning data within specific security environments.
+
+### Applying the AWS Shared Responsibility Model in Practice
+To apply the AWS Shared Responsibility Model effectively, customers must consider factors such as chosen AWS services, Regions, integrations, and legal requirements.
+
+#### Recommended Exercises:
+1. **Determine Security & Compliance Requirements**
+   - Consider frameworks like NIST Cybersecurity Framework (CSF) and ISO.
+2. **Review AWS Service Capabilities for Privacy Considerations**
+   - Utilize the AWS Cloud Adoption Framework (CAF) and Well-Architected best practices.
+3. **Evaluate AWS Security Services**
+   - Review security functionalities and configurations in AWS service documentation.
+4. **Leverage AWS Compliance Documentation**
+   - Analyze third-party audit attestation documents for inherited controls.
+5. **Train Internal and External Audit Teams**
+   - Use Cloud Audit Academy programs for cloud-specific learning.
+6. **Perform a Well-Architected Review**
+   - Assess security, reliability, and performance best practices.
+7. **Explore AWS Marketplace Solutions**
+   - Find and deploy security solutions from independent vendors.
+8. **Leverage AWS Security Competency Partners**
+   - Get expert assistance for cloud security and compliance management.
+
 
 
 
