@@ -473,3 +473,88 @@ The image displays different **IAM groups** and their **associated users**:
 - **Regularly Review IAM Permissions:** Ensure that users and groups have appropriate permissions and remove unused access.
 
 
+
+
+## **IAM: Permissions**  
+
+AWS **Identity and Access Management (IAM) permissions** determine what actions users or groups can perform on AWS resources.  
+
+---
+
+### **Key Concepts:**  
+
+✅ **Policies** – JSON documents that define permissions.  
+✅ **Users and Groups** – Policies can be assigned to individual users or groups.  
+✅ **Least Privilege Principle** – Only grant the necessary permissions a user needs, nothing extra.  
+
+---
+
+### **Understanding the JSON Policy (Right Side of Image)**  
+
+This JSON policy consists of **three statements**, each granting specific permissions. Let’s break them down:  
+
+#### **1️⃣ Allow EC2 Describe Actions**  
+```json
+{
+   "Effect": "Allow",
+   "Action": "ec2:Describe*",
+   "Resource": "*"
+}
+```
+- **Effect**: `Allow` → Grants permission.  
+- **Action**: `"ec2:Describe*"` → Allows **all EC2 "Describe" actions** (e.g., DescribeInstances, DescribeVolumes).  
+- **Resource**: `"*"` → Applies to **all EC2 resources** in the account.  
+
+✅ **Why?** This allows users to view EC2 details without making changes.  
+
+---
+
+#### **2️⃣ Allow Elastic Load Balancer (ELB) Describe Actions**  
+```json
+{
+   "Effect": "Allow",
+   "Action": "elasticloadbalancing:Describe*",
+   "Resource": "*"
+}
+```
+- **Effect**: `Allow` → Grants permission.  
+- **Action**: `"elasticloadbalancing:Describe*"` → Allows all **Describe actions for ELB**.  
+- **Resource**: `"*"` → Applies to all ELB resources.  
+
+✅ **Why?** Users can view ELB configurations but **cannot modify them**.  
+
+---
+
+#### **3️⃣ Allow CloudWatch Read-Only Access**  
+```json
+{
+   "Effect": "Allow",
+   "Action": [
+       "cloudwatch:ListMetrics",
+       "cloudwatch:GetMetricStatistics",
+       "cloudwatch:Describe*"
+   ],
+   "Resource": "*"
+}
+```
+- **Effect**: `Allow` → Grants permission.  
+- **Action**: Allows **CloudWatch monitoring actions**, such as:  
+  - `"cloudwatch:ListMetrics"` → List all available CloudWatch metrics.  
+  - `"cloudwatch:GetMetricStatistics"` → Get detailed metric data.  
+  - `"cloudwatch:Describe*"` → Describe various CloudWatch components.  
+- **Resource**: `"*"` → Applies to all CloudWatch resources.  
+
+✅ **Why?** Users can **view monitoring data** but **cannot modify alarms or logs**.  
+
+---
+
+### **Best Practices for IAM Permissions**  
+
+🚀 **Apply the Least Privilege Principle** – Only grant the permissions needed.  
+🚀 **Use IAM Groups** – Assign policies to groups instead of individuals for easier management.  
+🚀 **Review Policies Regularly** – Remove unnecessary permissions to improve security.  
+🚀 **Avoid Wildcards (`"*"`) When Possible** – Limit permissions to specific resources instead of `"*"` (all resources).  
+
+
+
+
