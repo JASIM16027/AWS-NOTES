@@ -407,9 +407,10 @@ You **must not** use AWS services or the AWS website for:
 
 
 
+---
 
 
-### **Identity and Access Management (IAM)**
+## **Identity and Access Management (IAM)**
 
 AWS **Identity and Access Management (IAM)** is a **global** service that allows administrators to control access to AWS resources securely. The image provides key details about IAM **users** and **groups** within an organization.
 
