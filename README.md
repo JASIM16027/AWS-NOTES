@@ -440,7 +440,8 @@ AWS **Identity and Access Management (IAM)** is a **global** service that allows
 
 ---
 
-![image](https://github.com/user-attachments/assets/d762fe27-4c49-47c3-9a76-fa69fbb1f1a6)
+![image](https://github.com/user-attachments/assets/2b995fd5-917a-4c0f-bdd1-341540c27a8b)
+
 
 
 ### **Understanding the Image**
@@ -476,6 +477,10 @@ The image displays different **IAM groups** and their **associated users**:
 
 
 ## **IAM: Permissions**  
+
+
+![image](https://github.com/user-attachments/assets/3c4ff1eb-f78c-4904-83df-d62f3b2dd7ed)
+
 
 AWS **Identity and Access Management (IAM) permissions** determine what actions users or groups can perform on AWS resources.  
 
