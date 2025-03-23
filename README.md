@@ -1247,3 +1247,11 @@ Tags are **key-value pairs** that help you organize and manage AWS resources.
 
 
 
+### **AWS EBS Overview**  
+
+AWS Elastic Block Store (EBS) is a cloud-based storage service designed to deliver durable, high-performance block storage for Amazon EC2 instances.  
+
+It functions like a virtual hard drive, enabling data storage and access even if your EC2 instances are stopped or terminated.
+
+
+
