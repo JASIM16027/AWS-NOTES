@@ -696,3 +696,610 @@ Free Tier (প্রথম ১২ মাস):
 ---
 
 পুরো AWS infrastructure টা বুঝলে এবার **Terraform** দিয়ে এই সব কোড হিসেবে লেখা, অথবা সরাসরি **Kubernetes (EKS)** — কোনটা দেখতে চাও?
+
+
+
+
+
+
+
+
+
+## AWS — কেন দরকার? কী Problem Solve করে? 🌐
+
+---
+
+### আগে বুঝি — AWS ছাড়া কী সমস্যা?
+
+ধরো তুমি একটা app বানালে। এখন সবাইকে দেখাতে চাও।
+
+```
+তোমার laptop এ চলছে ✅
+বন্ধু access করতে পারছে না ❌
+
+কারণ:
+  তোমার laptop এ public IP নেই
+  Internet থেকে কেউ তোমার machine এ আসতে পারে না
+  তুমি laptop বন্ধ করলে app বন্ধ!
+```
+
+**Solution 1: নিজে server কিনো**
+
+```
+সমস্যা:
+  ❌ দামি (লক্ষ টাকা)
+  ❌ জায়গা লাগে (data center)
+  ❌ বিদ্যুৎ লাগে সবসময়
+  ❌ Internet connection লাগে
+  ❌ নিজে maintain করতে হবে
+  ❌ হার্ডওয়্যার নষ্ট হলে তুমি fix করো
+  ❌ User বাড়লে নতুন server কিনতে হবে
+```
+
+**Solution 2: AWS** ✅
+
+```
+  ✅ ভাড়া নাও (যতটুকু দরকার)
+  ✅ যেকোনো জায়গা থেকে access
+  ✅ AWS maintain করে
+  ✅ User বাড়লে আরো resource নাও
+  ✅ Pay করো শুধু use করলে
+```
+
+---
+
+## AWS যে Problems Solve করে
+
+---
+
+## ১. 🖥️ Server Problem → EC2
+
+### Problem:
+```
+App চালাতে একটা computer দরকার
+যেটা 24/7 চলবে
+Internet এ accessible থাকবে
+```
+
+### AWS Solution: EC2 (Elastic Compute Cloud)
+
+```
+EC2 = Virtual Computer ভাড়া
+
+তুমি বলো:
+  CPU: 2 core চাই
+  RAM: 4GB চাই
+  OS: Ubuntu চাই
+
+AWS দেয়:
+  একটা virtual machine
+  Public IP address
+  24/7 চলবে
+  তুমি SSH দিয়ে ঢুকতে পারবে
+```
+
+### Real example:
+
+```bash
+# EC2 তে ঢুকে তোমার app চালাও:
+ssh -i my-key.pem ubuntu@54.123.456.789
+
+# Docker install করো
+sudo apt install docker.io
+
+# তোমার app চালাও
+docker run -p 80:3000 myapp:latest
+
+# এখন সবাই access করতে পারবে:
+# http://54.123.456.789
+```
+
+### EC2 Types:
+```
+t3.micro   → 1 CPU, 1GB RAM  → ছোট app, free tier
+t3.small   → 2 CPU, 2GB RAM  → medium app
+t3.medium  → 2 CPU, 4GB RAM  → বড় app
+c5.xlarge  → 4 CPU, 8GB RAM  → heavy computation
+```
+
+---
+
+## ২. 🗄️ Database Problem → RDS
+
+### Problem:
+```
+Database EC2 তে রাখলে:
+  ❌ EC2 বন্ধ হলে data যাবে
+  ❌ Backup নিজে করতে হবে
+  ❌ Security নিজে maintain করতে হবে
+  ❌ Scale করা কঠিন
+```
+
+### AWS Solution: RDS (Relational Database Service)
+
+```
+RDS = Managed Database
+
+AWS তোমার জন্য:
+  ✅ Automatic backup নেয় (daily)
+  ✅ Automatic failover (একটা crash করলে আরেকটা ready)
+  ✅ Encryption করে রাখে
+  ✅ Patch/update নিজে করে
+  ✅ Storage automatically বাড়ায়
+
+তুমি শুধু:
+  Database এ connect করো
+  Query করো
+  বাকি সব AWS করে!
+```
+
+### Connection:
+
+```python
+# তোমার app এ শুধু endpoint দাও:
+DB_HOST = "mydb.abc123.ap-southeast-1.rds.amazonaws.com"
+DB_PORT = 5432
+DB_NAME = "myapp"
+DB_USER = "admin"
+DB_PASS = "secret"
+
+# AWS বাকি সব handle করে!
+```
+
+---
+
+## ৩. 📦 File Storage Problem → S3
+
+### Problem:
+```
+User photo upload করলো।
+EC2 তে রাখলে:
+  ❌ EC2 storage শেষ হবে
+  ❌ EC2 বন্ধ হলে file যাবে
+  ❌ অনেক user = অনেক file = বিশাল storage
+```
+
+### AWS Solution: S3 (Simple Storage Service)
+
+```
+S3 = Unlimited File Storage
+
+বৈশিষ্ট্য:
+  ✅ Unlimited storage (terabyte, petabyte)
+  ✅ 99.999999999% durability (কখনো হারায় না)
+  ✅ যেকোনো file (image, video, PDF, backup)
+  ✅ Public বা private access control
+  ✅ অনেক সস্তা ($0.023/GB per month)
+```
+
+### Real example:
+
+```python
+import boto3
+
+s3 = boto3.client('s3')
+
+# File upload করো
+s3.upload_file(
+    'user_photo.jpg',           # local file
+    'my-bucket',                # bucket name
+    'photos/user123/photo.jpg'  # S3 এ path
+)
+
+# Public URL পাবে:
+# https://my-bucket.s3.amazonaws.com/photos/user123/photo.jpg
+```
+
+### S3 Use Cases:
+```
+User photos/videos → S3
+App backups        → S3
+Static website     → S3
+Log files          → S3
+Docker images      → ECR (S3 এর উপরে বানানো)
+```
+
+---
+
+## ৪. 🐳 Docker Image Problem → ECR
+
+### Problem:
+```
+Docker image কোথায় রাখবো?
+
+Docker Hub:
+  ❌ Public (সবাই দেখতে পাবে)
+  ❌ Private repo = paid
+  ❌ AWS থেকে pull করতে slow
+```
+
+### AWS Solution: ECR (Elastic Container Registry)
+
+```
+ECR = Private Docker Registry
+
+বৈশিষ্ট্য:
+  ✅ Private (শুধু তুমি access করতে পারবে)
+  ✅ AWS এর ভেতরে (ECS/EKS থেকে pull অনেক fast)
+  ✅ Automatic vulnerability scan
+  ✅ IAM দিয়ে access control
+```
+
+### Real example (ShareTrip pipeline থেকে):
+
+```bash
+# ECR এ login করো
+aws ecr get-login-password --region ap-southeast-1 \
+  | docker login --username AWS \
+  --password-stdin 123456.dkr.ecr.ap-southeast-1.amazonaws.com
+
+# Image build করো
+docker build -t flight-engine:abc123 .
+
+# ECR এ tag করো
+docker tag flight-engine:abc123 \
+  123456.dkr.ecr.ap-southeast-1.amazonaws.com/production/flight-engine:abc123
+
+# ECR এ push করো
+docker push \
+  123456.dkr.ecr.ap-southeast-1.amazonaws.com/production/flight-engine:abc123
+```
+
+---
+
+## ৫. 🔄 Container Orchestration Problem → ECS / EKS
+
+### Problem:
+```
+Docker container চালাতে হবে।
+EC2 তে manually চালালে:
+  ❌ Container crash করলে নিজে restart করতে হবে
+  ❌ Traffic বাড়লে manually নতুন container চালাতে হবে
+  ❌ Multiple server manage করা কঠিন
+  ❌ Zero downtime deploy কঠিন
+```
+
+### AWS Solution: ECS (Elastic Container Service)
+
+```
+ECS = Managed Container Platform
+
+তুমি বলো:
+  "এই Docker image চালাও"
+  "সবসময় ৩টা container চলুক"
+  "CPU 70% হলে নতুন container চালু করো"
+
+AWS করে:
+  ✅ Container চালায়
+  ✅ Crash হলে restart করে
+  ✅ Health check করে
+  ✅ Automatically scale করে
+  ✅ Load balance করে
+```
+
+### ECS Task Definition:
+
+```json
+{
+  "family": "flight-engine",
+  "containerDefinitions": [
+    {
+      "name": "flight-engine",
+      "image": "123456.ecr.aws/production/flight-engine:abc123",
+      "memory": 512,
+      "cpu": 256,
+      "portMappings": [
+        { "containerPort": 3000, "hostPort": 80 }
+      ],
+      "environment": [
+        { "name": "DB_HOST", "value": "mydb.rds.amazonaws.com" }
+      ],
+      "healthCheck": {
+        "command": ["CMD-SHELL", "curl -f http://localhost/health || exit 1"],
+        "interval": 30
+      }
+    }
+  ]
+}
+```
+
+### ECS vs EKS:
+
+```
+ECS → AWS এর নিজের system (সহজ, AWS specific)
+EKS → Kubernetes on AWS (complex, কিন্তু portable)
+
+ছোট-মাঝারি team → ECS
+বড় company, K8s জানলে → EKS
+```
+
+---
+
+## ৬. 🌐 Traffic Distribution Problem → ALB
+
+### Problem:
+```
+১০০০ user একসাথে আসলো।
+একটা server এ সব traffic:
+  ❌ Server overload
+  ❌ কিছু user timeout পাবে
+  ❌ একটা server down হলে সব বন্ধ
+```
+
+### AWS Solution: ALB (Application Load Balancer)
+
+```
+ALB = Traffic ভাগ করার system
+
+        Internet
+           ↓
+          ALB
+        ↙  ↓  ↘
+  Server1 Server2 Server3
+  (33%)   (33%)   (33%)
+
+বৈশিষ্ট্য:
+  ✅ Traffic সমানভাবে ভাগ করে
+  ✅ Unhealthy server বাদ দেয়
+  ✅ SSL termination করে (HTTPS handle করে)
+  ✅ Path based routing (/api → backend, / → frontend)
+```
+
+### Path based routing:
+
+```
+ALB Rules:
+  /api/*        → Backend servers
+  /static/*     → S3
+  /* (বাকি সব) → Frontend servers
+
+মানে:
+  api.myapp.com/api/users  → Node.js servers
+  api.myapp.com/           → React servers
+```
+
+---
+
+## ৭. 🔐 Security Problem → IAM, Security Groups, VPC
+
+### Problem:
+```
+সব service সব কিছু access করতে পারলে:
+  ❌ Security breach হলে সব যাবে
+  ❌ Database publicly accessible = বিপদ
+  ❌ কে কী করলো trace করা যায় না
+```
+
+### AWS Solution: IAM + VPC + Security Groups
+
+**IAM (Identity and Access Management):**
+```
+কে কী করতে পারবে সেটা define করো।
+
+Example:
+  GitHub Actions → শুধু ECR push করতে পারবে
+  ECS → শুধু ECR pull আর RDS connect করতে পারবে
+  Developer → শুধু logs দেখতে পারবে
+
+Principle of Least Privilege:
+  যতটুকু দরকার ঠিক ততটুকুই permission দাও।
+```
+
+**VPC (Virtual Private Cloud):**
+```
+তোমার নিজের private network
+
+Internet
+   ↓
+VPC (তোমার private network)
+  ├── Public Subnet  → ALB, NAT Gateway (internet access আছে)
+  └── Private Subnet → EC2, RDS, ElastiCache (internet নেই!)
+      (database কে internet থেকে hide করো)
+```
+
+**Security Groups:**
+```
+Firewall rules
+
+RDS Security Group:
+  Inbound: Port 5432, Source: EC2 Security Group only
+  → শুধু তোমার EC2 database access করতে পারবে
+  → Internet থেকে কেউ সরাসরি database access করতে পারবে না ✅
+
+EC2 Security Group:
+  Inbound: Port 80, Source: ALB only
+  → শুধু ALB traffic পাঠাতে পারবে
+```
+
+---
+
+## ৮. 📊 Monitoring Problem → CloudWatch
+
+### Problem:
+```
+App deploy হলো।
+কিন্তু কিছু জানি না:
+  ❌ Error হচ্ছে কিনা?
+  ❌ CPU কত?
+  ❌ কতজন user আসছে?
+  ❌ Database slow কিনা?
+```
+
+### AWS Solution: CloudWatch
+
+```
+CloudWatch = সব কিছুর চোখ
+
+Logs:
+  Container এর সব output এখানে
+  Error search করো
+  Pattern খোঁজো
+
+Metrics:
+  CPU usage graph
+  Memory usage
+  Request count
+  Error rate
+
+Alarms:
+  CPU > 80% → Slack notification পাঠাও
+  Error rate > 5% → PagerDuty alert
+  Disk > 90% → Email করো
+```
+
+---
+
+## ৯. 🔑 Secret Management Problem → Parameter Store / Secrets Manager
+
+### Problem:
+```
+DB password, API key কোথায় রাখবো?
+
+Code এ রাখলে:
+  ❌ GitHub এ দেখা যাবে
+  ❌ সবাই জানবে
+
+Environment variable এ রাখলে:
+  ❌ কে set করলো trace নেই
+  ❌ Rotate করা কঠিন
+```
+
+### AWS Solution: Parameter Store / Secrets Manager
+
+```
+# Secrets Manager এ secret রাখো:
+aws secretsmanager create-secret \
+  --name "prod/db-password" \
+  --secret-string "super_secret_password"
+
+# Container এ automatically inject হবে:
+{
+  "secrets": [
+    {
+      "name": "DB_PASSWORD",
+      "valueFrom": "arn:aws:secretsmanager:...:prod/db-password"
+    }
+  ]
+}
+
+বৈশিষ্ট্য:
+  ✅ Encrypted
+  ✅ Audit log (কে কখন access করলো)
+  ✅ Automatic rotation (password নিজে বদলায়)
+  ✅ Code এ কোনো secret নেই
+```
+
+---
+
+## ১০. ⚡ DNS & Domain Problem → Route 53
+
+### Problem:
+```
+IP address দিয়ে website চালানো যায় না।
+  ❌ http://54.123.456.789 → ugly
+  ❌ IP বদলালে user জানবে না
+  ✅ https://myapp.com → সুন্দর
+```
+
+### AWS Solution: Route 53
+
+```
+Route 53 = DNS Management
+
+myapp.com → 54.123.456.789 (ALB IP)
+api.myapp.com → ALB
+cdn.myapp.com → CloudFront
+
+বৈশিষ্ট্য:
+  ✅ Health check based routing
+  ✅ Latency based routing (কাছের server এ পাঠাও)
+  ✅ Failover (primary down হলে backup এ যাও)
+```
+
+---
+
+## পুরো AWS Architecture একসাথে
+
+```
+User → myapp.com
+          ↓
+      Route 53 (DNS)
+          ↓
+    CloudFront (CDN, HTTPS)
+          ↓
+    ALB (Load Balancer)
+       ↙        ↘
+  ECS Tasks    ECS Tasks
+  (Container)  (Container)
+       ↓              ↓
+    ┌──────────────────────────┐
+    │      Private Subnet      │
+    │   RDS (PostgreSQL)       │
+    │   ElastiCache (Redis)    │
+    └──────────────────────────┘
+          ↓
+    S3 (File Storage)
+    ECR (Docker Images)
+    CloudWatch (Logs)
+    Secrets Manager (Passwords)
+    IAM (Permissions)
+```
+
+---
+
+## কখন কোনটা দরকার?
+
+```
+ছোট project শুরু:
+  EC2 + RDS + S3
+  (সহজ, সস্তা)
+
+Medium project:
+  + ECR + ECS + ALB
+  (Containerized, scalable)
+
+বড় project:
+  + EKS + CloudFront
+  + Parameter Store
+  + CloudWatch Alarms
+  (Enterprise grade)
+
+ShareTrip এর মতো:
+  ECR → Docker image রাখো
+  ECS/EKS → Container চালাও
+  RDS → Database
+  ElastiCache → Redis
+  ALB → Traffic ভাগ করো
+  CloudWatch → Monitor করো
+  Secrets Manager → Password রাখো
+```
+
+---
+
+## Learning Order 📚
+
+```
+Week 1: EC2
+  → একটা server চালাও
+  → SSH দিয়ে ঢোকো
+  → App manually deploy করো
+
+Week 2: S3 + RDS
+  → File upload করো
+  → Database connect করো
+
+Week 3: ECR + ECS
+  → Docker image push করো
+  → Container deploy করো
+
+Week 4: ALB + VPC
+  → Load balancer setup করো
+  → Private network বানাও
+
+Month 2+: CloudWatch, IAM, Route 53
+  → Monitor, secure, domain setup
+```
+
+> AWS এর সব service একসাথে না শিখে
+> **একটা একটা করে হাতে কলমে** practice করো।
+> Free tier দিয়ে শুরু করো — প্রথম ১ বছর অনেক কিছু free! 💡
