@@ -248,4 +248,4 @@ TGW (network account), ASN `64512`, **default association/propagation বন্�
 
 ---
 
-**⏮ আগের দিন:** [Day 41 — Centralized PrivateLink ও Hybrid DNS](./Day-41-Centralized-PrivateLink-Endpoints-Hybrid-DNS.md) | **⏭ পরের module:** Module 7 — Edge Services, DNS & Load Balancing (আসছে)
+**⏮ আগের দিন:** [Day 41 — Centralized PrivateLink ও Hybrid DNS](./Day-41-Centralized-PrivateLink-Endpoints-Hybrid-DNS.md) | **⏭ পরের module:** [Day 43 — CloudFront Basics (Module 7)](../08-Module-7-Edge-DNS-Load-Balancing/Day-43-CloudFront-Basics-Distributions-Origins.md)

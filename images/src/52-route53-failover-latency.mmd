@@ -1,0 +1,14 @@
+flowchart TB
+  U1["User in EU"] --> R53{{"Route 53"}}
+  U2["User in Asia"] --> R53
+  subgraph LAT["Latency-based routing (active-active)"]
+    direction LR
+    R53 -->|"lowest latency"| ALB_EU["ALB Frankfurt<br/>+ health check"]
+    R53 -->|"lowest latency"| ALB_AP["ALB Mumbai<br/>+ health check"]
+  end
+  subgraph FO["Failover routing (active-passive), api.shopbd.com"]
+    direction LR
+    R53F{{"Route 53"}} -->|"PRIMARY (healthy)"| P["ALB Mumbai"]
+    R53F -.->|"SECONDARY (used only if primary unhealthy)"| S["ALB Singapore"]
+  end
+  LAT ~~~ FO

@@ -1,0 +1,12 @@
+flowchart TB
+  R53(("Route 53<br/>shopbd.com")) --> CF
+  R53 -->|"Failover: api.shopbd.com"| APIP["PRIMARY: ALB Mumbai"]
+  R53 -.->|"if unhealthy"| APIS["SECONDARY: ALB Singapore"]
+  R53 -->|"game.shopbd.com"| GA
+  CF["CloudFront + WAF<br/>(+ CloudFront Function: BD localization)"]
+  CF --> S3[("S3: static assets<br/>versioned, OAC")]
+  CF -->|"origin group"| APIP
+  CF -.->|"failover"| APIS
+  GA(("Global Accelerator<br/>2 static IPs"))
+  GA --> EGM["Endpoint group: Mumbai NLB"]
+  GA --> EGS["Endpoint group: Singapore NLB"]
