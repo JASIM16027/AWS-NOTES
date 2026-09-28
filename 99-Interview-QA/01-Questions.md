@@ -1,6 +1,7 @@
 # ❓ AWS Interview Questions (Q1–Q130)
 
 > উত্তর: [02-Answers-Q1-Q130.md](./02-Answers-Q1-Q130.md)
+> 🃏 Flashcard আকারে practice করতে চাইলে: [AWS Recall — Interactive Flashcards](https://claude.ai/artifact/K4VzZgRwxxRuAKPRc7Rb23)
 
 
 ## Core / Foundational
