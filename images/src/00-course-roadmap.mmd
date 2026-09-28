@@ -1,0 +1,26 @@
+flowchart TB
+  subgraph R1[" "]
+    direction LR
+    M1["Module 1<br/>EC2 & Storage<br/>Day 1-7<br/>DONE"] --> M2["Module 2<br/>VPC & Networking<br/>Day 8-14<br/>DONE"]
+    M2 --> M3["Module 3<br/>App Deployment<br/>EC2 + systemd<br/>IN PROGRESS"]
+    M3 --> M4["Module 4<br/>Serverless &<br/>Lambda"]
+  end
+  subgraph R2[" "]
+    direction LR
+    M5["Module 5<br/>Event-Driven<br/>Architectures"] --> M6["Module 6<br/>Multi-VPC &<br/>Private Connectivity"]
+    M6 --> M7["Module 7<br/>Edge, DNS &<br/>Load Balancing"]
+    M7 --> M8["Module 8<br/>Network Security<br/>& Monitoring"]
+    M8 --> GOAL(["SAA-C03 Exam<br/>+ Job Interview"])
+  end
+  R1 --> R2
+  style R1 fill:#ffffff,stroke:#ffffff
+  style R2 fill:#ffffff,stroke:#ffffff
+  style M1 fill:#c8e6c9,stroke:#2e7d32
+  style M2 fill:#c8e6c9,stroke:#2e7d32
+  style M3 fill:#fff9c4,stroke:#f9a825
+  style M4 fill:#eceff1,stroke:#90a4ae
+  style M5 fill:#eceff1,stroke:#90a4ae
+  style M6 fill:#eceff1,stroke:#90a4ae
+  style M7 fill:#eceff1,stroke:#90a4ae
+  style M8 fill:#eceff1,stroke:#90a4ae
+  style GOAL fill:#bbdefb,stroke:#0d47a1
