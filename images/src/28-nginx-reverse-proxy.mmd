@@ -1,0 +1,9 @@
+flowchart LR
+  U["Browser"] -->|"HTTPS 443"| SG{"Security Group<br/>80, 443 only"}
+  SG --> NG["Nginx<br/>TLS, gzip, headers,<br/>static files, rate limit"]
+  subgraph EC2["EC2 Instance"]
+    NG -->|"/api/* proxy_pass"| NODE["Node.js app<br/>127.0.0.1:3000<br/>(systemd, user=myapp)"]
+    NG -->|"/py/* proxy_pass"| GUNI["Gunicorn + Flask<br/>127.0.0.1:8000<br/>(systemd)"]
+    NG -->|"/ try_files"| STATIC[("React build<br/>/var/www/frontend")]
+  end
+  X["Direct access to :3000"] -.-x|"blocked (not in SG,<br/>bound to localhost)"| NODE

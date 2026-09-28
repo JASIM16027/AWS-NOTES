@@ -1,0 +1,17 @@
+flowchart LR
+  subgraph EC2["EC2 Instance"]
+    direction TB
+    OS["OS: /proc, /sys<br/>memory, disk, swap"]
+    LOG["Log files<br/>/var/log/nginx/access.log<br/>/var/log/myapp/app.log"]
+    AG["CloudWatch Agent"]
+    ROLE["IAM Role (instance profile)<br/>CloudWatchAgentServerPolicy"]
+    OS --> AG
+    LOG --> AG
+    ROLE -.->|"permission"| AG
+  end
+  PS[("SSM Parameter Store<br/>AmazonCloudWatch-linux-web<br/>(agent config JSON)")] -.->|"fetch-config"| AG
+  AG -->|"mem_used_percent<br/>disk_used_percent"| MET["CloudWatch Metrics<br/>namespace: CWAgent"]
+  AG -->|"log events"| CWL["CloudWatch Logs<br/>/myapp/prod/app<br/>retention 14-30 days"]
+  CWL -->|"metric filter: ERROR"| MET
+  MET --> ALM["CloudWatch Alarm"]
+  ALM --> SNS["SNS: email / Slack"]

@@ -1002,3 +1002,7 @@ You → AWS SSM → SSM Agent on EC2 → Shell
 **Moral:** Audit logs = compliance + accountability।
 
 ---
+
+---
+
+**⏭ পরের দিন:** [Day 17 — CloudWatch Agent](./Day-17-CloudWatch-Agent-Setup.md)

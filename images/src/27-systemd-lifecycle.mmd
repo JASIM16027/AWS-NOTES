@@ -1,0 +1,10 @@
+stateDiagram-v2
+  [*] --> inactive: unit file in /etc/systemd/system
+  inactive --> activating: systemctl start / boot (enabled)
+  activating --> active: ExecStart running
+  active --> deactivating: systemctl stop
+  deactivating --> inactive
+  active --> auto_restart: crash (non-zero exit / signal)
+  auto_restart --> activating: after RestartSec
+  auto_restart --> failed: StartLimitBurst exceeded
+  failed --> activating: systemctl restart (after fix)
