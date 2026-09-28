@@ -1,0 +1,15 @@
+flowchart TB
+  subgraph SOURCES["Finding sources"]
+    direction LR
+    GD["GuardDuty<br/>threat detection"]
+    INSP["Inspector<br/>vuln + network reachability"]
+    AA["IAM Access Analyzer<br/>external + unused access"]
+    MACIE["Macie<br/>S3 sensitive data (PII)"]
+  end
+  SOURCES -->|"ASFF findings"| SECHUB["AWS Security Hub<br/>central dashboard + standards"]
+  SECHUB -->|"investigate root cause"| DET["Amazon Detective<br/>behavior graph"]
+  SECHUB -->|"alert"| RESP["Response: SNS / EventBridge / Lambda"]
+  style SECHUB fill:#e3f2fd,stroke:#0d47a1
+  style DET fill:#fff3e0,stroke:#e65100
+  style GD fill:#ffebee,stroke:#c62828
+  style MACIE fill:#e8f5e9,stroke:#2e7d32

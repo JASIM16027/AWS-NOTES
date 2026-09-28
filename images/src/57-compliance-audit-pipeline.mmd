@@ -1,0 +1,15 @@
+flowchart LR
+  API["Every AWS API call"] --> CT["AWS CloudTrail<br/>trail + org trail + log file integrity"]
+  CT --> LAKE[("CloudTrail Lake")]
+  CT --> S3T[("S3 bucket")]
+  RES["AWS resources"] --> CFG["AWS Config<br/>Config Rules + Conformance Packs"]
+  CFG -->|"non-compliant"| ALERT["EventBridge / SNS alert"]
+  SCP["Service Control Policies"] -.->|"guardrail (preventive)"| RES
+  APP["Application traffic"] -->|"must use"| TLS["TLS in transit<br/>ACM certificates"]
+  SM["Secrets Manager"] -->|"automatic rotation<br/>(Lambda rotation function)"| DB[("RDS / DB credentials")]
+  S3T --> SECHUB["Security Hub"]
+  ALERT --> SECHUB
+  style CT fill:#e3f2fd,stroke:#0d47a1
+  style CFG fill:#e8f5e9,stroke:#2e7d32
+  style SCP fill:#fff3e0,stroke:#e65100
+  style SM fill:#ffebee,stroke:#c62828

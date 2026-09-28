@@ -1,0 +1,15 @@
+flowchart LR
+  ENI["VPC ENI / Subnet / VPC traffic"] -->|"metadata: src, dst, port, action"| FL["VPC Flow Logs"]
+  ENI -.->|"full packet copy"| TM["Traffic Mirroring"]
+  FL --> CWL["CloudWatch Logs<br/>Logs Insights queries"]
+  FL --> S3L[("S3 bucket")]
+  TM --> TARGET["Mirror target:<br/>EC2 (IDS/IPS) / NLB"]
+  CWL --> GD["Amazon GuardDuty<br/>DNS + network anomaly detection"]
+  S3L --> GD
+  CFG["AWS Config"] -->|"evaluate SG/NACL/VPC rules"| COMPLIANT{"Compliant?"}
+  COMPLIANT -->|"No"| REMEDIATE["Remediation / SNS alert"]
+  GD -->|"finding"| SECHUB["Security Hub"]
+  style FL fill:#e3f2fd,stroke:#0d47a1
+  style TM fill:#fff3e0,stroke:#e65100
+  style GD fill:#ffebee,stroke:#c62828
+  style CFG fill:#e8f5e9,stroke:#2e7d32

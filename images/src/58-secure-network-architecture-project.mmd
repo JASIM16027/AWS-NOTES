@@ -1,0 +1,33 @@
+flowchart TB
+  NET(("Internet")) --> SHIELD["Shield Advanced<br/>DDoS + SRT + cost protection"]
+  SHIELD --> CFW["CloudFront + WAF<br/>managed rules + rate-based"]
+  CFW --> ALB["ALB (App VPC)"]
+  subgraph INSPECT["Inspection VPC (via TGW)"]
+    NFW["Network Firewall<br/>Firewall Manager policy"]
+  end
+  ALB --> INSPECT
+  INSPECT --> APP["App VPC: EC2/ECS"]
+  APP -->|"flow logs"| GD["GuardDuty"]
+  APP -->|"TLS"| RDS[("RDS")]
+  SM["Secrets Manager<br/>auto rotation"] -.-> RDS
+  subgraph GOV["Organization-wide governance"]
+    direction LR
+    CT["CloudTrail<br/>org trail"]
+    CFG["Config +<br/>Conformance Pack"]
+    AA["Access Analyzer"]
+    MACIE["Macie"]
+    INSP["Inspector"]
+    SCP["SCP<br/>(deny disable-logging)"]
+  end
+  GD --> SECHUB["Security Hub"]
+  CT --> SECHUB
+  CFG --> SECHUB
+  AA --> SECHUB
+  MACIE --> SECHUB
+  INSP --> SECHUB
+  SECHUB -->|"critical finding"| DET["Detective"]
+  SECHUB -->|"alert"| ONCALL["EventBridge -> SNS/Slack"]
+  style SHIELD fill:#ffebee,stroke:#c62828
+  style NFW fill:#e3f2fd,stroke:#0d47a1
+  style SECHUB fill:#fff3e0,stroke:#e65100
+  style SCP fill:#e8f5e9,stroke:#2e7d32

@@ -1,0 +1,17 @@
+flowchart TB
+  USER(("Internet<br/>Attacker/User")) --> SHIELD["AWS Shield<br/>Standard: DDoS L3/L4 (free, always on)<br/>Advanced: DDoS L3-L7 + SRT + cost protection"]
+  SHIELD --> CF["CloudFront / ALB / Global Accelerator<br/>(edge entry point)"]
+  CF --> WAF["AWS WAF<br/>Web ACL: rule groups, managed rules,<br/>rate-based rule, scope-down statement"]
+  WAF --> VPC["VPC boundary"]
+  subgraph VPC["VPC"]
+    direction TB
+    NFW["AWS Network Firewall<br/>Stateless + Stateful rule groups<br/>centralized via Firewall Manager"]
+    NACL["Network ACL<br/>subnet level, stateless"]
+    SG["Security Group<br/>instance level, stateful"]
+    APP["Application / EC2"]
+    NFW --> NACL --> SG --> APP
+  end
+  style SHIELD fill:#ffebee,stroke:#c62828
+  style WAF fill:#fff3e0,stroke:#e65100
+  style NFW fill:#e3f2fd,stroke:#0d47a1
+  style SG fill:#e8f5e9,stroke:#2e7d32
