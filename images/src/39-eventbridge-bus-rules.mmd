@@ -1,0 +1,20 @@
+flowchart LR
+  subgraph SRC["Event sources"]
+    direction TB
+    AWS["AWS services<br/>(EC2, CodePipeline ...)"]
+    APP["Your app<br/>PutEvents"]
+    SAAS["SaaS partners"]
+  end
+  AWS --> DEF(("Default bus"))
+  APP --> CUS(("Custom bus<br/>orders-bus"))
+  SAAS --> PAR(("Partner bus"))
+  CUS --> R1{"Rule: OrderPlaced<br/>amount ≥ 1000"}
+  CUS --> R2{"Rule: all events"}
+  DEF --> R3{"Rule: EC2 stopped"}
+  R1 --> T1["Step Functions"]
+  R1 --> T2[["SQS"]]
+  R2 --> T3["CloudWatch Logs (debug)"]
+  R3 --> T4["Lambda → Slack"]
+  CUS -.->|"archive"| ARC[("Archive → Replay")]
+  R1 -.->|"cross-account target"| XB(("Central bus<br/>other account"))
+  T2 -.->|"delivery failed<br/>after retries"| DLQ[["Target DLQ"]]

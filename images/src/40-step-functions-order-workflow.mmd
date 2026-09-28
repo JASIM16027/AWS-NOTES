@@ -1,0 +1,21 @@
+flowchart TB
+  S(["Start"]) --> V["Task: ValidateOrder<br/>(Lambda)"]
+  V --> CH{"Choice:<br/>amount > 10000?"}
+  CH -->|"yes"| AP["Task: WaitForApproval<br/>.waitForTaskToken"]
+  CH -->|"no"| PAR
+  AP --> PAR
+  subgraph PAR["Parallel"]
+    direction LR
+    INV["Task: ReserveInventory"]
+    FR["Task: FraudCheck"]
+  end
+  PAR --> PAY["Task: ChargePayment<br/>Retry: backoff + jitter"]
+  PAY -->|"success"| DDB["Task: DynamoDB putItem<br/>(direct SDK integration)"]
+  DDB --> OK(["Succeed"])
+  PAY -.->|"Catch: PaymentDeclined"| NOTI["Task: SNS publish<br/>(notify customer)"]
+  PAY -.->|"Catch: States.ALL"| COMP["Compensate:<br/>ReleaseInventory"]
+  NOTI --> COMP
+  COMP --> FAIL(["Fail"])
+  style OK fill:#c8e6c9,stroke:#2e7d32
+  style FAIL fill:#ffcdd2,stroke:#c62828
+  style COMP fill:#fff9c4,stroke:#f9a825

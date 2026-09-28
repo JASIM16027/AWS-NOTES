@@ -1,0 +1,16 @@
+flowchart TB
+  subgraph STD["Standard queue: max throughput, at-least-once, best-effort order"]
+    direction LR
+    P1["Producer sends<br/>1, 2, 3, 4"] --> Q1[["Standard queue"]]
+    Q1 --> C1["Consumer A gets 2, 1, 4<br/>(order may change)"]
+    Q1 --> C2["Consumer B gets 3, 3<br/>(duplicate possible)"]
+  end
+  subgraph FIFO["FIFO queue (.fifo): strict order per group + dedup (5 min)"]
+    direction LR
+    P2["Producer<br/>MessageGroupId +<br/>MessageDeduplicationId"] --> Q2[["orders.fifo"]]
+    Q2 -->|"group A: A1 → A2 → A3"| C3["Consumer 1"]
+    Q2 -->|"group B: B1 → B2"| C4["Consumer 2"]
+  end
+  Q1 -.->|"maxReceiveCount exceeded"| DLQ1[["DLQ"]]
+  Q2 -.->|"maxReceiveCount exceeded"| DLQ2[["DLQ .fifo"]]
+  STD ~~~ FIFO
