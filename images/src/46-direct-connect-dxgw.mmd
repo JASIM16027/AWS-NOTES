@@ -1,0 +1,12 @@
+flowchart LR
+  DC["On-prem data center<br/>172.16.0.0/16"] ==>|"Direct Connect 1<br/>(location A)"| DXGW
+  DC ==>|"Direct Connect 2<br/>(location B)"| DXGW
+  DC -.->|"Site-to-Site VPN<br/>(backup)"| TGWM
+  DXGW(("Direct Connect Gateway<br/>(global)"))
+  DXGW -->|"Transit VIF"| TGWM["TGW Mumbai"]
+  DXGW -->|"Transit VIF"| TGWS["TGW Singapore"]
+  DXGW -->|"Private VIF"| VGW["VGW<br/>(single VPC)"]
+  TGWM --> VM1["VPC prod"]
+  TGWM --> VM2["VPC shared"]
+  TGWS --> VS1["VPC DR"]
+  DC -.->|"Public VIF"| PUB["AWS public endpoints<br/>(S3, DynamoDB) - not internet"]

@@ -1,0 +1,18 @@
+flowchart LR
+  subgraph ONP["On-premises (ASN 65010)"]
+    direction TB
+    SRV["Servers<br/>172.16.0.0/16"] --> R1["Router 1<br/>ISP A"]
+    SRV --> R2["Router 2<br/>ISP B"]
+  end
+  subgraph AWS["AWS (ASN 64512)"]
+    direction TB
+    TGW["Transit Gateway<br/>(ECMP across tunnels)"]
+    V1["VPC prod"]
+    V2["VPC shared"]
+    TGW --> V1
+    TGW --> V2
+  end
+  R1 ==>|"VPN 1: tunnel 1 + tunnel 2<br/>IPsec + BGP"| TGW
+  R2 ==>|"VPN 2: tunnel 1 + tunnel 2<br/>IPsec + BGP"| TGW
+  NOTE["BGP: on-prem advertises 172.16.0.0/16<br/>AWS advertises 10.x VPC CIDRs<br/>ASNs must differ"]
+  style NOTE fill:#f5f5f5,stroke:#9e9e9e,stroke-dasharray: 4 4

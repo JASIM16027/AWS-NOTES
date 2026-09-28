@@ -334,4 +334,4 @@ curl $API/orders/7c1e...            # PENDING → কয়েক সেকে�
 
 ---
 
-**⏮ আগের দিন:** [Day 34 — Design Patterns](./Day-34-Design-Patterns-Saga-Event-Sourcing-CQRS-Idempotency.md) | **⏭ পরের module:** Module 6 — Multi-VPC & Private Connectivity (আসছে)
+**⏮ আগের দিন:** [Day 34 — Design Patterns](./Day-34-Design-Patterns-Saga-Event-Sourcing-CQRS-Idempotency.md) | **⏭ পরের module:** [Day 36 — VPC Peering গভীরে (Module 6)](../07-Module-6-Multi-VPC-Private-Connectivity/Day-36-VPC-Peering-Deep-Dive-IP-Planning.md)
