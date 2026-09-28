@@ -1,0 +1,15 @@
+flowchart TB
+  C["Client"] -->|"POST /orders"| API["API Gateway"]
+  API --> SF["StartOrderFn<br/>202 + orderId"]
+  SF --> DB[("DynamoDB orders")]
+  SF --> SAGA
+  subgraph SAGA["Step Functions: order-saga (Standard)"]
+    direction LR
+    RI["Reserve<br/>Inventory"] --> CP["Charge<br/>Payment"] --> CO["Confirm Order<br/>(DDB update)"] --> PE["PutEvents<br/>OrderConfirmed"]
+    CP -.->|"Catch"| REL["Release<br/>Inventory"] --> MF["Mark FAILED"]
+  end
+  PE --> EB(("EventBridge<br/>orders-bus"))
+  EB -->|"rule"| SNS(("SNS<br/>order-events"))
+  SNS --> Q1[["email-q"]] --> F1["EmailFn<br/>(idempotent)"]
+  SNS --> Q2[["analytics-q"]] --> F2["AnalyticsFn"]
+  SNS -->|"filter amount ≥ 1000"| Q3[["loyalty-q"]] --> F3["LoyaltyFn"]

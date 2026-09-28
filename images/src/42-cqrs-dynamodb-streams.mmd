@@ -1,0 +1,20 @@
+flowchart LR
+  subgraph WRITE["Command side (write)"]
+    direction TB
+    CMD["Command API<br/>POST /orders"] --> W[("Write model<br/>DynamoDB orders<br/>PK = orderId")]
+  end
+  W -->|"DynamoDB Streams<br/>INSERT / MODIFY"| PJ["Projector Lambda<br/>(idempotent)"]
+  subgraph READ["Query side (read models, eventually consistent)"]
+    direction TB
+    R1[("customer-orders<br/>PK = customerId")]
+    R2[("daily-sales<br/>PK = date")]
+    R3["OpenSearch<br/>full-text search"]
+  end
+  PJ --> R1
+  PJ --> R2
+  PJ --> R3
+  R1 -->|"read"| Q["Query API<br/>GET /customers/{id}/orders<br/>GET /dashboard<br/>GET /search"]
+  R2 -->|"read"| Q
+  R3 -->|"read"| Q
+  style READ fill:#e8f5e9,stroke:#2e7d32
+  style WRITE fill:#e3f2fd,stroke:#0d47a1

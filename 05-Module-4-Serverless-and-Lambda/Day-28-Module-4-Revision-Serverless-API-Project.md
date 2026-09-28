@@ -358,4 +358,4 @@ sam logs -n NotifyFn --stack-name serverless-notes --tail
 
 ---
 
-**⏮ আগের দিন:** [Day 27 — Monitoring ও Performance](./Day-27-Monitoring-Performance-Concurrency.md) | **⏭ পরের module:** Module 5 — Event-Driven Architectures with Lambda (আসছে)
+**⏮ আগের দিন:** [Day 27 — Monitoring ও Performance](./Day-27-Monitoring-Performance-Concurrency.md) | **⏭ পরের module:** [Day 29 — SQS গভীরে (Module 5)](../06-Module-5-Event-Driven-Architectures/Day-29-SQS-Deep-Dive-Standard-FIFO-DLQ.md)

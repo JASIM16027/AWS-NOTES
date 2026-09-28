@@ -1,0 +1,16 @@
+flowchart LR
+  subgraph FWD["Forward steps (local transactions)"]
+    direction LR
+    T1["1. Create Order<br/>(PENDING)"] --> T2["2. Reserve<br/>Inventory"] --> T3["3. Charge<br/>Payment"] --> T4["4. Create<br/>Shipment"] --> DONE(["Order CONFIRMED"])
+  end
+  subgraph COMP["Compensations (reverse order)"]
+    direction RL
+    C3["Refund Payment"] --> C2["Release Inventory"] --> C1["Cancel Order"]
+  end
+  T4 -.->|"fails"| C3
+  T3 -.->|"fails"| C2
+  T2 -.->|"fails"| C1
+  C1 --> F(["Order FAILED"])
+  style DONE fill:#c8e6c9,stroke:#2e7d32
+  style F fill:#ffcdd2,stroke:#c62828
+  style COMP fill:#fff8e1,stroke:#f9a825
