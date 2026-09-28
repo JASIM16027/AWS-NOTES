@@ -1,6 +1,6 @@
 # 🎯 AWS Interview Questions — উত্তরসহ Notes (Q1–Q130)
 
-> README-র সব প্রশ্নের উত্তর note আকারে। প্রতিটা উত্তরে: মূল ধারণা → key points → কখন কী ব্যবহার → 💡 Interview tip।
+> [প্রশ্ন তালিকা (01-Questions.md)](./01-Questions.md)-র সব প্রশ্নের উত্তর note আকারে। প্রতিটা উত্তরে: মূল ধারণা → key points → কখন কী ব্যবহার → 💡 Interview tip।
 > ভাষা: বাংলা + technical term ইংরেজিতে (interview-এ যেভাবে বলবেন)।
 
 ## 📑 সূচিপত্র
@@ -2539,4 +2539,4 @@ Root
 
 ---
 
-> ✍️ এই notes README-র প্রশ্ন তালিকার ক্রম অনুসারে। বিস্তারিত topic-ভিত্তিক ব্যাখ্যার জন্য repo-র Day-wise note গুলো দেখুন।
+> ✍️ এই notes [প্রশ্ন তালিকার](./01-Questions.md) ক্রম অনুসারে। বিস্তারিত topic-ভিত্তিক ব্যাখ্যার জন্য [README](../README.md)-র Day-wise note গুলো দেখুন।
