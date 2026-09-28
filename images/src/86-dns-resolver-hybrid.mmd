@@ -1,0 +1,24 @@
+sequenceDiagram
+    participant EC2 as EC2 Instance (VPC)
+    participant Resolver as .2 Resolver<br/>(VPC built-in DNS)
+    participant PHZ as Private Hosted Zone<br/>internal.company.com
+    participant Out as Outbound<br/>Resolver Endpoint
+    participant Corp as Corporate DNS<br/>(On-Premises) corp.local
+    participant In as Inbound<br/>Resolver Endpoint
+
+    EC2->>Resolver: DNS query
+    alt internal.company.com
+        Resolver->>PHZ: query resolve
+        PHZ-->>Resolver: IP রিটার্ন
+    else corp.local (on-prem domain)
+        Resolver->>Out: forward rule অনুযায়ী পাঠানো
+        Out->>Corp: query forward (VPN/DX দিয়ে)
+        Corp-->>Out: IP রিটার্ন
+    end
+    Resolver-->>EC2: DNS উত্তর
+
+    Note over Corp,In: উল্টো দিকে — On-prem থেকে AWS-এর domain resolve
+    Corp->>In: aws-internal query forward
+    In->>Resolver: query পাঠানো
+    Resolver-->>In: IP রিটার্ন
+    In-->>Corp: DNS উত্তর

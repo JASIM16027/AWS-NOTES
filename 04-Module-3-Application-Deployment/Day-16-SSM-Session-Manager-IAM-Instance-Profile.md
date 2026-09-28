@@ -2,6 +2,10 @@
 
 # 📚 Day 16 — SSM Session Manager & IAM Instance Profile
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![SSM Session Manager Flow](../images/88-ssm-session-manager-flow.png)
+
 **সময়:** ১.৫ ঘণ্টা | **Module:** ৩ (Application Deployment on EC2) — Day 2
 
 ## 🎯 আজকের লক্ষ্য

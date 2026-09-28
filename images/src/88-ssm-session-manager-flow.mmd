@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant Role as IAM Role<br/>(AmazonSSMManagedInstanceCore)
+    participant EC2 as EC2 Instance<br/>+ SSM Agent
+    participant SSM as AWS Systems Manager
+    participant You as আপনি (Console/CLI)
+    participant Logs as CloudWatch Logs / S3
+
+    Role->>EC2: Instance Profile attach (permission দেয়)
+    EC2->>SSM: Outbound HTTPS (443) — কোনো inbound port লাগে না
+    You->>SSM: Session Manager শুরু করুন
+    SSM->>EC2: Encrypted shell session
+    EC2-->>You: Interactive shell (browser/CLI-তে)
+    SSM->>Logs: সব session log হয় (audit)
+
+    You->>SSM: Run Command পাঠান
+    SSM->>EC2: Command execute
+    EC2-->>SSM: Output রিটার্ন
+
+    Note over SSM: Patch Manager একই agent ব্যবহার করে<br/>scheduled patching করে

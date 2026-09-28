@@ -3,6 +3,12 @@
 
 # 📚 Day 2 — EC2 Instance Types & AMI
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![EC2 Instance Type Families](../images/82-ec2-instance-type-families.png)
+
+![AMI থেকে EC2 Launch Flow](../images/83-ami-launch-flow.png)
+
 **সময়:** ১.৫ ঘণ্টা | **Module:** ১ (EC2 & Storage Fundamentals)
 
 ## 🎯 আজকের লক্ষ্য

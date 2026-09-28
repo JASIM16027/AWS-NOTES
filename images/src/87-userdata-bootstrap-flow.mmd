@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant You as আপনি (Launch Wizard)
+    participant EC2 as নতুন EC2 Instance
+    participant CI as cloud-init
+    participant IMDS as Instance Metadata<br/>Service (IMDS)
+    participant App as আপনার App
+
+    You->>EC2: Launch (User Data script attach করে)
+    EC2->>CI: Boot শুরু — cloud-init চালু
+    CI->>IMDS: 169.254.169.254 থেকে User Data fetch
+    IMDS-->>CI: Script (bash/cloud-config) রিটার্ন
+    CI->>App: Script রান — package install, config, app start
+    Note over CI,App: শুধু প্রথম boot-এ (default),<br/>reboot-এ আবার চলে না
+    You->>EC2: EC2 Instance Connect দিয়ে browser থেকে SSH
+    EC2-->>You: Temporary key push হয়ে সরাসরি shell access

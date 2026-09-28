@@ -1,6 +1,10 @@
 
 # 📚 Day 15 — User Data, Cloud-init & EC2 Instance Connect
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![User Data ও Cloud-init Bootstrap Flow](../images/87-userdata-bootstrap-flow.png)
+
 **সময়:** ১.৫ ঘণ্টা | **Module:** ৩ (Application Deployment on EC2) — Day 1
 
 ## 🎯 আজকের লক্ষ্য

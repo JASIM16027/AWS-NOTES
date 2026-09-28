@@ -1,5 +1,9 @@
 # 📚 Day 13 — Route 53 Resolver, DHCP Options, EIP & IPv6
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![Route 53 Resolver ও Hybrid DNS](../images/86-dns-resolver-hybrid.png)
+
 **সময়:** ১.৫ ঘণ্টা | **Module:** ২ (VPC Design & Network Architecture) — Day 6
 
 ## 🎯 আজকের লক্ষ্য

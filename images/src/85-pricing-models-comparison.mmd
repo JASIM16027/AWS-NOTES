@@ -1,0 +1,17 @@
+flowchart LR
+    subgraph MODELS["EC2 Pricing Model"]
+        direction TB
+        OD["On-Demand<br/>প্রতি ঘণ্টা/সেকেন্ড pay<br/>কোনো commitment নেই<br/>সবচেয়ে দামি"]
+        RI["Reserved / Savings Plans<br/>১ বা ৩ বছর commitment<br/>৭২% পর্যন্ত ছাড়<br/>স্থির workload"]
+        SP["Spot Instance<br/>unused capacity, ৯০% পর্যন্ত সস্তা<br/>যেকোনো সময় ২ মিনিট নোটিসে বন্ধ হতে পারে<br/>interruption-tolerant কাজে"]
+        DH["Dedicated Host/Instance<br/>নিজস্ব physical server<br/>Compliance/BYOL-এর জন্য<br/>সবচেয়ে দামি"]
+    end
+
+    OD -->|"commitment দিলে সস্তা"| RI
+    OD -->|"interruption মানলে সস্তা"| SP
+    OD -->|"isolation দরকার হলে"| DH
+
+    style OD fill:#eceff1,stroke:#607d8b
+    style RI fill:#e8f5e9,stroke:#2e7d32
+    style SP fill:#fff3e0,stroke:#ef6c00
+    style DH fill:#fce4ec,stroke:#c2185b
