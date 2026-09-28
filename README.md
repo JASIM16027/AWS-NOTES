@@ -1,6 +1,49 @@
+<div align="center">
+
 # ☁️ AWS-NOTES
 
-AWS শেখার জন্য বাংলায় লেখা note-এর সংগ্রহ। আছে fundamentals, day-wise course note আর interview Q&A।
+**বাংলায় AWS শিখুন — Beginner থেকে Solutions Architect পর্যন্ত**
+
+Day-wise course note · Technical deep dive · Diagram · Interview Q&A · SAA-C03 exam prep
+
+![Language](https://img.shields.io/badge/%E0%A6%AD%E0%A6%BE%E0%A6%B7%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE-2e7d32?style=flat-square)
+![Day Notes](https://img.shields.io/badge/Day_Notes-16-ff9900?style=flat-square&logo=amazonwebservices&logoColor=white)
+![Interview Q&A](https://img.shields.io/badge/Interview_Q%26A-130-0d47a1?style=flat-square)
+![Practice Questions](https://img.shields.io/badge/SAA--C03_Practice-62-6a1b9a?style=flat-square)
+![Diagrams](https://img.shields.io/badge/Diagrams-26-00838f?style=flat-square)
+
+</div>
+
+---
+
+## 🗺 Course Roadmap
+
+![AWS Course Roadmap](./images/00-course-roadmap.png)
+
+| Module | বিষয় | Status | Progress |
+|---|---|---|---|
+| 1 | EC2 & Storage Fundamentals | ✅ সম্পূর্ণ | `██████████` 7/7 দিন |
+| 2 | VPC Design & Network Architecture | ✅ সম্পূর্ণ | `██████████` 7/7 দিন |
+| 3 | Application Deployment on EC2 with systemd | 🟡 চলমান | `███░░░░░░░` 2 দিন লেখা হয়েছে |
+| 4 | Serverless & Lambda Fundamentals | ⏳ আসছে | `░░░░░░░░░░` |
+| 5 | Event-Driven Architectures with Lambda | ⏳ আসছে | `░░░░░░░░░░` |
+| 6 | Multi-VPC & Private Connectivity | ⏳ আসছে | `░░░░░░░░░░` |
+| 7 | Edge Services, DNS & Load Balancing | ⏳ আসছে | `░░░░░░░░░░` |
+| 8 | Network Security & Monitoring | ⏳ আসছে | `░░░░░░░░░░` |
+
+বিস্তারিত পাঠ্যক্রম: [Course Syllabus — ৮টি মডিউল](./00-Getting-Started/01-Course-Syllabus-8-Modules.md)
+
+---
+
+## 🚀 কোথা থেকে শুরু করবেন?
+
+| আপনার লক্ষ্য | এখান থেকে শুরু করুন |
+|---|---|
+| 🌱 একদম নতুন, AWS কী জানি না | [Traditional IT-এর সমস্যা](./01-Fundamentals/01-Traditional-IT-Problems.md) → [Cloud Computing Deep Dive](./01-Fundamentals/02-Cloud-Computing-Deep-Dive.md) → [Day 1](./02-Module-1-EC2-and-Storage/Day-01-Cloud-Computing-AWS-Infrastructure-Account-Setup.md) |
+| 🛠 Hands-on শিখতে চাই | [Module 1 — Day 1](./02-Module-1-EC2-and-Storage/Day-01-Cloud-Computing-AWS-Infrastructure-Account-Setup.md) থেকে ক্রমানুসারে |
+| 🎓 SAA-C03 certification | [Exam Overview](./98-SAA-C03-Exam-Prep/01-Exam-Overview-and-Strategy.md) → [Cheat Sheet](./98-SAA-C03-Exam-Prep/02-Keyword-to-Service-Cheat-Sheet.md) → Practice প্রশ্ন |
+| 💼 Job interview আসছে | [Interview প্রশ্ন](./99-Interview-QA/01-Questions.md) → [উত্তরসহ Notes](./99-Interview-QA/02-Answers-Q1-Q130.md) |
+| ⚡ তাড়াতাড়ি revision | [Common Traps ও Comparisons](./98-SAA-C03-Exam-Prep/07-Common-Traps-and-Comparisons.md) |
 
 ---
 
@@ -12,7 +55,7 @@ AWS-NOTES/
 ├── 01-Fundamentals/                    → Cloud, IAM, EC2, VPC — technical deep dive
 ├── 02-Module-1-EC2-and-Storage/        → Day 1–7
 ├── 03-Module-2-VPC-and-Networking/     → Day 8–14
-├── 04-Module-3-Application-Deployment/ → Day 15–16 (চলমান)
+├── 04-Module-3-Application-Deployment/ → Day 15–16 (চলমান 🟡)
 ├── 98-SAA-C03-Exam-Prep/               → Solutions Architect Associate exam: cheat sheet + ৬২টা practice প্রশ্ন
 ├── 99-Interview-QA/                    → ১৩০টা interview প্রশ্ন + উত্তর
 └── images/                             → Diagram (PNG) + src/ (Mermaid source)
@@ -107,3 +150,16 @@ AWS-NOTES/
 - এই README-র টেবিলে link যোগ করুন।
 - নতুন diagram → `images/src/`-এ `.mmd` (Mermaid) file লিখে PNG render করুন:
   `npx -p @mermaid-js/mermaid-cli mmdc -i images/src/xx.mmd -o images/xx.png -b white -s 2`
+
+---
+
+## 🤝 Contribute / ভুল পেলে
+
+- কোনো তথ্য ভুল বা পুরনো মনে হলে **Issue** খুলুন, অথবা সরাসরি **Pull Request** দিন।
+- AWS-এর service, দাম আর limit প্রায়ই বদলায়, তাই গুরুত্বপূর্ণ সিদ্ধান্তের আগে [AWS Documentation](https://docs.aws.amazon.com/) মিলিয়ে নিন।
+
+<div align="center">
+
+⭐ এই note কাজে লাগলে repo-তে একটা **Star** দিন, যাতে অন্যরাও খুঁজে পায়।
+
+</div>
