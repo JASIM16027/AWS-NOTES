@@ -13,6 +13,7 @@ AWS-NOTES/
 ├── 02-Module-1-EC2-and-Storage/        → Day 1–7
 ├── 03-Module-2-VPC-and-Networking/     → Day 8–14
 ├── 04-Module-3-Application-Deployment/ → Day 15–16 (চলমান)
+├── 98-SAA-C03-Exam-Prep/               → Solutions Architect Associate exam: cheat sheet + ৬২টা practice প্রশ্ন
 ├── 99-Interview-QA/                    → ১৩০টা interview প্রশ্ন + উত্তর
 └── images/                             → Diagram (PNG) + src/ (Mermaid source)
 ```
@@ -71,6 +72,18 @@ AWS-NOTES/
 | 15 | [User Data, Cloud-init & EC2 Instance Connect](./04-Module-3-Application-Deployment/Day-15-User-Data-Cloud-init-EC2-Instance-Connect.md) |
 | 16 | [SSM Session Manager & IAM Instance Profile](./04-Module-3-Application-Deployment/Day-16-SSM-Session-Manager-IAM-Instance-Profile.md) |
 
+## 🎓 98 — AWS Solutions Architect Associate (SAA-C03) Exam Prep
+
+| # | Note |
+|---|---|
+| 1 | [Exam Overview ও Strategy](./98-SAA-C03-Exam-Prep/01-Exam-Overview-and-Strategy.md) |
+| 2 | [Keyword → Service Cheat Sheet](./98-SAA-C03-Exam-Prep/02-Keyword-to-Service-Cheat-Sheet.md) |
+| 3 | [Domain 1: Secure Architectures — ১৬টা প্রশ্ন](./98-SAA-C03-Exam-Prep/03-Domain-1-Secure-Architectures.md) |
+| 4 | [Domain 2: Resilient Architectures — ১৫টা প্রশ্ন](./98-SAA-C03-Exam-Prep/04-Domain-2-Resilient-Architectures.md) |
+| 5 | [Domain 3: High-Performing Architectures — ১৬টা প্রশ্ন](./98-SAA-C03-Exam-Prep/05-Domain-3-High-Performing-Architectures.md) |
+| 6 | [Domain 4: Cost-Optimized Architectures — ১৫টা প্রশ্ন](./98-SAA-C03-Exam-Prep/06-Domain-4-Cost-Optimized-Architectures.md) |
+| 7 | [Common Traps ও Comparisons](./98-SAA-C03-Exam-Prep/07-Common-Traps-and-Comparisons.md) |
+
 ## 🎯 99 — Interview Q&A
 
 | # | Note |
@@ -85,7 +98,8 @@ AWS-NOTES/
 1. **00-Getting-Started** — Syllabus দেখে পুরো roadmap বুঝে নিন।
 2. **01-Fundamentals** — Cloud, IAM, EC2, VPC-এর মূল ধারণা।
 3. **02 → 04 Modules** — Day-wise hands-on note ক্রমানুসারে।
-4. **99-Interview-QA** — প্রতিটা module শেষে সংশ্লিষ্ট প্রশ্নগুলো নিজে উত্তর দিয়ে practice করুন, তারপর answer মিলিয়ে দেখুন।
+4. **98-SAA-C03-Exam-Prep**: certification দিতে চাইলে cheat sheet পড়ে practice প্রশ্নগুলো নিজে solve করুন।
+5. **99-Interview-QA** — প্রতিটা module শেষে সংশ্লিষ্ট প্রশ্নগুলো নিজে উত্তর দিয়ে practice করুন, তারপর answer মিলিয়ে দেখুন।
 
 ### ✍️ নতুন note যোগ করার নিয়ম
 - নতুন Day note → সংশ্লিষ্ট module folder-এ `Day-XX-Topic-Name.md` নামে রাখুন (যেমন `Day-17-CloudWatch-Agent-Setup.md`)।
