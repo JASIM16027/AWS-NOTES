@@ -1,0 +1,12 @@
+flowchart TB
+  MODULE["Module: vpc-module/<br/>(reusable, versioned)"] --> CALLER1["Root config: orders-service<br/>calls module vpc, source = ../vpc-module"]
+  MODULE --> CALLER2["Root config: payments-service<br/>calls module vpc, source = ../vpc-module"]
+  subgraph WS["Workspaces (same config, different state)"]
+    direction LR
+    DEV["dev workspace<br/>terraform.tfstate.d/dev"]
+    STAGING["staging workspace<br/>terraform.tfstate.d/staging"]
+    PROD["prod workspace<br/>terraform.tfstate.d/prod"]
+  end
+  CALLER1 --> WS
+  style MODULE fill:#e3f2fd,stroke:#0d47a1
+  style WS fill:#fff3e0,stroke:#e65100

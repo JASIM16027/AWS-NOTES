@@ -1,0 +1,16 @@
+flowchart TB
+  ROOT["Root Stack (network.yaml)"] --> NESTED1["Nested Stack: VPC"]
+  ROOT --> NESTED2["Nested Stack: Security Groups"]
+  ROOT --> NESTED3["Nested Stack: ECS Cluster"]
+  subgraph SS["StackSet (multi-account/region)"]
+    direction LR
+    ACC1["Dev Account<br/>Stack instance"]
+    ACC2["Staging Account<br/>Stack instance"]
+    ACC3["Prod Account<br/>Stack instance"]
+  end
+  TEMPLATE["Single StackSet template<br/>(e.g. baseline SCP/CloudTrail)"] --> SS
+  LIVE["Live resource<br/>(manually changed in console)"] -.->|"drift detected"| DRIFT["Drift Detection<br/>MODIFIED / DELETED"]
+  ROOT -.-> DRIFT
+  style NESTED1 fill:#e3f2fd,stroke:#0d47a1
+  style SS fill:#fff3e0,stroke:#e65100
+  style DRIFT fill:#ffebee,stroke:#c62828

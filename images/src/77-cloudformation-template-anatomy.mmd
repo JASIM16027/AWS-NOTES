@@ -1,0 +1,13 @@
+flowchart TB
+  TEMPLATE["CloudFormation Template (YAML/JSON)"] --> PARAMS["Parameters<br/>(input values, e.g. InstanceType)"]
+  TEMPLATE --> RES["Resources<br/>(REQUIRED: AWS::EC2::Instance, AWS::S3::Bucket, ...)"]
+  TEMPLATE --> OUT["Outputs<br/>(exported values, e.g. ALB DNS name)"]
+  TEMPLATE --> MAP["Mappings<br/>(static lookup table, e.g. AMI per region)"]
+  PARAMS -.->|"!Ref"| RES
+  MAP -.->|"!FindInMap"| RES
+  RES -->|"!GetAtt"| OUT
+  TEMPLATE -->|"aws cloudformation deploy"| STACK["CloudFormation Stack"]
+  STACK --> R1["Resource 1"] & R2["Resource 2"] & R3["Resource 3"]
+  STACK -->|"rollback on failure"| ROLLBACK["Automatic rollback<br/>(all-or-nothing)"]
+  style RES fill:#e3f2fd,stroke:#0d47a1
+  style ROLLBACK fill:#ffebee,stroke:#c62828

@@ -1,0 +1,14 @@
+flowchart LR
+  HCL["main.tf (HCL)<br/>resource, provider, variable"] -->|"terraform init"| PROVIDER["Download provider plugin<br/>(AWS provider)"]
+  PROVIDER -->|"terraform plan"| PLAN["Execution plan<br/>(diff: desired vs current state)"]
+  STATE[("terraform.tfstate<br/>(current real-world state)")] --> PLAN
+  PLAN -->|"terraform apply"| APPLY["Apply changes to AWS"]
+  APPLY --> STATE
+  APPLY --> RES["AWS Resources"]
+  subgraph REMOTE["Remote State (team collaboration)"]
+    S3STATE[("S3 bucket: state file")]
+    LOCK["DynamoDB: state lock<br/>(prevents concurrent apply)"]
+  end
+  STATE -.->|"stored remotely"| REMOTE
+  style STATE fill:#e3f2fd,stroke:#0d47a1
+  style LOCK fill:#ffebee,stroke:#c62828

@@ -1,0 +1,17 @@
+flowchart TB
+  subgraph REPO["infra repo (Git, version-controlled)"]
+    NET["network/ (VPC, subnets)<br/>Nested Stack / TF module"]
+    DB["database/ (Aurora, DynamoDB)<br/>Day 54-58"]
+    ECSMOD["ecs/ (Cluster, Task Def, Service)<br/>Day 59-63"]
+    COST["cost-guardrails/ (Budgets, SCP tagging)<br/>Day 69-73"]
+  end
+  NET --> DB
+  NET --> ECSMOD
+  REPO -->|"PR opened"| REVIEW["Code review<br/>(plan/change-set output posted)"]
+  REVIEW -->|"approved, merged"| PIPE["CI/CD Pipeline (Day 64-68)"]
+  PIPE -->|"plan/change-set"| DEV_ENV["Dev environment"]
+  DEV_ENV -->|"manual approval"| PROD_ENV["Prod environment"]
+  PROD_ENV -.->|"drift detection<br/>(scheduled)"| DRIFT["Alert on manual console change"]
+  style REPO fill:#e3f2fd,stroke:#0d47a1
+  style PIPE fill:#fff3e0,stroke:#e65100
+  style DRIFT fill:#ffebee,stroke:#c62828

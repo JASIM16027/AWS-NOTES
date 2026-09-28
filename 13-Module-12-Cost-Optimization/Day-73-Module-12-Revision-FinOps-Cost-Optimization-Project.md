@@ -133,4 +133,4 @@ ShopBD-র সম্পূর্ণ প্ল্যাটফর্ম এতদ�
 
 ---
 
-**⏮ আগের দিন:** [Day 72 — Trusted Advisor, Compute Optimizer ও Rightsizing](./Day-72-Trusted-Advisor-Compute-Optimizer-Rightsizing.md) | **⏭ পরের module:** [99 — Interview Q&A](../99-Interview-QA/01-Questions.md) অথবা [98 — SAA-C03 Exam Prep](../98-SAA-C03-Exam-Prep/01-Exam-Overview-and-Strategy.md)
+**⏮ আগের দিন:** [Day 72 — Trusted Advisor, Compute Optimizer ও Rightsizing](./Day-72-Trusted-Advisor-Compute-Optimizer-Rightsizing.md) | **⏭ পরের module:** [Day 74 — CloudFormation Fundamentals](../14-Module-13-Infrastructure-as-Code/Day-74-CloudFormation-Fundamentals-Template-Anatomy.md)
