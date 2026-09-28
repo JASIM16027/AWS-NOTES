@@ -1,0 +1,22 @@
+flowchart TB
+    subgraph EBS["EBS — Block Storage"]
+        E1["EC2-এর সাথে network দিয়ে যুক্ত<br/>একটা volume, একটা instance (এক সময়ে)"]
+        E2["gp3 (general) · io2 (high IOPS)<br/>st1 (throughput HDD) · sc1 (cold HDD)"]
+        E3["Stop করলেও data থাকে<br/>Snapshot নেওয়া যায় (S3-তে)"]
+    end
+
+    subgraph IS["Instance Store — Ephemeral"]
+        I1["Host-এর সাথে physically সংযুক্ত ডিস্ক"]
+        I2["সবচেয়ে দ্রুত I/O"]
+        I3["⚠️ Stop/Terminate করলে DATA হারিয়ে যায়"]
+    end
+
+    subgraph EFS["EFS — Shared File Storage"]
+        F1["NFS protocol, একসাথে অনেক EC2 mount করতে পারে"]
+        F2["Auto-scaling storage, কোনো size ঠিক করতে হয় না"]
+        F3["Multi-AZ availability by default"]
+    end
+
+    style EBS fill:#e3f2fd,stroke:#1565c0
+    style IS fill:#ffebee,stroke:#c62828
+    style EFS fill:#e8f5e9,stroke:#2e7d32

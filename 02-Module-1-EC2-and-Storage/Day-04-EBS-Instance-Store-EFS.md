@@ -1,6 +1,10 @@
 
 # 📚 Day 4 — EBS, Instance Store & EFS
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![EBS বনাম Instance Store বনাম EFS](../images/84-storage-types-comparison.png)
+
 **সময়:** ১.৫ ঘণ্টা | **Module:** ১ (EC2 & Storage Fundamentals)
 
 ## 🎯 আজকের লক্ষ্য

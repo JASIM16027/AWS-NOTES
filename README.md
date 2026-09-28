@@ -10,7 +10,7 @@ Day-wise course note · Technical deep dive · Diagram · Interview Q&A · SAA-C
 ![Day Notes](https://img.shields.io/badge/Day_Notes-78-ff9900?style=flat-square&logo=amazonwebservices&logoColor=white)
 ![Interview Q&A](https://img.shields.io/badge/Interview_Q%26A-130-0d47a1?style=flat-square)
 ![Practice Questions](https://img.shields.io/badge/SAA--C03_Practice-62-6a1b9a?style=flat-square)
-![Diagrams](https://img.shields.io/badge/Diagrams-81-00838f?style=flat-square)
+![Diagrams](https://img.shields.io/badge/Diagrams-88-00838f?style=flat-square)
 
 </div>
 

@@ -1,0 +1,24 @@
+flowchart TB
+    subgraph NAME["Instance Type নাম ডিকোড: m5.xlarge"]
+        direction LR
+        N1["m<br/>Family"] --> N2["5<br/>Generation"] --> N3["xlarge<br/>Size"]
+    end
+
+    subgraph FAMILIES["Instance Family দিয়ে ব্যবহার"]
+        direction TB
+        T["T — Burstable<br/>t3, t3a, t4g<br/>Dev/Test, low-traffic web"]
+        M["M — General Purpose<br/>m5, m6i, m7g<br/>ব্যালান্সড app server"]
+        C["C — Compute Optimized<br/>c5, c6i, c7g<br/>Batch, video encoding, HPC"]
+        R["R — Memory Optimized<br/>r5, r6i, r7g<br/>In-memory DB, cache, analytics"]
+        I["I — Storage Optimized<br/>i3, i4i<br/>NoSQL DB, data warehouse"]
+        G["G/P — Accelerated<br/>g5, p4<br/>ML training, graphics"]
+    end
+
+    NAME --> FAMILIES
+
+    style T fill:#e3f2fd,stroke:#1565c0
+    style M fill:#e8f5e9,stroke:#2e7d32
+    style C fill:#fff3e0,stroke:#ef6c00
+    style R fill:#fce4ec,stroke:#c2185b
+    style I fill:#f3e5f5,stroke:#6a1b9a
+    style G fill:#fff9c4,stroke:#f9a825

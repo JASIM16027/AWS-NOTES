@@ -1,6 +1,10 @@
 
 # 📚 Day 6 — EC2 Pricing Models
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![EC2 Pricing Model Comparison](../images/85-pricing-models-comparison.png)
+
 **সময়:** ১.৫ ঘণ্টা | **Module:** ১ (EC2 & Storage Fundamentals)
 
 ## 🎯 আজকের লক্ষ্য

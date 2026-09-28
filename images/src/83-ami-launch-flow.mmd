@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant You as আপনি
+    participant AMI as AMI (Template)
+    participant EC2 as নতুন EC2 Instance
+    participant EBS as EBS Volume (Root)
+
+    You->>AMI: AMI বেছে নিন (OS + Software + Config)
+    AMI->>EC2: Launch — AMI থেকে instance তৈরি
+    AMI->>EBS: Root volume snapshot থেকে কপি
+    EC2->>EBS: Boot হওয়ার সময় root volume attach
+    Note over EC2: Instance এখন running,<br/>AMI-এর অবিকল কপি
+    You->>EC2: চাইলে নিজের running instance থেকে<br/>নতুন Custom AMI বানানো যায়
+    EC2-->>AMI: Create Image → নতুন AMI সংরক্ষিত
