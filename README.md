@@ -7,10 +7,10 @@
 Day-wise course note · Technical deep dive · Diagram · Interview Q&A · SAA-C03 exam prep
 
 ![Language](https://img.shields.io/badge/%E0%A6%AD%E0%A6%BE%E0%A6%B7%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE-2e7d32?style=flat-square)
-![Day Notes](https://img.shields.io/badge/Day_Notes-53-ff9900?style=flat-square&logo=amazonwebservices&logoColor=white)
+![Day Notes](https://img.shields.io/badge/Day_Notes-58-ff9900?style=flat-square&logo=amazonwebservices&logoColor=white)
 ![Interview Q&A](https://img.shields.io/badge/Interview_Q%26A-130-0d47a1?style=flat-square)
 ![Practice Questions](https://img.shields.io/badge/SAA--C03_Practice-62-6a1b9a?style=flat-square)
-![Diagrams](https://img.shields.io/badge/Diagrams-59-00838f?style=flat-square)
+![Diagrams](https://img.shields.io/badge/Diagrams-63-00838f?style=flat-square)
 
 </div>
 
@@ -30,6 +30,7 @@ Day-wise course note · Technical deep dive · Diagram · Interview Q&A · SAA-C
 | 6 | Multi-VPC & Private Connectivity | ✅ সম্পূর্ণ | `██████████` 7/7 দিন |
 | 7 | Edge Services, DNS & Load Balancing | ✅ সম্পূর্ণ | `██████████` 6/6 দিন |
 | 8 | Network Security & Monitoring | ✅ সম্পূর্ণ | `██████████` 5/5 দিন |
+| 9 | Databases: RDS & DynamoDB (মূল ৮ module-এর বাইরে যোগ করা) | ✅ সম্পূর্ণ | `██████████` 5/5 দিন |
 
 বিস্তারিত পাঠ্যক্রম: [Course Syllabus — ৮টি মডিউল](./00-Getting-Started/01-Course-Syllabus-8-Modules.md)
 
@@ -61,6 +62,7 @@ AWS-NOTES/
 ├── 07-Module-6-Multi-VPC-Private-Connectivity/ → Day 36–42
 ├── 08-Module-7-Edge-DNS-Load-Balancing/ → Day 43–48
 ├── 09-Module-8-Network-Security-Monitoring/ → Day 49–53
+├── 10-Module-9-Databases-RDS-DynamoDB/ → Day 54–58
 ├── 98-SAA-C03-Exam-Prep/               → Solutions Architect Associate exam: cheat sheet + ৬২টা practice প্রশ্ন
 ├── 99-Interview-QA/                    → ১৩০টা interview প্রশ্ন + উত্তর
 └── images/                             → Diagram (PNG) + src/ (Mermaid source)
@@ -182,6 +184,18 @@ AWS-NOTES/
 | 52 | [Compliance ও Audit: CloudTrail, Config Rules, SCP, Encryption ও Secrets Rotation](./09-Module-8-Network-Security-Monitoring/Day-52-Compliance-Audit-CloudTrail-Config-Encryption-Secrets.md) |
 | 53 | [Module 8 Revision + Final Project: Complete Secure Network Architecture](./09-Module-8-Network-Security-Monitoring/Day-53-Module-8-Revision-Complete-Secure-Architecture-Project.md) |
 
+## 🗄 10 — Module 9: Databases (RDS & DynamoDB)
+
+> মূল ৮-module syllabus-এর বাইরে যোগ করা — relational (RDS/Aurora) ও NoSQL (DynamoDB) ডেটাবেস গভীরে।
+
+| Day | Topic |
+|---|---|
+| 54 | [RDS Fundamentals: Engines, Multi-AZ ও Read Replicas](./10-Module-9-Databases-RDS-DynamoDB/Day-54-RDS-Fundamentals-Multi-AZ-Read-Replicas.md) |
+| 55 | [Aurora, RDS Proxy ও Advanced Backup Strategies](./10-Module-9-Databases-RDS-DynamoDB/Day-55-Aurora-RDS-Proxy-Advanced-Backup.md) |
+| 56 | [DynamoDB Fundamentals: Partition Key, Capacity Mode ও Index](./10-Module-9-Databases-RDS-DynamoDB/Day-56-DynamoDB-Fundamentals-Partition-Key-Capacity-Modes.md) |
+| 57 | [DynamoDB Streams, Global Tables, DAX ও Transactions](./10-Module-9-Databases-RDS-DynamoDB/Day-57-DynamoDB-Streams-Global-Tables-DAX-Transactions.md) |
+| 58 | [Module 9 Revision + Project: Polyglot Persistence Architecture](./10-Module-9-Databases-RDS-DynamoDB/Day-58-Module-9-Revision-Polyglot-Persistence-Project.md) |
+
 ## 🎓 98 — AWS Solutions Architect Associate (SAA-C03) Exam Prep
 
 | # | Note |
@@ -207,7 +221,7 @@ AWS-NOTES/
 
 1. **00-Getting-Started** — Syllabus দেখে পুরো roadmap বুঝে নিন।
 2. **01-Fundamentals** — Cloud, IAM, EC2, VPC-এর মূল ধারণা।
-3. **02 → 09 Modules** — Day-wise hands-on note ক্রমানুসারে।
+3. **02 → 10 Modules** — Day-wise hands-on note ক্রমানুসারে।
 4. **98-SAA-C03-Exam-Prep**: certification দিতে চাইলে cheat sheet পড়ে practice প্রশ্নগুলো নিজে solve করুন।
 5. **99-Interview-QA** — প্রতিটা module শেষে সংশ্লিষ্ট প্রশ্নগুলো নিজে উত্তর দিয়ে practice করুন, তারপর answer মিলিয়ে দেখুন।
 

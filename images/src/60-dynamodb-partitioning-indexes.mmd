@@ -1,0 +1,15 @@
+flowchart TB
+  ITEM["Item: {UserId: 'u1', OrderId: 'o5', Status: 'SHIPPED', ...}"] --> HASH["Hash(Partition Key = UserId)"]
+  HASH --> P1[("Partition 1")]
+  HASH --> P2[("Partition 2")]
+  HASH --> P3[("Partition 3")]
+  subgraph TABLE["Table: Orders (Partition Key: UserId, Sort Key: OrderId)"]
+    direction LR
+    P1
+    P2
+    P3
+  end
+  TABLE -->|"query by different attribute"| GSI["GSI: Status-CreatedAt-index<br/>(own partition/sort key)"]
+  TABLE -->|"alt sort within same PK"| LSI["LSI: UserId-CreatedAt-index<br/>(must be created at table creation)"]
+  style GSI fill:#e3f2fd,stroke:#0d47a1
+  style LSI fill:#fff3e0,stroke:#e65100

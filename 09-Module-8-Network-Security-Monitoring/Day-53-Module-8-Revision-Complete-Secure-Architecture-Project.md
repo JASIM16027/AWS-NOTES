@@ -213,4 +213,4 @@ PayBD একটা fintech প্ল্যাটফর্ম, PCI-DSS ঘেঁ�
 
 ---
 
-**⏮ আগের দিন:** [Day 52 — Compliance ও Audit: CloudTrail, Config Rules, SCP, Encryption ও Secrets Rotation](./Day-52-Compliance-Audit-CloudTrail-Config-Encryption-Secrets.md) | **⏭ পরের module:** [99 — Interview Q&A](../99-Interview-QA/01-Questions.md) অথবা [98 — SAA-C03 Exam Prep](../98-SAA-C03-Exam-Prep/01-Exam-Overview-and-Strategy.md)
+**⏮ আগের দিন:** [Day 52 — Compliance ও Audit: CloudTrail, Config Rules, SCP, Encryption ও Secrets Rotation](./Day-52-Compliance-Audit-CloudTrail-Config-Encryption-Secrets.md) | **⏭ পরের module:** [Day 54 — RDS Fundamentals](../10-Module-9-Databases-RDS-DynamoDB/Day-54-RDS-Fundamentals-Multi-AZ-Read-Replicas.md)

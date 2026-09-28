@@ -1,0 +1,14 @@
+flowchart TB
+  subgraph CLUSTER["Aurora Cluster"]
+    direction TB
+    WRITER[("Writer instance")] -->|"shared distributed<br/>storage (6 copies, 3 AZ)"| STORAGE[("Aurora Storage Layer")]
+    READER1[("Reader instance 1")] --> STORAGE
+    READER2[("Reader instance 2")] --> STORAGE
+  end
+  APP["Application"] -->|"writes"| PROXY["RDS Proxy<br/>connection pooling"]
+  PROXY --> WRITER
+  APP -->|"reads"| RE["Reader endpoint<br/>(load-balanced)"]
+  RE --> READER1 & READER2
+  WRITER -.->|"failover<br/>(~30s, promote reader)"| READER1
+  style PROXY fill:#e3f2fd,stroke:#0d47a1
+  style STORAGE fill:#fff3e0,stroke:#e65100

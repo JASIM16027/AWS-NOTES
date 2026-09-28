@@ -1,0 +1,11 @@
+flowchart LR
+  APP["Application"] -->|"read (cache miss)"| DAX["DAX cluster<br/>(microsecond cache)"]
+  DAX --> TABLE[("DynamoDB Table<br/>Region A")]
+  TABLE -->|"item change"| STREAM["DynamoDB Streams"]
+  STREAM --> LAMBDA["Lambda: react to change<br/>(e.g. update search index)"]
+  TABLE -->|"global table<br/>replication"| TABLE2[("DynamoDB Table<br/>Region B (replica)")]
+  TABLE2 -.->|"bidirectional"| TABLE
+  APP2["Application (Region B)"] -->|"local reads/writes"| TABLE2
+  style DAX fill:#e3f2fd,stroke:#0d47a1
+  style STREAM fill:#fff3e0,stroke:#e65100
+  style TABLE2 fill:#e8f5e9,stroke:#2e7d32

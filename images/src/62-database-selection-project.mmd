@@ -1,0 +1,17 @@
+flowchart TB
+  APP["ShopBD App"] --> CATALOG["Product catalog<br/>(complex query, joins)"]
+  APP --> CART["Shopping cart / session"]
+  APP --> ORDERS["Order history (high scale)"]
+  APP --> SEARCH["Search/analytics"]
+  CATALOG --> AURORA[("Aurora PostgreSQL<br/>Multi-AZ")]
+  CART --> DDB1[("DynamoDB<br/>TTL enabled")]
+  ORDERS --> DDB2[("DynamoDB<br/>single-table design")]
+  DDB2 -->|"Streams"| LAMBDA["Lambda"]
+  LAMBDA --> SEARCH_IDX[("OpenSearch<br/>for search")]
+  APP -->|"read-heavy hot data"| DAX["DAX cache"]
+  DAX --> DDB2
+  AURORA -->|"cross-region"| DR[("Aurora Global DB<br/>secondary region")]
+  style AURORA fill:#e3f2fd,stroke:#0d47a1
+  style DDB1 fill:#fff3e0,stroke:#e65100
+  style DDB2 fill:#fff3e0,stroke:#e65100
+  style DAX fill:#e8f5e9,stroke:#2e7d32
