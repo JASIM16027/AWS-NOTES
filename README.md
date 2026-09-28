@@ -7,10 +7,10 @@
 Day-wise course note · Technical deep dive · Diagram · Interview Q&A · SAA-C03 exam prep
 
 ![Language](https://img.shields.io/badge/%E0%A6%AD%E0%A6%BE%E0%A6%B7%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE-2e7d32?style=flat-square)
-![Day Notes](https://img.shields.io/badge/Day_Notes-35-ff9900?style=flat-square&logo=amazonwebservices&logoColor=white)
+![Day Notes](https://img.shields.io/badge/Day_Notes-42-ff9900?style=flat-square&logo=amazonwebservices&logoColor=white)
 ![Interview Q&A](https://img.shields.io/badge/Interview_Q%26A-130-0d47a1?style=flat-square)
 ![Practice Questions](https://img.shields.io/badge/SAA--C03_Practice-62-6a1b9a?style=flat-square)
-![Diagrams](https://img.shields.io/badge/Diagrams-44-00838f?style=flat-square)
+![Diagrams](https://img.shields.io/badge/Diagrams-50-00838f?style=flat-square)
 
 </div>
 
@@ -27,8 +27,8 @@ Day-wise course note · Technical deep dive · Diagram · Interview Q&A · SAA-C
 | 3 | Application Deployment on EC2 with systemd | ✅ সম্পূর্ণ | `██████████` 7/7 দিন |
 | 4 | Serverless & Lambda Fundamentals | ✅ সম্পূর্ণ | `██████████` 7/7 দিন |
 | 5 | Event-Driven Architectures with Lambda | ✅ সম্পূর্ণ | `██████████` 7/7 দিন |
-| 6 | Multi-VPC & Private Connectivity | 🟡 পরের module | `░░░░░░░░░░` |
-| 7 | Edge Services, DNS & Load Balancing | ⏳ আসছে | `░░░░░░░░░░` |
+| 6 | Multi-VPC & Private Connectivity | ✅ সম্পূর্ণ | `██████████` 7/7 দিন |
+| 7 | Edge Services, DNS & Load Balancing | 🟡 পরের module | `░░░░░░░░░░` |
 | 8 | Network Security & Monitoring | ⏳ আসছে | `░░░░░░░░░░` |
 
 বিস্তারিত পাঠ্যক্রম: [Course Syllabus — ৮টি মডিউল](./00-Getting-Started/01-Course-Syllabus-8-Modules.md)
@@ -58,6 +58,7 @@ AWS-NOTES/
 ├── 04-Module-3-Application-Deployment/ → Day 15–21
 ├── 05-Module-4-Serverless-and-Lambda/  → Day 22–28
 ├── 06-Module-5-Event-Driven-Architectures/ → Day 29–35
+├── 07-Module-6-Multi-VPC-Private-Connectivity/ → Day 36–42
 ├── 98-SAA-C03-Exam-Prep/               → Solutions Architect Associate exam: cheat sheet + ৬২টা practice প্রশ্ন
 ├── 99-Interview-QA/                    → ১৩০টা interview প্রশ্ন + উত্তর
 └── images/                             → Diagram (PNG) + src/ (Mermaid source)
@@ -146,6 +147,18 @@ AWS-NOTES/
 | 34 | [Design Patterns: Saga, Event Sourcing, CQRS, Idempotency](./06-Module-5-Event-Driven-Architectures/Day-34-Design-Patterns-Saga-Event-Sourcing-CQRS-Idempotency.md) |
 | 35 | [Module 5 Revision + Mini Project: Event-Driven Order System](./06-Module-5-Event-Driven-Architectures/Day-35-Module-5-Revision-Event-Driven-Order-System.md) |
 
+## 🔗 07 — Module 6: Multi-VPC & Private Connectivity
+
+| Day | Topic |
+|---|---|
+| 36 | [VPC Peering গভীরে ও IP Address Planning](./07-Module-6-Multi-VPC-Private-Connectivity/Day-36-VPC-Peering-Deep-Dive-IP-Planning.md) |
+| 37 | [Transit Gateway: Attachments, Route Tables ও Segmentation](./07-Module-6-Multi-VPC-Private-Connectivity/Day-37-Transit-Gateway-Route-Tables-Segmentation.md) |
+| 38 | [Site-to-Site VPN ও BGP Routing Basics](./07-Module-6-Multi-VPC-Private-Connectivity/Day-38-Site-to-Site-VPN-BGP-Basics.md) |
+| 39 | [Direct Connect, DX Gateway ও VPN over DX](./07-Module-6-Multi-VPC-Private-Connectivity/Day-39-Direct-Connect-DX-Gateway-VPN-over-DX.md) |
+| 40 | [Organizations, RAM ও Shared VPC: Multi-account Network](./07-Module-6-Multi-VPC-Private-Connectivity/Day-40-Organizations-RAM-Shared-VPC-Multi-Account.md) |
+| 41 | [Centralized Endpoints, PrivateLink Services ও Hybrid DNS](./07-Module-6-Multi-VPC-Private-Connectivity/Day-41-Centralized-PrivateLink-Endpoints-Hybrid-DNS.md) |
+| 42 | [Module 6 Revision + Project: Multi-account Hybrid Network Design](./07-Module-6-Multi-VPC-Private-Connectivity/Day-42-Module-6-Revision-Multi-Account-Network-Design.md) |
+
 ## 🎓 98 — AWS Solutions Architect Associate (SAA-C03) Exam Prep
 
 | # | Note |
@@ -171,13 +184,13 @@ AWS-NOTES/
 
 1. **00-Getting-Started** — Syllabus দেখে পুরো roadmap বুঝে নিন।
 2. **01-Fundamentals** — Cloud, IAM, EC2, VPC-এর মূল ধারণা।
-3. **02 → 06 Modules** — Day-wise hands-on note ক্রমানুসারে।
+3. **02 → 07 Modules** — Day-wise hands-on note ক্রমানুসারে।
 4. **98-SAA-C03-Exam-Prep**: certification দিতে চাইলে cheat sheet পড়ে practice প্রশ্নগুলো নিজে solve করুন।
 5. **99-Interview-QA** — প্রতিটা module শেষে সংশ্লিষ্ট প্রশ্নগুলো নিজে উত্তর দিয়ে practice করুন, তারপর answer মিলিয়ে দেখুন।
 
 ### ✍️ নতুন note যোগ করার নিয়ম
 - নতুন Day note → সংশ্লিষ্ট module folder-এ `Day-XX-Topic-Name.md` নামে রাখুন (যেমন `Day-17-CloudWatch-Agent-Setup.md`)।
-- নতুন module শুরু হলে → `07-Module-6-Multi-VPC-Private-Connectivity/` এর মতো নতুন folder খুলুন।
+- নতুন module শুরু হলে → `08-Module-7-Edge-DNS-Load-Balancing/` এর মতো নতুন folder খুলুন।
 - এই README-র টেবিলে link যোগ করুন।
 - নতুন diagram → `images/src/`-এ `.mmd` (Mermaid) file লিখে PNG render করুন:
   `npx -p @mermaid-js/mermaid-cli mmdc -i images/src/xx.mmd -o images/xx.png -b white -s 2`

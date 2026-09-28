@@ -1,0 +1,15 @@
+sequenceDiagram
+  participant App as App (spoke VPC, no NAT)
+  participant R as Route 53 Resolver (spoke VPC)
+  participant PHZ as PHZ sqs.ap-south-1.amazonaws.com (associated)
+  participant TGW as Transit Gateway
+  participant EP as SQS interface endpoint (hub VPC, Private DNS OFF)
+  participant SQS as Amazon SQS
+  App->>R: resolve sqs.ap-south-1.amazonaws.com
+  R->>PHZ: private hosted zone match
+  PHZ-->>R: Alias → endpoint ENI private IP (10.0.x.x)
+  R-->>App: 10.0.x.x
+  App->>TGW: HTTPS 443 to 10.0.x.x
+  TGW->>EP: route to hub VPC
+  EP->>SQS: PrivateLink
+  SQS-->>App: response (never touches internet)

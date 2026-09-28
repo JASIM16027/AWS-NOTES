@@ -1,0 +1,17 @@
+flowchart TB
+  subgraph NET["Network account (VPC owner)"]
+    direction LR
+    SA["subnet team-a (3 AZs)"]
+    VPC["VPC prod-shared 10.2.0.0/16<br/>route tables, NACL, NAT, IGW, endpoints"]
+    SB["subnet team-b (3 AZs)"]
+    SA --- VPC --- SB
+  end
+  RAM{{"AWS RAM share (to OU or accounts)"}}
+  NET --> RAM
+  subgraph PART["Participants (own resources in shared subnets)"]
+    direction LR
+    EA["Account team-a<br/>EC2 + ALB + own SG"]
+    EB["Account team-b<br/>RDS + Lambda + own SG"]
+    EA <-->|"same VPC: direct,<br/>no TGW charge"| EB
+  end
+  RAM --> PART
