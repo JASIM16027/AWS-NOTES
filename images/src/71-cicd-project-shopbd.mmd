@@ -1,0 +1,14 @@
+flowchart TB
+  DEV["Developer push (GitHub)"] --> SRC["Source stage<br/>CodeStar Connection"]
+  SRC --> BUILD["Build stage<br/>CodeBuild: test + docker build + push ECR<br/>+ imagedefinitions.json"]
+  BUILD --> DEVDEPLOY["Deploy to Dev<br/>ECS rolling update"]
+  DEVDEPLOY --> APPROVAL{"Manual Approval<br/>SNS notify"}
+  APPROVAL -->|"approved"| PRODDEPLOY["Deploy to Prod (cross-account)<br/>CodeDeploy ECS Blue/Green"]
+  PRODDEPLOY --> CW["CloudWatch Alarm<br/>(5xx rate)"]
+  CW -->|"breach"| ROLLBACK["Automatic rollback"]
+  CW -->|"healthy"| DONE["100% traffic on new version"]
+  SM["Secrets Manager / Parameter Store"] -.-> BUILD
+  SM -.-> PRODDEPLOY
+  style BUILD fill:#e3f2fd,stroke:#0d47a1
+  style APPROVAL fill:#fff3e0,stroke:#e65100
+  style PRODDEPLOY fill:#e8f5e9,stroke:#2e7d32

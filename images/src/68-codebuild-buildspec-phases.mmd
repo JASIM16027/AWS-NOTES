@@ -1,0 +1,14 @@
+flowchart TB
+  SRC["Source artifact<br/>(from CodePipeline or S3/GitHub)"] --> ENV["CodeBuild build environment<br/>(Docker image, compute type)"]
+  subgraph SPEC["buildspec.yml phases"]
+    direction TB
+    P1["install<br/>(runtime versions, dependencies)"] --> P2["pre_build<br/>(login to ECR, tests setup)"]
+    P2 --> P3["build<br/>(compile, docker build, run tests)"]
+    P3 --> P4["post_build<br/>(docker push, tag)"]
+  end
+  ENV --> SPEC
+  SPEC --> ART[("artifacts:<br/>files → S3")]
+  SPEC --> CACHE[("cache:<br/>paths (npm/docker layer cache)")]
+  SPEC --> LOGS["CloudWatch Logs"]
+  style ENV fill:#e3f2fd,stroke:#0d47a1
+  style ART fill:#fff3e0,stroke:#e65100

@@ -7,10 +7,10 @@
 Day-wise course note · Technical deep dive · Diagram · Interview Q&A · SAA-C03 exam prep
 
 ![Language](https://img.shields.io/badge/%E0%A6%AD%E0%A6%BE%E0%A6%B7%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE-2e7d32?style=flat-square)
-![Day Notes](https://img.shields.io/badge/Day_Notes-63-ff9900?style=flat-square&logo=amazonwebservices&logoColor=white)
+![Day Notes](https://img.shields.io/badge/Day_Notes-68-ff9900?style=flat-square&logo=amazonwebservices&logoColor=white)
 ![Interview Q&A](https://img.shields.io/badge/Interview_Q%26A-130-0d47a1?style=flat-square)
 ![Practice Questions](https://img.shields.io/badge/SAA--C03_Practice-62-6a1b9a?style=flat-square)
-![Diagrams](https://img.shields.io/badge/Diagrams-67-00838f?style=flat-square)
+![Diagrams](https://img.shields.io/badge/Diagrams-71-00838f?style=flat-square)
 
 </div>
 
@@ -32,6 +32,7 @@ Day-wise course note · Technical deep dive · Diagram · Interview Q&A · SAA-C
 | 8 | Network Security & Monitoring | ✅ সম্পূর্ণ | `██████████` 5/5 দিন |
 | 9 | Databases: RDS & DynamoDB (মূল ৮ module-এর বাইরে যোগ করা) | ✅ সম্পূর্ণ | `██████████` 5/5 দিন |
 | 10 | Containers: ECS, EKS & Fargate (মূল ৮ module-এর বাইরে যোগ করা) | ✅ সম্পূর্ণ | `██████████` 5/5 দিন |
+| 11 | CI/CD: CodePipeline & CodeBuild (মূল ৮ module-এর বাইরে যোগ করা) | ✅ সম্পূর্ণ | `██████████` 5/5 দিন |
 
 বিস্তারিত পাঠ্যক্রম: [Course Syllabus — ৮টি মডিউল](./00-Getting-Started/01-Course-Syllabus-8-Modules.md)
 
@@ -65,6 +66,7 @@ AWS-NOTES/
 ├── 09-Module-8-Network-Security-Monitoring/ → Day 49–53
 ├── 10-Module-9-Databases-RDS-DynamoDB/ → Day 54–58
 ├── 11-Module-10-Containers-ECS-EKS-Fargate/ → Day 59–63
+├── 12-Module-11-CICD-CodePipeline-CodeBuild/ → Day 64–68
 ├── 98-SAA-C03-Exam-Prep/               → Solutions Architect Associate exam: cheat sheet + ৬২টা practice প্রশ্ন
 ├── 99-Interview-QA/                    → ১৩০টা interview প্রশ্ন + উত্তর
 └── images/                             → Diagram (PNG) + src/ (Mermaid source)
@@ -210,6 +212,18 @@ AWS-NOTES/
 | 62 | [Container Networking, Service Discovery ও Auto Scaling](./11-Module-10-Containers-ECS-EKS-Fargate/Day-62-Container-Networking-Service-Discovery-Auto-Scaling.md) |
 | 63 | [Module 10 Revision + Project: Containerized Microservices Platform](./11-Module-10-Containers-ECS-EKS-Fargate/Day-63-Module-10-Revision-Containerized-Microservices-Project.md) |
 
+## 🔄 12 — Module 11: CI/CD (CodePipeline & CodeBuild)
+
+> মূল ৮-module syllabus-এর বাইরে যোগ করা — AWS-নেটিভ CI/CD orchestration গভীরে।
+
+| Day | Topic |
+|---|---|
+| 64 | [AWS CodeBuild Fundamentals: Buildspec ও Build Phases](./12-Module-11-CICD-CodePipeline-CodeBuild/Day-64-CodeBuild-Fundamentals-Buildspec-Phases.md) |
+| 65 | [AWS CodePipeline: Stage, Action ও Artifact](./12-Module-11-CICD-CodePipeline-CodeBuild/Day-65-CodePipeline-Fundamentals-Stages-Actions.md) |
+| 66 | [Full CI/CD Pipeline to ECS: Blue/Green Deploy](./12-Module-11-CICD-CodePipeline-CodeBuild/Day-66-CodePipeline-ECS-BlueGreen-Deploy.md) |
+| 67 | [Pipeline Security ও Advanced Patterns](./12-Module-11-CICD-CodePipeline-CodeBuild/Day-67-Pipeline-Security-Advanced-Patterns.md) |
+| 68 | [Module 11 Revision + Project: End-to-End CI/CD Pipeline](./12-Module-11-CICD-CodePipeline-CodeBuild/Day-68-Module-11-Revision-End-to-End-CICD-Project.md) |
+
 ## 🎓 98 — AWS Solutions Architect Associate (SAA-C03) Exam Prep
 
 | # | Note |
@@ -235,7 +249,7 @@ AWS-NOTES/
 
 1. **00-Getting-Started** — Syllabus দেখে পুরো roadmap বুঝে নিন।
 2. **01-Fundamentals** — Cloud, IAM, EC2, VPC-এর মূল ধারণা।
-3. **02 → 11 Modules** — Day-wise hands-on note ক্রমানুসারে।
+3. **02 → 12 Modules** — Day-wise hands-on note ক্রমানুসারে।
 4. **98-SAA-C03-Exam-Prep**: certification দিতে চাইলে cheat sheet পড়ে practice প্রশ্নগুলো নিজে solve করুন।
 5. **99-Interview-QA** — প্রতিটা module শেষে সংশ্লিষ্ট প্রশ্নগুলো নিজে উত্তর দিয়ে practice করুন, তারপর answer মিলিয়ে দেখুন।
 

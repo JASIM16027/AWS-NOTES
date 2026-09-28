@@ -1,0 +1,15 @@
+flowchart LR
+  GH["GitHub push"] --> SRC["Source stage<br/>(CodeStar Connection)"]
+  SRC --> BLD["Build stage<br/>CodeBuild: docker build + push ECR<br/>+ imagedefinitions.json"]
+  BLD --> DEP["Deploy stage"]
+  subgraph DEP["Deploy stage: CodeDeploy ECS Blue/Green"]
+    direction TB
+    LISTENER["ALB Listener"] -->|"100% prod traffic"| BLUE["Blue Task Set<br/>(current)"]
+    LISTENER -.->|"test listener"| GREEN["Green Task Set<br/>(new version)"]
+    GREEN -->|"validation OK"| SHIFT["Traffic shift<br/>(all-at-once / linear / canary)"]
+    SHIFT -->|"100%"| GREEN2["Green becomes new Blue"]
+  end
+  DEP -->|"rollback on alarm"| BLUE
+  style BLD fill:#e3f2fd,stroke:#0d47a1
+  style GREEN fill:#e8f5e9,stroke:#2e7d32
+  style BLUE fill:#fff3e0,stroke:#e65100

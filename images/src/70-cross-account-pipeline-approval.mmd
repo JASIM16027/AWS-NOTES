@@ -1,0 +1,17 @@
+flowchart TB
+  subgraph TOOLS["Tools Account"]
+    PIPE["CodePipeline"]
+    KMS["KMS CMK<br/>(cross-account artifact encryption)"]
+    ART[("S3 Artifact Store")]
+  end
+  PIPE --> ART
+  ART -.->|"encrypted with"| KMS
+  PIPE -->|"assume role"| DEVROLE["cross-account deploy role<br/>(Dev Account)"]
+  PIPE -->|"assume role"| PRODROLE["cross-account deploy role<br/>(Prod Account)"]
+  DEVROLE --> DEVDEPLOY["Deploy to Dev"]
+  DEVDEPLOY --> APPROVAL{"Manual Approval<br/>+ SNS notify"}
+  APPROVAL -->|"approved"| PRODROLE
+  PRODROLE --> PRODDEPLOY["Deploy to Prod"]
+  EB["EventBridge rule<br/>(source repo push)"] -->|"triggers"| PIPE
+  style KMS fill:#ffebee,stroke:#c62828
+  style APPROVAL fill:#fff3e0,stroke:#e65100

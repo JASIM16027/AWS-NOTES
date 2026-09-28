@@ -148,4 +148,4 @@ Batch/one-time job?                            → Standalone ECS Task (Service 
 
 ---
 
-**⏮ আগের দিন:** [Day 62 — Container Networking ও Auto Scaling](./Day-62-Container-Networking-Service-Discovery-Auto-Scaling.md) | **⏭ পরের module:** [99 — Interview Q&A](../99-Interview-QA/01-Questions.md) অথবা [98 — SAA-C03 Exam Prep](../98-SAA-C03-Exam-Prep/01-Exam-Overview-and-Strategy.md)
+**⏮ আগের দিন:** [Day 62 — Container Networking ও Auto Scaling](./Day-62-Container-Networking-Service-Discovery-Auto-Scaling.md) | **⏭ পরের module:** [Day 64 — CodeBuild Fundamentals](../12-Module-11-CICD-CodePipeline-CodeBuild/Day-64-CodeBuild-Fundamentals-Buildspec-Phases.md)
