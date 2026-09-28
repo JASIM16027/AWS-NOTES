@@ -1,0 +1,11 @@
+flowchart TB
+  ACC["Account limit per Region<br/>default 1,000 concurrent executions"]
+  ACC --> R1["payment-api<br/>Reserved: 100<br/>(guaranteed + max)"]
+  ACC --> R2["image-resize<br/>Reserved: 50<br/>(cap to protect others)"]
+  ACC --> UN["Unreserved pool: 850<br/>shared by all other functions"]
+  R1 --> PC["Provisioned Concurrency: 20 on alias prod<br/>pre-initialized = no cold start (paid)"]
+  UN --> TH["Pool exhausted → Throttle<br/>sync: 429 | async: retry | SQS: waits in queue"]
+  style R1 fill:#c8e6c9,stroke:#2e7d32
+  style R2 fill:#fff9c4,stroke:#f9a825
+  style PC fill:#bbdefb,stroke:#0d47a1
+  style TH fill:#ffcdd2,stroke:#c62828

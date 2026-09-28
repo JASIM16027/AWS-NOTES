@@ -1,0 +1,19 @@
+flowchart TB
+  subgraph SYNC["1. Synchronous: caller waits"]
+    direction LR
+    C1["API Gateway / ALB /<br/>Function URL / SDK"] -->|"request"| L1["Lambda"]
+    L1 -->|"response or error<br/>(no Lambda retry)"| C1
+  end
+  subgraph ASYNC["2. Asynchronous: fire and forget"]
+    direction LR
+    C2["S3 / SNS / EventBridge"] -->|"202 Accepted"| Q2[["Lambda internal queue"]]
+    Q2 --> L2["Lambda<br/>(up to 2 retries)"]
+    L2 -->|"on failure"| D2["DLQ / on-failure Destination"]
+  end
+  subgraph POLL["3. Poll-based: Lambda pulls"]
+    direction LR
+    S3Q[["SQS / Kinesis /<br/>DynamoDB Streams"]] -->|"batch"| ESM["Event Source Mapping<br/>(Lambda polls)"]
+    ESM --> L3["Lambda"]
+    L3 -.->|"fail: message visible again /<br/>stream retry"| S3Q
+  end
+  SYNC ~~~ ASYNC ~~~ POLL

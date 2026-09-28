@@ -1,0 +1,22 @@
+flowchart LR
+  subgraph WHO["Who can invoke? (Resource-based policy)"]
+    direction TB
+    S3["S3 bucket<br/>(source-arn)"]
+    API["API Gateway"]
+    ACC["Other AWS account"]
+  end
+  FN["Lambda function"]
+  subgraph WHAT["What can it do? (Execution role)"]
+    direction TB
+    DDB[("DynamoDB: PutItem")]
+    SM["Secrets Manager:<br/>GetSecretValue"]
+    CWL["CloudWatch Logs"]
+    SQSQ[["SQS: ReceiveMessage<br/>(poll trigger)"]]
+  end
+  S3 -->|"lambda:InvokeFunction"| FN
+  API -->|"lambda:InvokeFunction"| FN
+  ACC -->|"lambda:InvokeFunction"| FN
+  FN -->|"assumes role"| DDB
+  FN --> SM
+  FN --> CWL
+  FN --> SQSQ

@@ -1,0 +1,8 @@
+flowchart TB
+  FN["Lambda function (VPC config: 2 private subnets + sg-lambda)"]
+  FN --> ENI["Hyperplane ENI in private subnets<br/>(no public IP)"]
+  ENI -->|"1. database"| RDSP["RDS Proxy"] --> RDS[("RDS / Aurora<br/>SG allows sg-lambda")]
+  ENI -->|"2. S3 / DynamoDB"| GWE["Gateway endpoint (free)"]
+  ENI -->|"3. Secrets Manager, SQS, KMS"| IFE["Interface endpoint (or NAT)"]
+  ENI -->|"4. 3rd-party internet API"| NAT["NAT Gateway (public subnet)"]
+  NAT --> IGW["Internet Gateway"] --> NET(("Internet"))

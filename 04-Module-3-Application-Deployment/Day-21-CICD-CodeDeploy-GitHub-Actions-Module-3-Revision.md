@@ -539,4 +539,4 @@ aws deploy create-deployment --application-name myapp \
 
 ---
 
-**⏮ আগের দিন:** [Day 20 — PM2, Config ও Logs](./Day-20-PM2-Env-Config-Log-Management.md) | **⏭ পরের module:** Module 4 — Serverless & Lambda (আসছে)
+**⏮ আগের দিন:** [Day 20 — PM2, Config ও Logs](./Day-20-PM2-Env-Config-Log-Management.md) | **⏭ পরের module:** [Day 22 — Lambda Basics (Module 4)](../05-Module-4-Serverless-and-Lambda/Day-22-Lambda-Basics-Execution-Model.md)
