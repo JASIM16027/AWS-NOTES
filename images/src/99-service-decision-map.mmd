@@ -1,0 +1,88 @@
+flowchart TB
+  ROOT(["আপনার দরকার কী?<br/>Which AWS service should I use?"])
+
+  ROOT --> ROW1 & ROW2 & ROW3
+
+  subgraph ROW1[" "]
+    direction LR
+    subgraph COMPUTE["💻 COMPUTE"]
+      direction TB
+      c1["Full OS control দরকার → EC2"]
+      c2["Code চালাতে চাই, server manage করতে চাই না, 15 মিনিটের কম → Lambda"]
+      c3["Container, AWS-native সহজ → ECS (+ Fargate)"]
+      c4["Container, Kubernetes দরকার → EKS"]
+      c5["Just deploy code, PaaS style → Elastic Beanstalk"]
+    end
+    subgraph STORAGE["🗄 STORAGE"]
+      direction TB
+      s1["যেকোনো ফাইল/অবজেক্ট, API দিয়ে access → S3"]
+      s2["একটা EC2-র জন্য block disk → EBS"]
+      s3["একাধিক EC2 একই file share করবে → EFS"]
+      s4["Windows SMB file share দরকার → FSx for Windows"]
+      s5["পুরনো data, কমদামি archive → S3 Glacier"]
+      s6["Hybrid: on-prem থেকে cloud storage access → Storage Gateway"]
+    end
+    subgraph DB["🗃 DATABASE"]
+      direction TB
+      d1["SQL, relational, JOIN দরকার → RDS / Aurora"]
+      d2["NoSQL, key-value, বিশাল scale, ms latency → DynamoDB"]
+      d3["Data warehouse, analytics query → Redshift"]
+      d4["S3-এর data-তে সরাসরি SQL query (serverless) → Athena"]
+      d5["DB-র সামনে cache লাগবে → ElastiCache (or DAX for DynamoDB)"]
+    end
+  end
+
+  subgraph ROW2[" "]
+    direction LR
+    subgraph NET["🌐 NETWORKING & DELIVERY"]
+      direction TB
+      n1["একাধিক VPC জোড়া লাগাতে (কয়েকটা) → VPC Peering"]
+      n2["একাধিক VPC জোড়া লাগাতে (অনেকগুলো, transitive) → Transit Gateway"]
+      n3["On-prem ↔ AWS, দ্রুত সেটআপ → Site-to-Site VPN"]
+      n4["On-prem ↔ AWS, dedicated ও consistent → Direct Connect"]
+      n5["Global content caching (HTTP) → CloudFront"]
+      n6["DNS ও routing policy → Route 53"]
+      n7["HTTP traffic distribute → ALB"]
+      n8["TCP/UDP, static IP, extreme perf → NLB"]
+      n9["Global static IP, non-HTTP acceleration → Global Accelerator"]
+    end
+    subgraph MSG["📨 MESSAGING & INTEGRATION"]
+      direction TB
+      m1["Producer-consumer decouple করতে → SQS"]
+      m2["এক event, একাধিক subscriber notify → SNS"]
+      m3["SaaS/cross-account event routing, pattern matching → EventBridge"]
+      m4["Multi-step workflow orchestration → Step Functions"]
+    end
+    subgraph SEC["🔒 SECURITY & COMPLIANCE"]
+      direction TB
+      e1["Web app-কে SQLi/XSS থেকে রক্ষা → WAF"]
+      e2["DDoS আক্রমণ থেকে রক্ষা → Shield"]
+      e3["পুরো VPC-র জন্য firewall rule → Network Firewall"]
+      e4["Password/API key নিরাপদে রাখা + rotate → Secrets Manager"]
+      e5["Threat detection (ML-based) → GuardDuty"]
+      e6["API call audit log → CloudTrail"]
+      e7["Resource configuration compliance check → AWS Config"]
+      e8["সব account-এ guardrail বসানো → SCP (Organizations)"]
+    end
+  end
+
+  subgraph ROW3[" "]
+    direction LR
+    subgraph DEPLOY["🚀 DEPLOY & AUTOMATE"]
+      direction TB
+      p1["AWS-only Infrastructure as Code → CloudFormation"]
+      p2["Multi-cloud Infrastructure as Code → Terraform"]
+      p3["Full CI/CD pipeline (build+test+deploy) → CodePipeline + CodeBuild + CodeDeploy"]
+    end
+    subgraph MONITOR["📊 MONITORING & COST"]
+      direction TB
+      o1["Metrics, logs, alarms → CloudWatch"]
+      o2["খরচ track ও forecast → Cost Explorer"]
+      o3["খরচ limit-এ alert → AWS Budgets"]
+      o4["Best-practice check (cost/security/perf) → Trusted Advisor"]
+    end
+  end
+
+  style ROW1 fill:none,stroke:none
+  style ROW2 fill:none,stroke:none
+  style ROW3 fill:none,stroke:none
