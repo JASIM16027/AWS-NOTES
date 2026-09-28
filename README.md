@@ -71,6 +71,7 @@ AWS-NOTES/
 ├── 12-Module-11-CICD-CodePipeline-CodeBuild/ → Day 64–68
 ├── 13-Module-12-Cost-Optimization/ → Day 69–73
 ├── 14-Module-13-Infrastructure-as-Code/ → Day 74–78
+├── 96-Module-Cheat-Sheets/             → প্রতি module-এর ১-পাতার cheat sheet (diagram+table+command+gotcha)
 ├── 98-SAA-C03-Exam-Prep/               → Solutions Architect Associate exam: cheat sheet + ৬২টা practice প্রশ্ন
 ├── 99-Interview-QA/                    → ১৩০টা interview প্রশ্ন + উত্তর
 └── images/                             → Diagram (PNG) + src/ (Mermaid source)
@@ -251,6 +252,26 @@ AWS-NOTES/
 | 76 | [Terraform Fundamentals: HCL, Provider ও State](./14-Module-13-Infrastructure-as-Code/Day-76-Terraform-Fundamentals-HCL-Provider-State.md) |
 | 77 | [Terraform Modules, Workspaces ও CloudFormation বনাম Terraform](./14-Module-13-Infrastructure-as-Code/Day-77-Terraform-Modules-Workspaces-CloudFormation-vs-Terraform.md) |
 | 78 | [Module 13 Revision + Project: IaC-ify করা ShopBD Platform](./14-Module-13-Infrastructure-as-Code/Day-78-Module-13-Revision-IaC-ShopBD-Platform-Project.md) |
+
+## 🗂 96 — Cheat Sheets
+
+> প্রতিটা module-এর ১-পাতার সারসংক্ষেপ — interview/exam-এর আগের রাতে পুরো day-note না পড়ে শুধু এগুলো রিভিউ করুন।
+
+| # | Cheat Sheet |
+|---|---|
+| 1 | [Module 1: EC2 & Storage](./96-Module-Cheat-Sheets/01-Module-1-EC2-Storage-Cheat-Sheet.md) |
+| 2 | [Module 2: VPC & Networking](./96-Module-Cheat-Sheets/02-Module-2-VPC-Networking-Cheat-Sheet.md) |
+| 3 | [Module 3: App Deployment](./96-Module-Cheat-Sheets/03-Module-3-App-Deployment-Cheat-Sheet.md) |
+| 4 | [Module 4: Serverless & Lambda](./96-Module-Cheat-Sheets/04-Module-4-Serverless-Lambda-Cheat-Sheet.md) |
+| 5 | [Module 5: Event-Driven Architectures](./96-Module-Cheat-Sheets/05-Module-5-Event-Driven-Cheat-Sheet.md) |
+| 6 | [Module 6: Multi-VPC & Private Connectivity](./96-Module-Cheat-Sheets/06-Module-6-Multi-VPC-Cheat-Sheet.md) |
+| 7 | [Module 7: Edge, DNS & Load Balancing](./96-Module-Cheat-Sheets/07-Module-7-Edge-DNS-LB-Cheat-Sheet.md) |
+| 8 | [Module 8: Network Security & Monitoring](./96-Module-Cheat-Sheets/08-Module-8-Network-Security-Cheat-Sheet.md) |
+| 9 | [Module 9: Databases (RDS & DynamoDB)](./96-Module-Cheat-Sheets/09-Module-9-Databases-Cheat-Sheet.md) |
+| 10 | [Module 10: Containers (ECS, EKS, Fargate)](./96-Module-Cheat-Sheets/10-Module-10-Containers-Cheat-Sheet.md) |
+| 11 | [Module 11: CI/CD](./96-Module-Cheat-Sheets/11-Module-11-CICD-Cheat-Sheet.md) |
+| 12 | [Module 12: Cost Optimization](./96-Module-Cheat-Sheets/12-Module-12-Cost-Optimization-Cheat-Sheet.md) |
+| 13 | [Module 13: Infrastructure as Code](./96-Module-Cheat-Sheets/13-Module-13-IaC-Cheat-Sheet.md) |
 
 ## 🎓 98 — AWS Solutions Architect Associate (SAA-C03) Exam Prep
 
