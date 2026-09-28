@@ -1,0 +1,11 @@
+flowchart TB
+  BILL["Billing data (all accounts)"] --> CUR["Cost & Usage Report (CUR)<br/>most granular, hourly, per-resource"]
+  CUR --> S3[("S3 bucket")]
+  S3 --> ATHENA["Athena / QuickSight<br/>custom analysis"]
+  BILL --> CE["Cost Explorer<br/>UI trend analysis, filter/group by"]
+  TAGS["Cost Allocation Tags<br/>(team, project, environment)"] --> CE
+  TAGS --> CUR
+  CE --> CATS["Cost Categories<br/>(rules-based grouping)"]
+  CE -->|"forecast"| FORECAST["Cost forecast"]
+  style CUR fill:#e3f2fd,stroke:#0d47a1
+  style TAGS fill:#fff3e0,stroke:#e65100

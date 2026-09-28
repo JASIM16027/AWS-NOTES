@@ -1,0 +1,11 @@
+flowchart TB
+  BUDGET["AWS Budget<br/>(Cost / Usage / RI-SP Coverage / RI-SP Utilization)"] -->|"50% threshold"| ALERT1["SNS notification"]
+  BUDGET -->|"80% threshold"| ALERT2["SNS notification"]
+  BUDGET -->|"100% threshold"| ACTION["Budget Action<br/>(auto: apply restrictive IAM policy / stop instances)"]
+  USAGE["Daily spend pattern"] --> ANOMALY["Cost Anomaly Detection<br/>(ML-based)"]
+  ANOMALY -->|"unusual spike detected"| ALERT3["Alert (email/SNS)"]
+  ALERT1 & ALERT2 & ALERT3 --> TEAM["FinOps / Engineering team"]
+  ACTION --> RESOURCE["AWS resources"]
+  style BUDGET fill:#e3f2fd,stroke:#0d47a1
+  style ANOMALY fill:#fff3e0,stroke:#e65100
+  style ACTION fill:#ffebee,stroke:#c62828

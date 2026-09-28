@@ -1,0 +1,25 @@
+flowchart TB
+  subgraph VISIBILITY["1. Visibility"]
+    TAGS["Cost Allocation Tags<br/>per microservice"]
+    CE["Cost Explorer + CUR"]
+  end
+  subgraph CONTROL["2. Control"]
+    BUDGET["Budgets per team<br/>+ Anomaly Detection"]
+  end
+  subgraph OPTIMIZE["3. Optimize"]
+    SP["Compute Savings Plans<br/>(baseline ECS/Fargate)"]
+    SPOT["Fargate Spot<br/>(batch-worker, Day 63)"]
+    RI["RDS Reserved Instance<br/>(Aurora, Day 55)"]
+    RIGHT["Compute Optimizer<br/>rightsizing"]
+    LIFECYCLE["S3 lifecycle policy"]
+  end
+  subgraph GOVERN["4. Govern"]
+    SCP["SCP: enforce tagging<br/>(Day 52)"]
+    REVIEW["Monthly FinOps review"]
+  end
+  VISIBILITY --> CONTROL --> OPTIMIZE --> GOVERN
+  GOVERN -.->|"feedback loop"| VISIBILITY
+  style VISIBILITY fill:#e3f2fd,stroke:#0d47a1
+  style CONTROL fill:#fff3e0,stroke:#e65100
+  style OPTIMIZE fill:#e8f5e9,stroke:#2e7d32
+  style GOVERN fill:#ffebee,stroke:#c62828

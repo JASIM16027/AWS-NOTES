@@ -1,0 +1,13 @@
+flowchart TB
+  TA["AWS Trusted Advisor"] --> C1["Cost Optimization<br/>(idle/underutilized resources)"]
+  TA --> C2["Performance"]
+  TA --> C3["Security"]
+  TA --> C4["Fault Tolerance"]
+  TA --> C5["Service Limits"]
+  CO["AWS Compute Optimizer"] -->|"ML analysis of CloudWatch metrics"| REC["Rightsizing recommendation<br/>(EC2/EBS/Lambda/ECS on Fargate)"]
+  REC --> DOWNSIZE["Downsize over-provisioned"]
+  REC --> UPSIZE["Upsize under-provisioned<br/>(avoid throttling/OOM)"]
+  C1 --> IDLE["Idle load balancers, unattached EBS,<br/>low-utilization EC2"]
+  S3A["S3 Storage Class Analysis"] --> LIFECYCLE["Lifecycle policy suggestion<br/>(Standard -> IA -> Glacier)"]
+  style TA fill:#e3f2fd,stroke:#0d47a1
+  style CO fill:#fff3e0,stroke:#e65100

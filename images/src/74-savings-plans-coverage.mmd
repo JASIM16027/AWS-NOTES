@@ -1,0 +1,15 @@
+flowchart TB
+  subgraph SP["Savings Plans (commit $/hour, 1 or 3 yr)"]
+    direction LR
+    COMPUTE_SP["Compute Savings Plans<br/>most flexible: EC2 any family/region + Fargate + Lambda"]
+    EC2_SP["EC2 Instance Savings Plans<br/>less flexible: locked to instance family + region, deeper discount"]
+  end
+  RI["Reserved Instances<br/>RDS / ElastiCache / Redshift / OpenSearch<br/>(per-service, not covered by Savings Plans)"]
+  SPOT["Spot capacity<br/>ECS/EKS Fargate Spot, EC2 Spot<br/>(stateless/batch/fault-tolerant only)"]
+  WORKLOAD["Workload type"] -->|"steady, cross-service compute"| COMPUTE_SP
+  WORKLOAD -->|"steady, fixed instance family"| EC2_SP
+  WORKLOAD -->|"steady database"| RI
+  WORKLOAD -->|"interruptible, fault-tolerant"| SPOT
+  style COMPUTE_SP fill:#e3f2fd,stroke:#0d47a1
+  style EC2_SP fill:#fff3e0,stroke:#e65100
+  style SPOT fill:#e8f5e9,stroke:#2e7d32

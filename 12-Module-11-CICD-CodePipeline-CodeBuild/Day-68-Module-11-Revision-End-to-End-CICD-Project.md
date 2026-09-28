@@ -150,4 +150,4 @@ Approval ──► AssumeRole (Prod account deploy role) ──► CodeDeploy EC
 
 ---
 
-**⏮ আগের দিন:** [Day 67 — Pipeline Security ও Advanced Patterns](./Day-67-Pipeline-Security-Advanced-Patterns.md) | **⏭ পরের module:** [99 — Interview Q&A](../99-Interview-QA/01-Questions.md) অথবা [98 — SAA-C03 Exam Prep](../98-SAA-C03-Exam-Prep/01-Exam-Overview-and-Strategy.md)
+**⏮ আগের দিন:** [Day 67 — Pipeline Security ও Advanced Patterns](./Day-67-Pipeline-Security-Advanced-Patterns.md) | **⏭ পরের module:** [Day 69 — Cost Visibility](../13-Module-12-Cost-Optimization/Day-69-Cost-Visibility-Cost-Explorer-CUR-Tags.md)
