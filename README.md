@@ -48,7 +48,8 @@ Day-wise course note · Technical deep dive · Diagram · Interview Q&A · SAA-C
 | 🛠 Hands-on শিখতে চাই | [Module 1 — Day 1](./02-Module-1-EC2-and-Storage/Day-01-Cloud-Computing-AWS-Infrastructure-Account-Setup.md) থেকে ক্রমানুসারে |
 | 🎓 SAA-C03 certification | [Exam Overview](./98-SAA-C03-Exam-Prep/01-Exam-Overview-and-Strategy.md) → [Cheat Sheet](./98-SAA-C03-Exam-Prep/02-Keyword-to-Service-Cheat-Sheet.md) → Practice প্রশ্ন |
 | 💼 Job interview আসছে | [Interview প্রশ্ন](./99-Interview-QA/01-Questions.md) → [উত্তরসহ Notes](./99-Interview-QA/02-Answers-Q1-Q130.md) |
-| ⚡ তাড়াতাড়ি revision | [Common Traps ও Comparisons](./98-SAA-C03-Exam-Prep/07-Common-Traps-and-Comparisons.md) |
+| ⚡ তাড়াতাড়ি revision | [Common Traps ও Comparisons](./98-SAA-C03-Exam-Prep/07-Common-Traps-and-Comparisons.md) বা module-ভিত্তিক [Cheat Sheet](./96-Module-Cheat-Sheets/) |
+| 🧭 "কোন কাজে কোন service" মনে করতে | [AWS Service Decision Map](./00-Getting-Started/04-Service-Decision-Map.md) |
 
 ---
 
@@ -86,6 +87,7 @@ AWS-NOTES/
 | 1 | [Course Syllabus — ৮টি মডিউল](./00-Getting-Started/01-Course-Syllabus-8-Modules.md) |
 | 2 | [Step-by-Step AWS Learning (Beginner → Job Ready)](./00-Getting-Started/02-Step-by-Step-Learning-Path.md) |
 | 3 | [AWS Learning Topics Roadmap](./00-Getting-Started/03-AWS-Learning-Topics-Roadmap.md) |
+| 4 | [🧭 AWS Service Decision Map — "কোন কাজে কোন service"](./00-Getting-Started/04-Service-Decision-Map.md) |
 
 ## 📘 01 — Fundamentals (Deep Dive)
 
