@@ -1,0 +1,15 @@
+flowchart TB
+  EDIT["Developer edits code"] --> LATEST["$LATEST (mutable)"]
+  LATEST -->|"publish-version"| VERS
+  subgraph VERS["Published versions (immutable snapshots)"]
+    direction LR
+    V5["Version 5<br/>stable"]
+    V6["Version 6<br/>new release"]
+  end
+  TRIG["Trigger: API Gateway / S3 / SQS<br/>(points to alias ARN, never $LATEST)"] --> PROD(["Alias: prod"])
+  PROD -->|"90%"| V5
+  PROD -->|"10% canary"| V6
+  RB["Problem? Rollback in seconds:<br/>update-alias prod → version 5 (100%)"] -.-> PROD
+  style LATEST fill:#fff9c4,stroke:#f9a825
+  style V5 fill:#c8e6c9,stroke:#2e7d32
+  style V6 fill:#bbdefb,stroke:#0d47a1
