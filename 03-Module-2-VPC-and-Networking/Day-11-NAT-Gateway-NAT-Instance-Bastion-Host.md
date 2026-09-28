@@ -1,5 +1,10 @@
 # 📚 Day 11 — NAT Gateway, NAT Instance & Bastion Host
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![NAT Gateway vs Internet Gateway](../images/25-nat-vs-igw.png)
+
+
 **সময়:** ১.৫ ঘণ্টা | **Module:** ২ (VPC Design & Network Architecture) — Day 4
 
 ## 🎯 আজকের লক্ষ্য

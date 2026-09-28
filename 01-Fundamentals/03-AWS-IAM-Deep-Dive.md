@@ -1,5 +1,12 @@
 # 🔐 AWS IAM — Technical Deep Dive
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![IAM Policy Evaluation Flow](../images/12-iam-policy-evaluation.png)
+
+![Cross-account AssumeRole](../images/20-assume-role.png)
+
+
 ---
 
 ## 1. IAM কী — Core Concept

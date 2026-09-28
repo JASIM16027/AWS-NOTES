@@ -3,6 +3,11 @@
 
 # 📚 Day 3 — Key Pairs, Security Groups & Elastic IP
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![Security Group vs NACL](../images/09-sg-vs-nacl.png)
+
+
 **সময়:** ১.৫ ঘণ্টা | **Module:** ১ (EC2 & Storage Fundamentals)
 
 ## 🎯 আজকের লক্ষ্য

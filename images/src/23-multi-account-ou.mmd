@@ -1,0 +1,15 @@
+flowchart TB
+  ROOT["Organization Root<br/>(Management account: billing only)"]
+  ROOT --> SEC["Security OU"]
+  ROOT --> INF["Infrastructure OU"]
+  ROOT --> WL["Workloads OU"]
+  ROOT --> SB["Sandbox OU"]
+  SEC --> LOG["Log Archive account"]
+  SEC --> AUD["Security Tooling account"]
+  INF --> NETA["Network account<br/>(Transit Gateway)"]
+  INF --> SHR["Shared Services<br/>(CI/CD)"]
+  WL --> DEV["Dev OU"] --> D1["app-dev"]
+  WL --> STG["Staging OU"] --> S1["app-staging"]
+  WL --> PRD["Prod OU"] --> P1["app-prod"]
+  SCP["SCP guardrails"] -.-> WL
+  SSO["IAM Identity Center (SSO)"] -.-> WL

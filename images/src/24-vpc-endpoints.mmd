@@ -1,0 +1,11 @@
+flowchart LR
+  subgraph VPC["VPC - Private Subnet"]
+    EC2["EC2"]
+    ENI["Interface Endpoint<br/>(ENI with private IP + SG)"]
+    RT["Route Table<br/>pl-s3 -> vpce-gw"]
+  end
+  EC2 -->|"via route table"| GW["Gateway Endpoint<br/>(FREE)"]
+  GW --> S3[("S3 / DynamoDB")]
+  EC2 -->|"private DNS"| ENI
+  ENI -->|"PrivateLink"| SVC["SQS, KMS, Secrets Manager,<br/>ECR, SaaS ... (paid)"]
+  RT -.- GW

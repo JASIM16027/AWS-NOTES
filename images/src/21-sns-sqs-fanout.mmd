@@ -1,0 +1,11 @@
+flowchart LR
+  OS["Order Service"] -->|"publish order-created"| SNS(("SNS Topic"))
+  SNS -->|"filter: all"| Q1[["SQS email-queue"]]
+  SNS -->|"filter: all"| Q2[["SQS inventory-queue"]]
+  SNS -->|"filter: amount > 1000"| Q3[["SQS fraud-queue"]]
+  SNS --> Q4[["SQS analytics-queue"]]
+  Q1 --> L1["Lambda: send email"]
+  Q2 --> L2["ECS: update stock"]
+  Q3 --> L3["Fraud service"]
+  Q4 --> L4["Firehose -> S3"]
+  Q1 -.-> DLQ[["DLQ"]]

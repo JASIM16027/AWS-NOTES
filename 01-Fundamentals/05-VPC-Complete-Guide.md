@@ -1,5 +1,12 @@
 ## VPC — সম্পূর্ণ Technical ব্যাখ্যা
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![VPC Public/Private Subnet](../images/03-vpc-public-private.png)
+
+![Security Group vs NACL](../images/09-sg-vs-nacl.png)
+
+
 ---
 
 ### সমস্যাটা আগে বুঝি

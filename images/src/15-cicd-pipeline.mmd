@@ -1,0 +1,12 @@
+flowchart LR
+  DEV["Developer<br/>git push"] --> SRC["SOURCE<br/>GitHub / S3 / ECR"]
+  subgraph CP["AWS CodePipeline (orchestrator)"]
+    direction LR
+    SRC --> BLD["BUILD<br/>CodeBuild<br/>buildspec.yml<br/>test + docker build"]
+    BLD --> APR{"Manual<br/>Approval"}
+    APR --> DEP["DEPLOY<br/>CodeDeploy<br/>appspec.yml"]
+  end
+  BLD -.-> ART[("Artifacts<br/>S3 / ECR")]
+  DEP --> T1["EC2 / On-prem"]
+  DEP --> T2["ECS"]
+  DEP --> T3["Lambda"]

@@ -1,6 +1,11 @@
 
 # 📚 Day 10 — Network ACL vs Security Group
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![Security Group vs NACL](../images/09-sg-vs-nacl.png)
+
+
 **সময়:** ১.৫ ঘণ্টা | **Module:** ২ (VPC Design & Network Architecture) — Day 3
 
 ## 🎯 আজকের লক্ষ্য

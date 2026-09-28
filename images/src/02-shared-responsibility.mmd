@@ -1,0 +1,17 @@
+flowchart TB
+  subgraph C["CUSTOMER: Security IN the Cloud"]
+    direction TB
+    c1["Customer Data"]
+    c2["Platform, Applications, IAM (users, roles, policies)"]
+    c3["Guest OS patching, Network & Firewall config (SG, NACL)"]
+    c4["Encryption: client-side, server-side, in transit"]
+  end
+  subgraph A["AWS: Security OF the Cloud"]
+    direction TB
+    a1["Software: Compute, Storage, Database, Networking services"]
+    a2["Hardware / AWS Global Infrastructure"]
+    a3["Regions, Availability Zones, Edge Locations, Physical security"]
+  end
+  C --> A
+  style C fill:#fff3e0,stroke:#e65100
+  style A fill:#e3f2fd,stroke:#0d47a1

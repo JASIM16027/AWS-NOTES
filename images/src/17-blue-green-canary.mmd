@@ -1,0 +1,16 @@
+flowchart LR
+  subgraph BG["Blue/Green: switch 100% at once"]
+    direction TB
+    U1["Users"] --> LB1["ALB / Route 53"]
+    LB1 -->|"100% -> 0%"| B["BLUE v1 (current)"]
+    LB1 -->|"0% -> 100%"| G["GREEN v2 (new)"]
+  end
+  subgraph CN["Canary: shift gradually"]
+    direction TB
+    U2["Users"] --> LB2["ALB / Lambda alias"]
+    LB2 -->|"90% -> 50% -> 0%"| V1["v1"]
+    LB2 -->|"10% -> 50% -> 100%"| V2["v2 (canary)"]
+    CW["CloudWatch alarm"] -.->|"error? rollback"| LB2
+  end
+  style B fill:#bbdefb
+  style G fill:#c8e6c9

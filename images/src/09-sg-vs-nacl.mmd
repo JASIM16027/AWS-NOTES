@@ -1,0 +1,15 @@
+flowchart LR
+  NET(("Internet")) --> IGW["IGW"]
+  IGW --> RT["Route Table"]
+  subgraph SUB["Subnet"]
+    direction LR
+    NACL["Network ACL<br/>SUBNET level<br/>STATELESS<br/>Allow + Deny rules<br/>rule number order"]
+    subgraph INST["EC2 Instance"]
+      SG["Security Group<br/>INSTANCE level<br/>STATEFUL<br/>Allow rules only"]
+      APP["Application"]
+    end
+  end
+  RT --> NACL --> SG --> APP
+  APP -.->|"response: SG auto-allows<br/>NACL needs outbound rule<br/>(ephemeral ports 1024-65535)"| NACL
+  style NACL fill:#fff3e0,stroke:#e65100
+  style SG fill:#e3f2fd,stroke:#0d47a1

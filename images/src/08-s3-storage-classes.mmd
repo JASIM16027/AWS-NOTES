@@ -1,0 +1,13 @@
+flowchart LR
+  S["S3 Standard<br/>Hot data<br/>ms access"] -->|"30 days"| IA["Standard-IA<br/>Infrequent<br/>ms, retrieval fee"]
+  IA -->|"90 days"| GIR["Glacier Instant<br/>Retrieval<br/>ms"]
+  GIR -->|"180 days"| GFR["Glacier Flexible<br/>Retrieval<br/>minutes - 12 h"]
+  GFR -->|"365 days"| DA["Glacier Deep Archive<br/>12 - 48 h<br/>Cheapest"]
+  DA -->|"7 years"| X["Expire / Delete"]
+  IT["Intelligent-Tiering<br/>auto moves by access pattern"]
+  style S fill:#ffcdd2
+  style IA fill:#ffe0b2
+  style GIR fill:#fff9c4
+  style GFR fill:#c8e6c9
+  style DA fill:#bbdefb
+  style IT fill:#e1bee7

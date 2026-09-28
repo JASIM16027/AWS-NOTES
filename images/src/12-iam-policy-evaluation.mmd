@@ -1,0 +1,21 @@
+flowchart TD
+  S["API Request"] --> D{"Explicit DENY<br/>in any policy?"}
+  D -->|"Yes"| X1["DENY"]
+  D -->|"No"| SCP{"SCP / RCP<br/>allows?"}
+  SCP -->|"No"| X2["DENY"]
+  SCP -->|"Yes"| RB{"Resource-based<br/>policy allows?"}
+  RB -->|"Yes"| OK1["ALLOW"]
+  RB -->|"No"| ID{"Identity-based<br/>policy allows?"}
+  ID -->|"No"| X3["DENY (implicit)"]
+  ID -->|"Yes"| PB{"Permissions<br/>boundary allows?"}
+  PB -->|"No"| X4["DENY"]
+  PB -->|"Yes"| SP{"Session policy<br/>allows?"}
+  SP -->|"No"| X5["DENY"]
+  SP -->|"Yes"| OK2["ALLOW"]
+  style X1 fill:#ffcdd2
+  style X2 fill:#ffcdd2
+  style X3 fill:#ffcdd2
+  style X4 fill:#ffcdd2
+  style X5 fill:#ffcdd2
+  style OK1 fill:#c8e6c9
+  style OK2 fill:#c8e6c9

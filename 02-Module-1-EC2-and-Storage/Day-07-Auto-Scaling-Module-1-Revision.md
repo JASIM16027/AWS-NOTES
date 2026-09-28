@@ -1,5 +1,10 @@
 # 📚 Day 7 — Auto Scaling + Module 1 Revision
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![Auto Scaling Group কীভাবে কাজ করে](../images/04-asg-scaling.png)
+
+
 **সময়:** ১.৫ ঘণ্টা | **Module:** ১ (EC2 & Storage Fundamentals) — শেষ দিন
 
 ## 🎯 আজকের লক্ষ্য

@@ -13,7 +13,8 @@ AWS-NOTES/
 ├── 02-Module-1-EC2-and-Storage/        → Day 1–7
 ├── 03-Module-2-VPC-and-Networking/     → Day 8–14
 ├── 04-Module-3-Application-Deployment/ → Day 15–16 (চলমান)
-└── 99-Interview-QA/                    → ১৩০টা interview প্রশ্ন + উত্তর
+├── 99-Interview-QA/                    → ১৩০টা interview প্রশ্ন + উত্তর
+└── images/                             → Diagram (PNG) + src/ (Mermaid source)
 ```
 
 ---
@@ -90,3 +91,5 @@ AWS-NOTES/
 - নতুন Day note → সংশ্লিষ্ট module folder-এ `Day-XX-Topic-Name.md` নামে রাখুন (যেমন `Day-17-CloudWatch-Agent-Setup.md`)।
 - নতুন module শুরু হলে → `05-Module-4-Serverless-and-Lambda/` এর মতো নতুন folder খুলুন।
 - এই README-র টেবিলে link যোগ করুন।
+- নতুন diagram → `images/src/`-এ `.mmd` (Mermaid) file লিখে PNG render করুন:
+  `npx -p @mermaid-js/mermaid-cli mmdc -i images/src/xx.mmd -o images/xx.png -b white -s 2`

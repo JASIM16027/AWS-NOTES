@@ -1,0 +1,10 @@
+flowchart LR
+  C["Client"] -->|"1. get upload URL"| API["API Gateway"]
+  API --> L1["Lambda:<br/>pre-signed URL"]
+  C -->|"2. direct PUT"| S3A[("S3 raw-uploads")]
+  S3A -->|"3. ObjectCreated"| Q[["SQS buffer"]]
+  Q -.-> DLQ[["DLQ"]]
+  Q -->|"4. batch"| L2["Lambda:<br/>resize / thumbnail"]
+  L2 --> S3B[("S3 processed")]
+  L2 --> DDB[("DynamoDB metadata")]
+  S3B --> CF["CloudFront"] --> C

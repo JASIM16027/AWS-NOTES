@@ -1,0 +1,21 @@
+flowchart LR
+  subgraph P["VPC Peering: full mesh, NO transitive"]
+    direction TB
+    A1["VPC A"] <--> B1["VPC B"]
+    B1 <--> C1["VPC C"]
+    A1 <--> C1
+    A1 <--> D1["VPC D"]
+    B1 <--> D1
+    C1 <--> D1
+    N1["4 VPCs = 6 peerings<br/>n(n-1)/2"]
+  end
+  subgraph T["Transit Gateway: hub-and-spoke, transitive"]
+    direction TB
+    TGW{{"Transit Gateway"}}
+    A2["VPC A"] <--> TGW
+    B2["VPC B"] <--> TGW
+    C2["VPC C"] <--> TGW
+    D2["VPC D"] <--> TGW
+    VPN["On-prem VPN / DX"] <--> TGW
+    N2["4 VPCs = 4 attachments"]
+  end

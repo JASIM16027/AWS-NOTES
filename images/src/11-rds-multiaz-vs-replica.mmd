@@ -1,0 +1,15 @@
+flowchart LR
+  APP["Application"]
+  subgraph MAZ["Multi-AZ = High Availability"]
+    direction TB
+    P1[("Primary<br/>AZ-a")] -->|"SYNC replication"| S1[("Standby<br/>AZ-b<br/>not readable")]
+    S1 -.->|"auto failover<br/>same endpoint"| P1
+  end
+  subgraph RR["Read Replicas = Read Scaling"]
+    direction TB
+    P2[("Primary")] -->|"ASYNC"| R1[("Read Replica 1")]
+    P2 -->|"ASYNC"| R2[("Read Replica 2<br/>other region")]
+  end
+  APP -->|"reads + writes"| P1
+  APP -->|"writes"| P2
+  APP -->|"reads"| R1 & R2
