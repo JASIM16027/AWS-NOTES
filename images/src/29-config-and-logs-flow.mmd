@@ -1,0 +1,15 @@
+flowchart LR
+  subgraph CFG["Config (startup)"]
+    direction TB
+    PS[("Parameter Store<br/>/myapp/prod/*")] -->|"ExecStartPre<br/>load-env.sh"| ENV["/etc/myapp/myapp.env<br/>chmod 600"]
+    SM[("Secrets Manager<br/>DB password")] -.->|"SDK at startup"| APP
+    ENV -->|"EnvironmentFile"| APP["App<br/>(systemd or PM2 cluster)"]
+  end
+  subgraph LOGS["Logs (runtime)"]
+    direction TB
+    APP -->|"stdout"| JD["journald<br/>SystemMaxUse 500M"]
+    APP -->|"file"| FL["/var/log/myapp/*.log<br/>logrotate 14 days"]
+    FL --> CWA["CloudWatch Agent"]
+    CWA --> CWL["CloudWatch Logs<br/>retention 30d"]
+    CWL -->|"export"| S3[("S3 archive")]
+  end

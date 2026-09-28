@@ -1,0 +1,20 @@
+flowchart TB
+  A["BeforeBlockTraffic / BlockTraffic<br/>(remove from ALB)"] --> B["ApplicationStop<br/>stop.sh"]
+  B --> C["DownloadBundle<br/>(agent)"]
+  C --> D["BeforeInstall<br/>before_install.sh"]
+  D --> E["Install<br/>(agent copies files)"]
+  E --> F["AfterInstall<br/>npm ci, daemon-reload"]
+  F --> G["ApplicationStart<br/>systemctl restart myapp"]
+  G --> H{"ValidateService<br/>curl /health"}
+  H -->|"exit 0"| I["AllowTraffic<br/>(back into ALB)"]
+  H -->|"exit 1"| R["Deployment FAILED<br/>auto rollback"]
+  style B fill:#e3f2fd
+  style D fill:#e3f2fd
+  style F fill:#e3f2fd
+  style G fill:#e3f2fd
+  style H fill:#fff9c4
+  style I fill:#c8e6c9
+  style R fill:#ffcdd2
+  style C fill:#eceff1
+  style E fill:#eceff1
+  style A fill:#eceff1

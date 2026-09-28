@@ -7,10 +7,10 @@
 Day-wise course note · Technical deep dive · Diagram · Interview Q&A · SAA-C03 exam prep
 
 ![Language](https://img.shields.io/badge/%E0%A6%AD%E0%A6%BE%E0%A6%B7%E0%A6%BE-%E0%A6%AC%E0%A6%BE%E0%A6%82%E0%A6%B2%E0%A6%BE-2e7d32?style=flat-square)
-![Day Notes](https://img.shields.io/badge/Day_Notes-16-ff9900?style=flat-square&logo=amazonwebservices&logoColor=white)
+![Day Notes](https://img.shields.io/badge/Day_Notes-21-ff9900?style=flat-square&logo=amazonwebservices&logoColor=white)
 ![Interview Q&A](https://img.shields.io/badge/Interview_Q%26A-130-0d47a1?style=flat-square)
 ![Practice Questions](https://img.shields.io/badge/SAA--C03_Practice-62-6a1b9a?style=flat-square)
-![Diagrams](https://img.shields.io/badge/Diagrams-26-00838f?style=flat-square)
+![Diagrams](https://img.shields.io/badge/Diagrams-32-00838f?style=flat-square)
 
 </div>
 
@@ -24,8 +24,8 @@ Day-wise course note · Technical deep dive · Diagram · Interview Q&A · SAA-C
 |---|---|---|---|
 | 1 | EC2 & Storage Fundamentals | ✅ সম্পূর্ণ | `██████████` 7/7 দিন |
 | 2 | VPC Design & Network Architecture | ✅ সম্পূর্ণ | `██████████` 7/7 দিন |
-| 3 | Application Deployment on EC2 with systemd | 🟡 চলমান | `███░░░░░░░` 2 দিন লেখা হয়েছে |
-| 4 | Serverless & Lambda Fundamentals | ⏳ আসছে | `░░░░░░░░░░` |
+| 3 | Application Deployment on EC2 with systemd | ✅ সম্পূর্ণ | `██████████` 7/7 দিন |
+| 4 | Serverless & Lambda Fundamentals | 🟡 পরের module | `░░░░░░░░░░` |
 | 5 | Event-Driven Architectures with Lambda | ⏳ আসছে | `░░░░░░░░░░` |
 | 6 | Multi-VPC & Private Connectivity | ⏳ আসছে | `░░░░░░░░░░` |
 | 7 | Edge Services, DNS & Load Balancing | ⏳ আসছে | `░░░░░░░░░░` |
@@ -55,7 +55,7 @@ AWS-NOTES/
 ├── 01-Fundamentals/                    → Cloud, IAM, EC2, VPC — technical deep dive
 ├── 02-Module-1-EC2-and-Storage/        → Day 1–7
 ├── 03-Module-2-VPC-and-Networking/     → Day 8–14
-├── 04-Module-3-Application-Deployment/ → Day 15–16 (চলমান 🟡)
+├── 04-Module-3-Application-Deployment/ → Day 15–21
 ├── 98-SAA-C03-Exam-Prep/               → Solutions Architect Associate exam: cheat sheet + ৬২টা practice প্রশ্ন
 ├── 99-Interview-QA/                    → ১৩০টা interview প্রশ্ন + উত্তর
 └── images/                             → Diagram (PNG) + src/ (Mermaid source)
@@ -114,6 +114,11 @@ AWS-NOTES/
 |---|---|
 | 15 | [User Data, Cloud-init & EC2 Instance Connect](./04-Module-3-Application-Deployment/Day-15-User-Data-Cloud-init-EC2-Instance-Connect.md) |
 | 16 | [SSM Session Manager & IAM Instance Profile](./04-Module-3-Application-Deployment/Day-16-SSM-Session-Manager-IAM-Instance-Profile.md) |
+| 17 | [CloudWatch Agent: Memory, Disk ও Log Monitoring](./04-Module-3-Application-Deployment/Day-17-CloudWatch-Agent-Setup.md) |
+| 18 | [systemd দিয়ে Service Management](./04-Module-3-Application-Deployment/Day-18-systemd-Service-Management.md) |
+| 19 | [Nginx Reverse Proxy ও Node.js / Python App Deploy](./04-Module-3-Application-Deployment/Day-19-Nginx-Reverse-Proxy-App-Deploy.md) |
+| 20 | [PM2, Environment Config ও Log Management](./04-Module-3-Application-Deployment/Day-20-PM2-Env-Config-Log-Management.md) |
+| 21 | [CI/CD: CodeDeploy + GitHub Actions + Module 3 Revision](./04-Module-3-Application-Deployment/Day-21-CICD-CodeDeploy-GitHub-Actions-Module-3-Revision.md) |
 
 ## 🎓 98 — AWS Solutions Architect Associate (SAA-C03) Exam Prep
 

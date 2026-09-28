@@ -1,0 +1,20 @@
+sequenceDiagram
+  participant Dev as Developer
+  participant GA as GitHub Actions
+  participant STS as AWS STS
+  participant S3 as S3 revision bucket
+  participant CD as CodeDeploy
+  participant EC2 as EC2 fleet (agents)
+  Dev->>GA: git push main
+  GA->>GA: Job 1: npm ci + npm test
+  GA->>STS: OIDC token (AssumeRoleWithWebIdentity)
+  STS-->>GA: temporary credentials (no access keys)
+  GA->>S3: upload myapp/COMMIT_SHA.zip
+  GA->>CD: create-deployment (Env=prod, OneAtATime)
+  loop each instance, one at a time
+    CD->>EC2: new revision available
+    EC2->>S3: agent downloads zip
+    EC2->>EC2: Stop, Install, AfterInstall, Start, ValidateService
+    EC2-->>CD: success / failure
+  end
+  CD-->>GA: deployment succeeded (or auto rollback)
