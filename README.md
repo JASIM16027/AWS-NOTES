@@ -1,5 +1,7 @@
 # AWS-NOTES
 
+> 📘 **সব প্রশ্নের উত্তর (Q1–Q130) note আকারে:** [AWS Interview Q&A — উত্তরসহ Notes](./AWS%20Interview%20Q%26A%20%E2%80%94%20%E0%A6%89%E0%A6%A4%E0%A7%8D%E0%A6%A4%E0%A6%B0%E0%A6%B8%E0%A6%B9%20Notes.md)
+
 ## Core / Foundational
 
 1. What is AWS, and what are the main service categories it offers?
