@@ -1,0 +1,10 @@
+flowchart LR
+  V1["Viewer Request"] -->|"CloudFront Function<br/>OR Lambda@Edge"| CACHE{"In cache?"}
+  CACHE -->|"Yes"| V4["Viewer Response"]
+  CACHE -->|"No"| O1["Origin Request"]
+  O1 -->|"Lambda@Edge only"| ORIGIN["Origin"]
+  ORIGIN --> O2["Origin Response"]
+  O2 -->|"Lambda@Edge only"| V4
+  V4 -->|"CloudFront Function<br/>OR Lambda@Edge"| USER["User"]
+  NOTE["CloudFront Functions: viewer request/response only, JS, sub-ms<br/>Lambda@Edge: all 4 points, Node/Python, network + body access"]
+  style NOTE fill:#f5f5f5,stroke:#9e9e9e,stroke-dasharray: 4 4

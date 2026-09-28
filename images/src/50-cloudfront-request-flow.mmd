@@ -1,0 +1,14 @@
+flowchart LR
+  U["User (London)"] --> E1["Nearest Edge Location"]
+  E1 -->|"cache HIT"| U
+  E1 -->|"cache MISS"| REC["Regional Edge Cache"]
+  REC -->|"HIT"| E1
+  REC -->|"MISS"| ORI
+  subgraph ORI["Origins"]
+    direction LR
+    S3[("S3 (OAC)<br/>static assets")]
+    ALB["ALB (custom origin)<br/>dynamic /api/*"]
+  end
+  ORI -->|"AWS backbone"| REC
+  style E1 fill:#e3f2fd,stroke:#0d47a1
+  style REC fill:#fff8e1,stroke:#f9a825
