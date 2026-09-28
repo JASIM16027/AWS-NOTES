@@ -285,8 +285,12 @@ AWS-NOTES/
 - নতুন Day note → সংশ্লিষ্ট module folder-এ `Day-XX-Topic-Name.md` নামে রাখুন (যেমন `Day-17-CloudWatch-Agent-Setup.md`)।
 - নতুন module শুরু হলে → `09-Module-8-Network-Security-Monitoring/` এর মতো নতুন folder খুলুন।
 - এই README-র টেবিলে link যোগ করুন।
-- নতুন diagram → `images/src/`-এ `.mmd` (Mermaid) file লিখে PNG render করুন:
-  `npx -p @mermaid-js/mermaid-cli mmdc -i images/src/xx.mmd -o images/xx.png -b white -s 2`
+- নতুন diagram — দুই পদ্ধতি:
+  - **Concept/comparison diagram** (flow, decision tree, লেখা-ভিত্তিক): `images/src/`-এ `.mmd` (Mermaid) file লিখে PNG render করুন:
+    `npx -p @mermaid-js/mermaid-cli mmdc -i images/src/xx.mmd -o images/xx.png -b white -s 2`
+  - **Architecture diagram** (real AWS service icon দিয়ে, "real vibe"-এর জন্য): `images/aws-src/`-এ Python script লিখুন ([mingrammer/diagrams](https://diagrams.mingrammer.com/) লাইব্রেরি, আসল AWS icon ব্যবহার করে) এবং রান করুন:
+    `python3 images/aws-src/xx_name.py` (আউটপুট সরাসরি `images/xx-name.png`-এ সেভ করার জন্য script-এর `filename=` প্যারামিটার ব্যবহার করুন)
+    সব label ইংরেজিতে রাখুন — graphviz-এর default font বাংলা glyph ঠিকভাবে render করে না।
 
 ---
 
