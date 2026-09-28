@@ -1,5 +1,12 @@
 # AWS — DevOps এর জন্য বিস্তারিত গাইড
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![AWS CI/CD Pipeline](../images/15-cicd-pipeline.png)
+
+![3-Tier Architecture](../images/16-three-tier-ha.png)
+
+
 ---
 
 ## AWS আসলে কী সমস্যা সমাধান করে?

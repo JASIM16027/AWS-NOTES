@@ -1,0 +1,11 @@
+sequenceDiagram
+  participant U as User / App (Account A 1111)
+  participant STS as AWS STS
+  participant R as IAM Role (Account B 2222)
+  participant S3 as S3 Bucket (Account B)
+  U->>STS: sts:AssumeRole(RoleArn, ExternalId)
+  STS->>R: Check Trust Policy: is Account A allowed?
+  R-->>STS: Yes
+  STS-->>U: Temporary credentials (AccessKey, Secret, SessionToken, 1h)
+  U->>S3: GetObject using temporary credentials
+  S3-->>U: Object (allowed by role permission policy)

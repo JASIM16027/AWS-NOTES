@@ -1,6 +1,13 @@
 
 # 📚 Day 14 — Network Design Patterns + Module 2 Revision
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![VPC Peering vs Transit Gateway](../images/10-peering-vs-tgw.png)
+
+![Highly Available 3-Tier Architecture](../images/16-three-tier-ha.png)
+
+
 **সময়:** ১.৫ ঘণ্টা | **Module:** ২ (VPC Design & Network Architecture) — শেষ দিন
 
 ## 🎯 আজকের লক্ষ্য

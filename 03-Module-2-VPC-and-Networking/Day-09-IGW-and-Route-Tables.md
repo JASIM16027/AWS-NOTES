@@ -1,6 +1,11 @@
 
 # 📚 Day 9 — Internet Gateway & Route Tables
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![IGW ও Route Table](../images/03-vpc-public-private.png)
+
+
 **সময়:** ১.৫ ঘণ্টা | **Module:** ২ (VPC Design & Network Architecture) — Day 2
 
 ## 🎯 আজকের লক্ষ্য

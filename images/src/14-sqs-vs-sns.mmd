@@ -1,0 +1,15 @@
+flowchart LR
+  subgraph Q["SQS: Queue (PULL) - one consumer per message"]
+    direction LR
+    P1["Producer"] --> SQS[["SQS Queue"]]
+    SQS -->|"poll"| W1["Worker 1"]
+    SQS -->|"poll"| W2["Worker 2"]
+  end
+  subgraph T["SNS: Pub/Sub (PUSH) - every subscriber gets a copy"]
+    direction LR
+    P2["Publisher"] --> SNS(("SNS Topic"))
+    SNS --> E["Email"]
+    SNS --> L["Lambda"]
+    SNS --> H["HTTPS endpoint"]
+    SNS --> Q2[["SQS Queue"]]
+  end

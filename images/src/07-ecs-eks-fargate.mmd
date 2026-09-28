@@ -1,0 +1,17 @@
+flowchart TB
+  subgraph ORCH["Orchestrator: WHO schedules containers?"]
+    direction LR
+    ECS["Amazon ECS<br/>(AWS-native, simple)"]
+    EKS["Amazon EKS<br/>(Managed Kubernetes)"]
+  end
+  subgraph COMPUTE["Compute: WHERE containers run?"]
+    direction LR
+    EC2["EC2 launch type<br/>(you manage instances)"]
+    FG["AWS Fargate<br/>(serverless, no servers)"]
+  end
+  ECS --> EC2
+  ECS --> FG
+  EKS --> EC2
+  EKS --> FG
+  ECR[("Amazon ECR<br/>container images")] -.-> ECS
+  ECR -.-> EKS

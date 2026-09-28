@@ -1,0 +1,14 @@
+sequenceDiagram
+  participant S as AWS Service (S3 / EBS)
+  participant K as AWS KMS (KMS key in HSM)
+  participant St as Storage
+  Note over S,St: ENCRYPT
+  S->>K: GenerateDataKey(KMS key)
+  K-->>S: Plaintext data key + Encrypted data key
+  S->>S: Encrypt data with plaintext key, then delete plaintext key
+  S->>St: Store encrypted data + encrypted data key
+  Note over S,St: DECRYPT
+  S->>St: Read encrypted data + encrypted data key
+  S->>K: Decrypt(encrypted data key)
+  K-->>S: Plaintext data key (if key policy allows)
+  S->>S: Decrypt data

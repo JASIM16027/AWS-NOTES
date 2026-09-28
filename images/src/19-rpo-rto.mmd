@@ -1,0 +1,5 @@
+flowchart LR
+  LB["Last Backup"] -->|"RPO = max data loss"| DIS(("DISASTER"))
+  DIS -->|"RTO = max downtime"| REC["Service Recovered"]
+  style DIS fill:#ffcdd2,stroke:#c62828
+  style REC fill:#c8e6c9,stroke:#2e7d32

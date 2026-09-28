@@ -1,0 +1,15 @@
+flowchart LR
+  REQ["Request"] --> Q{"Warm environment<br/>available?"}
+  Q -->|"No = COLD START"| A["Create microVM<br/>(Firecracker)"]
+  A --> B["Download code /<br/>container image"]
+  B --> C["Start runtime<br/>(Node, Python, Java)"]
+  C --> D["Run INIT code<br/>(outside handler:<br/>DB conn, SDK clients)"]
+  D --> H["Run handler()"]
+  Q -->|"Yes = WARM START"| H
+  H --> R["Response"]
+  H -.->|"env kept alive<br/>for reuse"| Q
+  style A fill:#ffebee,stroke:#c62828
+  style B fill:#ffebee,stroke:#c62828
+  style C fill:#ffebee,stroke:#c62828
+  style D fill:#ffebee,stroke:#c62828
+  style H fill:#e8f5e9,stroke:#2e7d32

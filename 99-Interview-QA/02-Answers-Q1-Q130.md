@@ -54,6 +54,8 @@
 
 ### Q2. Availability Zone, Region, এবং Edge Location-এর পার্থক্য
 
+![Region, AZ ও Edge Location](../images/01-region-az-edge.png)
+
 - **Region** — একটা geographic area (যেমন `ap-south-1` Mumbai, `us-east-1` N. Virginia)। প্রতিটা Region সম্পূর্ণ **isolated**। সাধারণত ৩+ AZ থাকে।
   - Region বাছাই করার factor: **Compliance/data residency, Latency (user-এর কাছাকাছি), Service availability, Pricing**।
 - **Availability Zone (AZ)** — Region-এর ভেতরে এক বা একাধিক discrete data center, আলাদা power, cooling, networking সহ। AZ গুলো নিজেদের মধ্যে **low-latency, high-bandwidth private fiber** দিয়ে যুক্ত। একটা AZ down হলে অন্যটা চলে → **High Availability**-র ভিত্তি।
@@ -71,6 +73,8 @@
 ---
 
 ### Q3. AWS Shared Responsibility Model কী?
+
+![Shared Responsibility Model](../images/02-shared-responsibility.png)
 
 Security দায়িত্ব AWS আর customer-এর মধ্যে ভাগ করা।
 
@@ -92,6 +96,8 @@ Security দায়িত্ব AWS আর customer-এর মধ্যে ভ
 ---
 
 ### Q4. Public subnet vs Private subnet
+
+![Public vs Private Subnet](../images/03-vpc-public-private.png)
 
 পার্থক্যটা subnet-এর নিজের কোনো property না — **route table**-এ নির্ভর করে।
 
@@ -189,6 +195,8 @@ EC2 instance launch করার **template/blueprint**। এতে থাক�
 
 ### Q10. Auto Scaling Group (ASG) — কীভাবে কাজ করে, কী trigger করে?
 
+![Auto Scaling Group কীভাবে কাজ করে](../images/04-asg-scaling.png)
+
 ASG = একদল EC2 instance যাদের সংখ্যা automatically manage হয়।
 
 **Config:**
@@ -212,6 +220,8 @@ ASG = একদল EC2 instance যাদের সংখ্যা automatically
 
 ### Q11. ALB vs NLB
 
+![ALB vs NLB](../images/05-alb-vs-nlb.png)
+
 | | Application Load Balancer | Network Load Balancer |
 |---|---|---|
 | OSI Layer | **Layer 7** (HTTP/HTTPS, gRPC, WebSocket) | **Layer 4** (TCP, UDP, TLS) |
@@ -228,6 +238,8 @@ ASG = একদল EC2 instance যাদের সংখ্যা automatically
 ---
 
 ### Q12. Lambda pricing ও cold start
+
+![Lambda Cold Start vs Warm Start](../images/06-lambda-cold-start.png)
 
 **Pricing:**
 1. **Requests**: প্রতি ১০ লাখ request ≈ $0.20
@@ -275,6 +287,8 @@ Naming: `m5.xlarge` → **m** = family, **5** = generation, **xlarge** = size।
 
 ### Q14. ECS vs EKS vs Fargate
 
+![ECS / EKS / Fargate সম্পর্ক](../images/07-ecs-eks-fargate.png)
+
 - **ECS (Elastic Container Service)** — AWS-এর নিজস্ব container **orchestrator**। সহজ, AWS-native (IAM, ALB, CloudWatch integration), control plane free। Concept: Cluster → Service → Task (Task Definition)।
 - **EKS (Elastic Kubernetes Service)** — Managed **Kubernetes** control plane। Standard K8s API, portable (multi-cloud/hybrid), বড় ecosystem (Helm, operators)। Control plane-এর জন্য ~$0.10/hour charge। Learning curve বেশি।
 - **Fargate** — Orchestrator না, এটা **serverless compute engine** (launch type) — ECS বা EKS দুটোর নিচেই চলে। EC2 server manage করতে হয় না; per task/pod vCPU+memory অনুযায়ী bill।
@@ -291,6 +305,8 @@ Naming: `m5.xlarge` → **m** = family, **5** = generation, **xlarge** = size।
 ## 💾 Storage
 
 ### Q15. S3 storage classes
+
+![S3 Storage Classes ও Lifecycle](../images/08-s3-storage-classes.png)
 
 | Class | Availability | AZ | Min duration | Retrieval | Use case |
 |---|---|---|---|---|---|
@@ -421,6 +437,8 @@ aws s3 presign s3://my-bucket/report.pdf --expires-in 3600
 
 ### Q22. VPC কী, এবং এর core components
 
+![VPC Core Components](../images/03-vpc-public-private.png)
+
 **VPC (Virtual Private Cloud)** = AWS-এর ভেতরে আপনার নিজস্ব **logically isolated virtual network**। নিজের IP range (CIDR, যেমন `10.0.0.0/16`), subnet, routing, firewall সব আপনার control-এ। VPC **region-scoped**, subnet **AZ-scoped**।
 
 **Core components:**
@@ -437,6 +455,8 @@ Internet ⇄ IGW ⇄ [Public Subnet: ALB, NAT GW] ⇄ [Private Subnet: App] ⇄ 
 ---
 
 ### Q23. NAT Gateway vs Internet Gateway
+
+![NAT Gateway vs Internet Gateway](../images/25-nat-vs-igw.png)
 
 | | Internet Gateway | NAT Gateway |
 |---|---|---|
@@ -455,6 +475,8 @@ Internet ⇄ IGW ⇄ [Public Subnet: ALB, NAT GW] ⇄ [Private Subnet: App] ⇄ 
 
 ### Q24. Security Group vs Network ACL
 
+![Security Group vs NACL](../images/09-sg-vs-nacl.png)
+
 | | Security Group | Network ACL |
 |---|---|---|
 | Level | **Instance/ENI level** | **Subnet level** |
@@ -472,6 +494,8 @@ Internet ⇄ IGW ⇄ [Public Subnet: ALB, NAT GW] ⇄ [Private Subnet: App] ⇄ 
 
 ### Q25. VPC Peering ও এর limitations
 
+![VPC Peering vs Transit Gateway](../images/10-peering-vs-tgw.png)
+
 **VPC Peering** = দুটো VPC-কে private IP দিয়ে connect করা, যেন একই network। AWS backbone দিয়ে traffic যায়, internet দিয়ে না। Same/cross-account, same/cross-region (inter-region peering) হতে পারে।
 
 **Setup:** Request → Accept → **দুই দিকের route table update** → SG/NACL-এ allow।
@@ -487,6 +511,8 @@ Internet ⇄ IGW ⇄ [Public Subnet: ALB, NAT GW] ⇄ [Private Subnet: App] ⇄ 
 ---
 
 ### Q26. Transit Gateway — কেন VPC peering-এর বদলে?
+
+![Transit Gateway hub-and-spoke](../images/10-peering-vs-tgw.png)
 
 **Transit Gateway (TGW)** = regional **hub-and-spoke** network router। সব VPC, VPN, Direct Connect একটা central hub-এ connect হয়।
 
@@ -557,6 +583,8 @@ Internet ⇄ IGW ⇄ [Public Subnet: ALB, NAT GW] ⇄ [Private Subnet: App] ⇄ 
 ---
 
 ### Q30. RDS Multi-AZ vs Read Replicas
+
+![Multi-AZ vs Read Replica](../images/11-rds-multiaz-vs-replica.png)
 
 | | Multi-AZ | Read Replica |
 |---|---|---|
@@ -671,6 +699,8 @@ Internet ⇄ IGW ⇄ [Public Subnet: ALB, NAT GW] ⇄ [Private Subnet: App] ⇄ 
 
 ### Q36. IAM policy evaluation logic
 
+![IAM Policy Evaluation Flow](../images/12-iam-policy-evaluation.png)
+
 মূল নিয়ম:
 1. **Default = Implicit Deny** — কিছু allow না থাকলে সব deny।
 2. **Explicit Deny সবসময় জেতে** — কোথাও Deny থাকলে, অন্য যত Allow-ই থাকুক, deny।
@@ -726,6 +756,8 @@ Request
 ---
 
 ### Q39. AWS KMS কী, S3 ও EBS-এর সাথে কীভাবে integrate?
+
+![KMS Envelope Encryption](../images/13-kms-envelope-encryption.png)
 
 **KMS (Key Management Service)** = Managed service যেটা encryption key তৈরি, store, rotate ও control করে। Key গুলো **FIPS 140-3 validated HSM**-এ থাকে, কখনো plaintext হিসেবে বের হয় না। প্রতিটা key usage **CloudTrail**-এ log হয়।
 
@@ -836,6 +868,8 @@ Request
 ## ⚡ Serverless & Application Integration
 
 ### Q44. SQS vs SNS
+
+![SQS vs SNS](../images/14-sqs-vs-sns.png)
 
 | | SQS | SNS |
 |---|---|---|
@@ -1008,6 +1042,8 @@ Client → API Gateway (auth, throttle, validate) → Lambda → DynamoDB
 
 ### Q53. AWS-এ CI/CD pipeline (CodePipeline, CodeBuild, CodeDeploy)
 
+![AWS CI/CD Pipeline](../images/15-cicd-pipeline.png)
+
 **CI (Continuous Integration)** = প্রতি commit-এ code automatically build + test।
 **CD (Continuous Delivery/Deployment)** = test pass হলে automatically staging/production-এ deploy (Delivery-তে manual approval থাকে)।
 
@@ -1048,6 +1084,8 @@ GitHub push → CodePipeline
 
 ### Q55. Highly available, fault-tolerant 3-tier web application design
 
+![Highly Available 3-Tier Architecture](../images/16-three-tier-ha.png)
+
 ```
                   Route 53 (DNS, health check)
                           │
@@ -1082,6 +1120,8 @@ GitHub push → CodePipeline
 ---
 
 ### Q56. Blue/Green deployment — AWS-এ কীভাবে?
+
+![Blue/Green vs Canary](../images/17-blue-green-canary.png)
 
 **Blue/Green** = দুটো identical environment: **Blue** (current production) ও **Green** (নতুন version)। Green-এ deploy ও test করে traffic **এক ধাক্কায় (বা ধীরে) Green-এ switch**। সমস্যা হলে সঙ্গে সঙ্গে Blue-তে ফেরত (**instant rollback**)।
 
@@ -1172,6 +1212,10 @@ GitHub push → CodePipeline
 ---
 
 ### Q61. Critical application-এর Disaster Recovery strategy (RTO/RPO)
+
+![RPO vs RTO](../images/19-rpo-rto.png)
+
+![DR Strategies](../images/18-dr-strategies.png)
 
 - **RPO (Recovery Point Objective)** — সর্বোচ্চ কতটা **data loss** সহ্য করা যাবে (সময়ে)। যেমন RPO = 1 ঘণ্টা → শেষ ১ ঘণ্টার data হারালে চলবে।
 - **RTO (Recovery Time Objective)** — disaster-এর পর কত **সময়ের মধ্যে service চালু** করতে হবে।
@@ -1561,6 +1605,8 @@ User নিকটতম **CloudFront edge location**-এ data upload করে �
 
 ### Q84. VPC Endpoint — Gateway vs Interface
 
+![Gateway vs Interface Endpoint](../images/24-vpc-endpoints.png)
+
 **VPC Endpoint** = VPC থেকে AWS service-এ (বা PrivateLink service-এ) **private connection** — IGW, NAT, VPN, public IP ছাড়াই; traffic AWS network-এর বাইরে যায় না।
 
 | | Gateway Endpoint | Interface Endpoint (PrivateLink) |
@@ -1901,6 +1947,8 @@ Admin laptop ──SSH──▶ Bastion (public subnet) ──SSH──▶ Priva
 
 ### Q103. Cross-account IAM role assumption (AssumeRole) কীভাবে কাজ করে?
 
+![Cross-account AssumeRole](../images/20-assume-role.png)
+
 **Scenario:** Account A (111111111111)-এর user/app-কে Account B (222222222222)-এর resource access দিতে হবে।
 
 **ধাপ:**
@@ -2028,6 +2076,8 @@ aws lambda invoke --function-name fn --invocation-type Event --payload '{}' out.
 
 ### Q109. SNS + একাধিক SQS দিয়ে fan-out architecture
 
+![SNS + SQS Fan-out](../images/21-sns-sqs-fanout.png)
+
 **Fan-out** = একটা event **একসাথে একাধিক independent consumer**-এ পাঠানো, প্রত্যেকে নিজের গতিতে parallel process করবে।
 
 ```
@@ -2063,6 +2113,8 @@ Order Service ──▶ SNS ───┼──▶ SQS: order-inventory-queue ─
 
 ### Q110. CodePipeline vs CodeBuild vs CodeDeploy
 
+![CodePipeline, CodeBuild, CodeDeploy](../images/15-cicd-pipeline.png)
+
 | Service | Role | কী করে | Config |
 |---|---|---|---|
 | **CodePipeline** | **Orchestrator** (CI/CD workflow) | Source → Build → Test → Approval → Deploy stage গুলো **ক্রমানুসারে চালায়**, artifact এক stage থেকে পরের stage-এ দেয়; নিজে build/deploy করে না | Pipeline definition (stages, actions), trigger (git push) |
@@ -2074,6 +2126,8 @@ Order Service ──▶ SNS ───┼──▶ SQS: order-inventory-queue ─
 ---
 
 ### Q111. Blue/Green vs Canary deployment
+
+![Blue/Green vs Canary](../images/17-blue-green-canary.png)
 
 | | Blue/Green | Canary |
 |---|---|---|
@@ -2357,6 +2411,8 @@ AWS-এর **7 Rs migration strategy**-র দুটো:
 
 ### Q124. প্রতি মিনিটে ১০,০০০ image upload, unpredictable spike — serverless architecture
 
+![Serverless Image Processing](../images/22-serverless-image-pipeline.png)
+
 ```
 Client ──(1) request upload URL──▶ API Gateway ──▶ Lambda (pre-signed URL generate)
    │
@@ -2414,6 +2470,8 @@ Client ──(1) request upload URL──▶ API Gateway ──▶ Lambda (pre-s
 ---
 
 ### Q126. Growing company-র জন্য multi-account AWS environment (dev/staging/prod)
+
+![Multi-account OU Structure](../images/23-multi-account-ou.png)
 
 **Foundation: AWS Organizations + AWS Control Tower (Landing Zone)**
 

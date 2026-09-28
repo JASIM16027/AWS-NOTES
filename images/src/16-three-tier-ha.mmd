@@ -1,0 +1,28 @@
+flowchart TB
+  U["Users"] --> R53["Route 53"] --> CF["CloudFront + WAF + Shield"]
+  CF --> S3[("S3 static assets")]
+  CF --> ALB
+  subgraph T1["Tier 1 - Public Subnets (AZ-a, AZ-b)"]
+    direction LR
+    ALB["Application Load Balancer"]
+    NA["NAT GW (AZ-a)"]
+    NB["NAT GW (AZ-b)"]
+  end
+  subgraph T2["Tier 2 - Private App Subnets: Auto Scaling Group"]
+    direction LR
+    WA["App EC2 (AZ-a)"]
+    WB["App EC2 (AZ-b)"]
+  end
+  subgraph T3["Tier 3 - Private DB Subnets"]
+    direction LR
+    DBA[("Aurora/RDS Primary (AZ-a)")]
+    DBB[("Standby / Replica (AZ-b)")]
+    RC[("ElastiCache Redis")]
+  end
+  ALB --> WA & WB
+  WA & WB --> DBA
+  WA & WB --> RC
+  DBA -->|"sync / replica"| DBB
+  style T1 fill:#e8f5e9,stroke:#2e7d32
+  style T2 fill:#fff8e1,stroke:#f9a825
+  style T3 fill:#fce4ec,stroke:#ad1457

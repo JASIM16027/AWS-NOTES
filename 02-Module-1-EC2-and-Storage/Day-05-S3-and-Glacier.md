@@ -2,6 +2,11 @@
 
 # 📚 Day 5 — S3 & Glacier
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![S3 Storage Classes ও Lifecycle](../images/08-s3-storage-classes.png)
+
+
 **সময়:** ১.৫ ঘণ্টা | **Module:** ১ (EC2 & Storage Fundamentals)
 
 ## 🎯 আজকের লক্ষ্য

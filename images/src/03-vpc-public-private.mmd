@@ -1,0 +1,29 @@
+flowchart TB
+  NET(("Internet"))
+  subgraph VPC["VPC 10.0.0.0/16"]
+    IGW["Internet Gateway"]
+    subgraph PUB["Public Subnet 10.0.1.0/24 (AZ-a)"]
+      ALB["ALB"]
+      NAT["NAT Gateway + EIP"]
+      BAS["Bastion Host"]
+    end
+    subgraph PRIV["Private Subnet 10.0.2.0/24 (AZ-a)"]
+      APP["App Server (EC2)"]
+    end
+    subgraph DB["Private DB Subnet 10.0.3.0/24 (AZ-a)"]
+      RDS[("RDS")]
+    end
+    PRT["Public Route Table<br/>10.0.0.0/16 -> local<br/>0.0.0.0/0 -> IGW"]
+    VRT["Private Route Table<br/>10.0.0.0/16 -> local<br/>0.0.0.0/0 -> NAT GW"]
+  end
+  NET <--> IGW
+  IGW <--> ALB
+  ALB --> APP
+  APP --> RDS
+  APP -.->|"outbound only"| NAT
+  NAT --> IGW
+  PRT -.- PUB
+  VRT -.- PRIV
+  style PUB fill:#e8f5e9,stroke:#2e7d32
+  style PRIV fill:#fff8e1,stroke:#f9a825
+  style DB fill:#fce4ec,stroke:#ad1457

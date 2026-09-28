@@ -1,6 +1,13 @@
 
 # 📚 Cloud Computing, AWS Infrastructure & Account Setup
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![Region, AZ ও Edge Location](../images/01-region-az-edge.png)
+
+![Shared Responsibility Model](../images/02-shared-responsibility.png)
+
+
 ---
 
 ## Part 1: Cloud Computing — গভীরভাবে বুঝুন

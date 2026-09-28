@@ -1,0 +1,23 @@
+flowchart TB
+  subgraph GLOBAL["AWS Global Infrastructure"]
+    direction TB
+    subgraph R1["Region: ap-south-1 (Mumbai)"]
+      direction LR
+      AZ1["AZ ap-south-1a<br/>Data center(s)"]
+      AZ2["AZ ap-south-1b<br/>Data center(s)"]
+      AZ3["AZ ap-south-1c<br/>Data center(s)"]
+      AZ1 <-->|"low-latency private fiber"| AZ2
+      AZ2 <--> AZ3
+    end
+    subgraph R2["Region: us-east-1 (N. Virginia)"]
+      direction LR
+      B1["AZ us-east-1a"]
+      B2["AZ us-east-1b"]
+      B3["AZ us-east-1c ..."]
+    end
+    E1(["Edge Location - Dhaka<br/>CloudFront cache / Route 53"])
+    E2(["Edge Location - Singapore"])
+  end
+  U["User"] --> E1
+  E1 -->|"AWS backbone"| R1
+  E2 --> R2

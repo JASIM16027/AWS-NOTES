@@ -1,0 +1,16 @@
+flowchart LR
+  U["Users"] --> ALB["Application Load Balancer"]
+  subgraph ASG["Auto Scaling Group (min 2 / desired 3 / max 10)"]
+    direction TB
+    I1["EC2 (AZ-a)"]
+    I2["EC2 (AZ-b)"]
+    I3["EC2 (AZ-c)"]
+    I4["New EC2 (from Launch Template)"]
+  end
+  ALB --> I1 & I2 & I3
+  I1 & I2 & I3 -->|"CPU metrics"| CW["CloudWatch"]
+  CW -->|"CPU > 50% target"| AL["Alarm / Target Tracking policy"]
+  AL -->|"scale out +1"| ASG
+  ASG -.->|"launch"| I4
+  I4 -.->|"auto register"| ALB
+  HC["Health check fails"] -->|"terminate & replace"| ASG

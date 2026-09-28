@@ -1,0 +1,15 @@
+flowchart LR
+  subgraph L7["ALB - Layer 7 (HTTP/HTTPS)"]
+    direction TB
+    C1["Client"] --> ALB["ALB"]
+    ALB -->|"/api/*"| T1["API Target Group"]
+    ALB -->|"/images/*"| T2["Image Target Group"]
+    ALB -->|"host: admin.example.com"| T3["Admin Target Group"]
+    ALB -->|"/fn"| T4["Lambda"]
+  end
+  subgraph L4["NLB - Layer 4 (TCP/UDP)"]
+    direction TB
+    C2["Client"] -->|"Static IP per AZ"| NLB["NLB"]
+    NLB -->|"TCP :443"| S1["Target Group<br/>(EC2 / IP / ALB)"]
+    NLB -->|"UDP :53"| S2["Target Group"]
+  end

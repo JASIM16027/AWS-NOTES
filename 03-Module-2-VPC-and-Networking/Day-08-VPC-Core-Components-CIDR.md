@@ -1,6 +1,11 @@
 
 # 📚 Day 8 — VPC Core Components & CIDR
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![VPC Core Components](../images/03-vpc-public-private.png)
+
+
 **সময়:** ১.৫ ঘণ্টা | **Module:** ২ (VPC Design & Network Architecture) — Day 1
 
 ## 🎯 আজকের লক্ষ্য

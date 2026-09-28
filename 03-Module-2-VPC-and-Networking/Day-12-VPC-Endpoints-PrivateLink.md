@@ -1,6 +1,11 @@
 
 # 📚 Day 12 — VPC Endpoints & PrivateLink
 
+> 📊 **Visual Summary** — সহজে বোঝার জন্য diagram:
+
+![Gateway vs Interface Endpoint](../images/24-vpc-endpoints.png)
+
+
 **সময়:** ১.৫ ঘণ্টা | **Module:** ২ (VPC Design & Network Architecture) — Day 5
 
 ## 🎯 আজকের লক্ষ্য

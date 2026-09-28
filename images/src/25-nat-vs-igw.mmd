@@ -1,0 +1,15 @@
+flowchart LR
+  NET(("Internet"))
+  IGW["Internet Gateway<br/>two-way"]
+  subgraph PUB["Public Subnet"]
+    WEB["Web EC2<br/>public IP"]
+    NAT["NAT Gateway<br/>+ Elastic IP"]
+  end
+  subgraph PRIV["Private Subnet"]
+    APP["App EC2<br/>private IP only"]
+  end
+  NET <-->|"inbound + outbound"| IGW
+  IGW <--> WEB
+  APP -->|"outbound only<br/>(updates, API calls)"| NAT
+  NAT --> IGW
+  NET -.-x|"inbound blocked"| APP
