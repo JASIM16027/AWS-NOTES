@@ -293,6 +293,7 @@ AWS-NOTES/
 |---|---|
 | 1 | [AWS Interview Questions (Q1–Q130)](./99-Interview-QA/01-Questions.md) |
 | 2 | [উত্তরসহ Notes (Q1–Q130)](./99-Interview-QA/02-Answers-Q1-Q130.md) |
+| 3 | 🃏 [AWS Recall — Interactive Flashcards](https://claude.ai/artifact/K4VzZgRwxxRuAKPRc7Rb23) (সব ১৩০টা প্রশ্ন, flip করে practice, category filter, "Know it / Still learning" tracking — browser-এ progress সেভ থাকে) |
 
 ---
 
