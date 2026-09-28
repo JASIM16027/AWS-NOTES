@@ -159,4 +159,4 @@ ShopBD একটা e-commerce অ্যাপ, বিভিন্ন অংশ�
 
 ---
 
-**⏮ আগের দিন:** [Day 57 — DynamoDB Streams, Global Tables, DAX ও Transactions](./Day-57-DynamoDB-Streams-Global-Tables-DAX-Transactions.md) | **⏭ পরের module:** [99 — Interview Q&A](../99-Interview-QA/01-Questions.md) অথবা [98 — SAA-C03 Exam Prep](../98-SAA-C03-Exam-Prep/01-Exam-Overview-and-Strategy.md)
+**⏮ আগের দিন:** [Day 57 — DynamoDB Streams, Global Tables, DAX ও Transactions](./Day-57-DynamoDB-Streams-Global-Tables-DAX-Transactions.md) | **⏭ পরের module:** [Day 59 — Docker ও Container Fundamentals, ECR](../11-Module-10-Containers-ECS-EKS-Fargate/Day-59-Docker-Container-Fundamentals-ECR.md)

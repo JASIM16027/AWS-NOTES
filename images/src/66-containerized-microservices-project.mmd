@@ -1,0 +1,20 @@
+flowchart TB
+  NET(("Internet")) --> ALB["ALB + WAF"]
+  ALB --> APIGW_TG["Target Group: api-gateway-service"]
+  subgraph CLUSTER["ECS Cluster (Fargate)"]
+    APIGW["api-gateway<br/>service (3 tasks)"]
+    ORDERS["orders-service<br/>(2 tasks, awsvpc)"]
+    PAYMENTS["payments-service<br/>(2 tasks, awsvpc)"]
+    WORKER["batch-worker<br/>(standalone tasks, Day 59-60)"]
+  end
+  APIGW_TG --> APIGW
+  APIGW -->|"Cloud Map: orders.internal"| ORDERS
+  APIGW -->|"Cloud Map: payments.internal"| PAYMENTS
+  ORDERS --> AURORA[("Aurora (Day 55)")]
+  PAYMENTS --> DDB[("DynamoDB (Day 56-57)")]
+  WORKER --> S3[("S3 batch input")]
+  ECR[("ECR")] -.->|"image pull"| APIGW & ORDERS & PAYMENTS & WORKER
+  CW["Container Insights"] --> AAS["Auto Scaling"]
+  AAS -->|"adjust desired count"| ORDERS & PAYMENTS
+  style CLUSTER fill:#e3f2fd,stroke:#0d47a1
+  style AAS fill:#e8f5e9,stroke:#2e7d32

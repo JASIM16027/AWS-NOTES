@@ -1,0 +1,14 @@
+flowchart LR
+  CODE["App code + Dockerfile"] -->|"docker build"| IMG["Container Image<br/>(layers, read-only)"]
+  IMG -->|"docker push"| ECR[("Amazon ECR<br/>private registry")]
+  ECR -->|"docker pull"| RUN1["Container instance<br/>(EC2 / Fargate)"]
+  IMG -.->|"docker run"| LOCAL["Local container<br/>(dev machine)"]
+  subgraph LAYERS["Image layers (cached, reused)"]
+    direction TB
+    L1["Base OS layer"] --> L2["Runtime layer<br/>(Node/Python/Java)"]
+    L2 --> L3["App code layer"]
+  end
+  IMG -.-> LAYERS
+  ECR -->|"image scan"| SCAN["Vulnerability scan<br/>(Inspector)"]
+  style ECR fill:#e3f2fd,stroke:#0d47a1
+  style SCAN fill:#ffebee,stroke:#c62828

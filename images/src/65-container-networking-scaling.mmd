@@ -1,0 +1,13 @@
+flowchart TB
+  ALB["ALB"] --> TG["Target Group (IP mode)"]
+  TG --> ENI1["Task 1<br/>own ENI (awsvpc mode)"]
+  TG --> ENI2["Task 2<br/>own ENI (awsvpc mode)"]
+  ENI1 --- SG["Security Group<br/>(per-task, like an instance)"]
+  ENI2 --- SG
+  SVC1["orders-service"] -->|"discover via"| CLOUDMAP["Cloud Map<br/>orders.internal"]
+  CLOUDMAP --> SVC2["payments-service"]
+  CW["CloudWatch metric<br/>(CPU/memory/ALB request count)"] --> AAS["Application Auto Scaling"]
+  AAS -->|"adjust desired count"| SVCTASKS["ECS/EKS tasks"]
+  style SG fill:#e3f2fd,stroke:#0d47a1
+  style CLOUDMAP fill:#fff3e0,stroke:#e65100
+  style AAS fill:#e8f5e9,stroke:#2e7d32

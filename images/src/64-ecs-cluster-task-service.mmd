@@ -1,0 +1,23 @@
+flowchart TB
+  TD["Task Definition<br/>(CPU/mem, container image, port, IAM role)"] --> TASK1["Task 1"]
+  TD --> TASK2["Task 2"]
+  TD --> TASK3["Task 3"]
+  subgraph SVC["ECS Service (desired count = 3)"]
+    TASK1
+    TASK2
+    TASK3
+  end
+  subgraph CLUSTER["ECS Cluster"]
+    subgraph EC2LT["Launch type: EC2"]
+      CI1["Container instance"]
+      CI2["Container instance"]
+    end
+    subgraph FGLT["Launch type: Fargate"]
+      FG1["Serverless task<br/>(no EC2 to manage)"]
+    end
+  end
+  SVC --> CLUSTER
+  ALB["Application Load Balancer"] -->|"health check + route"| SVC
+  SVC -->|"unhealthy task replaced"| TD
+  style FGLT fill:#e3f2fd,stroke:#0d47a1
+  style EC2LT fill:#fff3e0,stroke:#e65100
